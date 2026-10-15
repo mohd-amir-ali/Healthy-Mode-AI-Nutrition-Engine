@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product &amp; Technical Whitepaper — Healthy Mode AI Nutritional Scoring &amp; Subscriptions | Mohd Amir Ali</title>
+  <link rel="stylesheet" href="static/healthy_mode.css">
+  <style>
+    .report-section { margin-bottom: 32px; }
+    .formula-box {
+      background-color: var(--obsidian-card);
+      color: #F3F4F6;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      padding: 20px 24px;
+      border-radius: 16px;
+      border-left: 5px solid var(--lime-neon);
+      margin: 16px 0;
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+    @media print {
+      .site-header, .no-print { display: none !important; }
+      body { background: #FFFFFF; }
+      .editorial-card { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header no-print">
+    <div class="header-inner">
+      <a href="index.html" class="brand-lockup">
+        <div class="brand-heart-badge">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#8CE62E">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">HEALTHY MODE <span style="color: var(--forest-hero);">//</span> PRODUCT &amp; AI WHITEPAPER</span>
+          <span class="brand-tagline">Mohd Amir Ali · Product Specialist &amp; Engineer at Heart</span>
+        </div>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html" class="nav-link">← Back to Interactive Simulator</a>
+        <button type="button" onclick="window.print()" class="btn-primary-lime" style="padding: 8px 18px;">🖨️ Print / Save as PDF</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-container">
+
+    <!-- Executive Title Card -->
+    <div class="healthy-hero-banner" style="grid-template-columns: 1fr;">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--lime-neon); letter-spacing: 0.14em; margin-bottom: 8px;">
+          EXECUTIVE PRODUCT ARCHITECTURE &amp; ALGORITHMIC CASE STUDY
+        </div>
+        <h1 style="font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 800; line-height: 1.08; margin-bottom: 14px;">
+          AI-Powered Nutritional Transparency &amp; Automated Meal Subscriptions in Food Delivery
+        </h1>
+        <p class="hm-hero-lead" style="max-width: 880px;">
+          How minimal Merchant Partner (<code>Mx</code>) kitchen inputs, Multimodal AI recipe decomposition, and a 5-parameter weighted <em>Healthy Score</em> transform food delivery from impulse cravings into sustainable daily nourishment.
+        </p>
+        <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-family: var(--font-mono); font-size: 0.76rem; color: #D1D5DB;">
+          <span><strong>AUTHOR:</strong> MOHD AMIR ALI (<a href="https://techwithamir.com" target="_blank" style="color:var(--lime-neon); text-decoration:underline;">techwithamir.com</a>)</span>
+          <span><strong>INDUSTRY REFERENCE:</strong> IMPLEMENTED IN ZOMATO (ETERNAL LTD.)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 1: Problem Statement & Industry Context -->
+    <div class="editorial-card report-section">
+      <span class="eyebrow-label">SECTION 01 // EXECUTIVE SUMMARY &amp; INDUSTRY CONTEXT</span>
+      <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 12px;">1. The Food-Delivery Blind Spot &amp; Why This Matters</h2>
+      <p style="color: var(--slate-muted); margin-bottom: 14px;">
+        For over a decade, online food delivery platforms optimized for speed, discounts, and craving-driven discovery. While ordering food became effortless, eating genuinely nourishing food remained difficult: customers had no visibility into macronutrients (<code>Protein</code>, <code>Fat</code>, <code>Carbs</code>, <code>Fibre</code>), cooking oils, or refined ingredients when browsing restaurant menus.
+      </p>
+      <p style="color: var(--slate-muted);">
+        Pioneered and implemented in production at <strong>Zomato</strong> (India's leading food delivery platform, under <strong>Eternal Ltd.</strong>), <strong>Healthy Mode</strong> solves this asymmetry without placing an impossible laboratory-testing burden on restaurant partners (<code>Mx</code>). By combining approximate preparation quantities entered by restaurants with an AI nutritional estimation engine, the platform surfaces a clear <strong>3-tier Nutritional Heart rating (<code>Low</code>, <code>Medium</code>, <code>High</code>)</strong> and macro breakdown—establishing a blueprint that all food-delivery competitors should adopt to promote public health.
+      </p>
+    </div>
+
+    <!-- Section 2: Stage 1 & Stage 2 Mathematical Algorithm -->
+    <div class="editorial-card report-section">
+      <span class="eyebrow-label">SECTION 02 // ALGORITHMIC ARCHITECTURE</span>
+      <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 12px;">2. The 2-Stage AI Nutritional &amp; Healthy Score Algorithm</h2>
+
+      <h3 style="font-size: 1.15rem; font-weight: 800; margin-top: 16px; margin-bottom: 8px;">Stage A: Merchant (<code>Mx</code>) Input to AI Macro-Decomposition</h3>
+      <p style="color: var(--slate-muted); margin-bottom: 10px;">
+        Restaurant partners (<code>Mx</code>) provide basic preparation metadata—dish title, core ingredients, approximate gram quantities used in preparation, and cooking method (e.g., steamed, grilled, sautéed, or deep-fried). The AI pipeline maps each ingredient $i$ of weight $w_i$ (in grams) against standardized <strong>ICMR-National Institute of Nutrition (IFCT)</strong> per-100g vectors $[P_i, F_i, C_i, B_i]$ and adds a cooking-method oil absorption factor $\Delta_{\text{method}}$:
+      </p>
+      <div class="formula-box">
+        Macro_Total (g) = Σ [ (w_i / 100) × Macro_100g(i) ] + Δ_Cooking_Method<br/>
+        Total_Energy (kcal) = 4 × Protein(g) + 4 × Carbs(g) + 9 × Fat(g)
+      </div>
+
+      <h3 style="font-size: 1.15rem; font-weight: 800; margin-top: 22px; margin-bottom: 8px;">Stage B: The 5-Parameter Weighted Healthy Score (0–100 Scale)</h3>
+      <p style="color: var(--slate-muted); margin-bottom: 10px;">
+        Crucially, <strong>calories do not affect the Healthy Score</strong>—calories are treated as a neutral filter metric because daily energy needs vary by individual goals. Instead, the dish is evaluated on nutrient density and preparation quality:
+      </p>
+      <div class="formula-box">
+        Healthy_Score = 0.35(S_Protein) + 0.20(S_Carb_GI) + 0.15(S_Fibre) + 0.15(S_Ingredient) + 0.15(S_Cooking) − Penalty(SatFat, Sugar)
+      </div>
+
+      <div style="overflow-x: auto; margin-top: 16px;">
+        <table class="editorial-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Weight</th>
+              <th>Scoring Mechanics &amp; Nutritional Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1. Protein Density</strong></td>
+              <td class="mono-cell"><strong>35%</strong></td>
+              <td>Evaluates protein grams per serving and protein calorie share (lean meats, cottage cheese/paneer, eggs, legumes, dairy, tofu).</td>
+            </tr>
+            <tr>
+              <td><strong>2. Carb Density &amp; Quality (GI)</strong></td>
+              <td class="mono-cell"><strong>20%</strong></td>
+              <td>Rewards whole grains and low-glycemic index complex carbs; penalizes refined carbs unless balanced with fibre or protein.</td>
+            </tr>
+            <tr>
+              <td><strong>3. Fibre &amp; Micronutrients</strong></td>
+              <td class="mono-cell"><strong>15%</strong></td>
+              <td>Scores dietary fibre gram-mage and vitamin/mineral density from vegetables (broccoli, greens), fruits, legumes, herbs, and seeds.</td>
+            </tr>
+            <tr>
+              <td><strong>4. Ingredient Quality</strong></td>
+              <td class="mono-cell"><strong>15%</strong></td>
+              <td>Rewards whole, fresh, minimally processed kitchen inputs; penalizes ultra-processed dressings or artificial additives.</td>
+            </tr>
+            <tr>
+              <td><strong>5. Cooking Method</strong></td>
+              <td class="mono-cell"><strong>15%</strong></td>
+              <td>Steamed/poached (<code>98</code>) and low-oil grilled/roasted (<code>92</code>) score highest; deep-fried preparations (<code>18</code>) score lowest.</td>
+            </tr>
+            <tr>
+              <td><strong>Saturated Fats &amp; Sugar</strong></td>
+              <td class="mono-cell"><strong>Penalty</strong></td>
+              <td>Deduction of up to <code>−22 pts</code> when saturated fat or added sugar exceeds healthy per-meal thresholds.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 3: Worked Dish Proof (BBQ Cottage Cheese Salad) -->
+    <div class="editorial-card report-section">
+      <span class="eyebrow-label">SECTION 03 // WORKED MATHEMATICAL PROOF</span>
+      <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 12px;">3. Case Example: <em>BBQ Cottage Cheese Salad</em></h2>
+      <p style="color: var(--slate-muted); margin-bottom: 14px;">
+        When a restaurant partner enters a 361g serving of <strong>BBQ Cottage Cheese Salad</strong> (100g grilled cottage cheese, 115g broccoli, 110g mixed lettuce, 32g garlic bread slice, 4g herb olive dressing):
+      </p>
+      <ul style="padding-left: 20px; color: var(--ink-soft); margin-bottom: 14px;">
+        <li><strong>Derived Macros:</strong> <code>400 kcal</code> (Neutral) | <strong><code>23g Protein</code></strong> | <strong><code>26g Fat</code></strong> | <strong><code>26g Carbs</code></strong> | <strong><code>9g Fibre</code></strong></li>
+        <li><strong>Weighted Score Calculation:</strong> <code>0.35(90.4) + 0.20(86.2) + 0.15(95.1) + 0.15(91.0) + 0.15(92.0) − 8.2 (Sat Fat Penalty) = 82.4 / 100</code> → <strong><code>💚 High</code></strong></li>
+        <li><strong>Automated Positive Highlights (<code>WHAT MAKES THIS HEALTHY</code>):</strong> <em>Broccoli (rich in vitamins and fibre)</em>, <em>Cottage cheese (excellent source of protein)</em>, <em>Mixed lettuce (hydrating and nutrient-dense)</em>.</li>
+        <li><strong>Automated Nuance Tags (<code>TO CONSIDER</code>):</strong> <em>Cottage cheese (contains saturated fat)</em>, <em>Bread (potential for refined carbohydrates)</em>.</li>
+      </ul>
+    </div>
+
+    <!-- Section 4: Evolution into Healthy Subscriptions -->
+    <div class="editorial-card report-section">
+      <span class="eyebrow-label">SECTION 04 // PHASE 2 PRODUCT EVOLUTION</span>
+      <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 12px;">4. From Discovery to Habit: Establishing <em>Healthy Subscriptions</em></h2>
+      <p style="color: var(--slate-muted); margin-bottom: 12px;">
+        The most powerful downstream outcome of <strong>Healthy Mode</strong> is that it creates a verified, structured catalog of nutrient-dense dishes across thousands of partner kitchens. This directly unlocked <strong>Healthy Subscriptions</strong>:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 14px;">
+        <div style="padding: 16px; background: var(--bg-cream); border-radius: 14px; border: 1px solid var(--border-hairline);">
+          <strong style="color: var(--forest-hero);">1. Strict Quality Gate (💚 High Only)</strong>
+          <p style="font-size: 0.86rem; color: var(--slate-muted); margin-top: 4px;">Only dishes that achieve a <strong><code>High</code></strong> Healthy Score qualify for the subscription menu, guaranteeing consistent macro quality.</p>
+        </div>
+        <div style="padding: 16px; background: var(--bg-cream); border-radius: 14px; border: 1px solid var(--border-hairline);">
+          <strong style="color: var(--forest-hero);">2. Multi-Day Scheduling (3 / 5 / 15 Days)</strong>
+          <p style="font-size: 0.86rem; color: var(--slate-muted); margin-top: 4px;">Users pre-plan Lunch (office) and Dinner (home) slots across 3, 5, or 15 days in advance—eliminating daily decision fatigue.</p>
+        </div>
+        <div style="padding: 16px; background: var(--bg-cream); border-radius: 14px; border: 1px solid var(--border-hairline);">
+          <strong style="color: var(--forest-hero);">3. Ecosystem Flywheel for Restaurants</strong>
+          <p style="font-size: 0.86rem; color: var(--slate-muted); margin-top: 4px;">Predictable multi-day subscription orders reward restaurants that reformulate recipes with cleaner oils, higher protein, and whole grains.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div>AUTHORED BY MOHD AMIR ALI · <a href="https://techwithamir.com" target="_blank">TECHWITHAMIR.COM ↗</a></div>
+      <div>PRODUCT ARCHITECTURE &amp; AI NUTRITION WHITEPAPER</div>
+    </footer>
+
+  </main>
+</body>
+</html>
