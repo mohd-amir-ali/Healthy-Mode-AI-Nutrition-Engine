@@ -19,7 +19,7 @@ Urban consumers increasingly rely on food-delivery apps for everyday meals rathe
 
 ---
 
-## 2. System Architecture: The Two-Stage AI Nutrition Pipeline
+## 2. System Architecture: The Two-Stage AI Nutrition Pipeline (Algorithm: NutriDecomp-NER + WNDS-5)
 
 ```text
 [Restaurant Partner (Mx)]

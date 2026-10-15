@@ -25,7 +25,7 @@ First pioneered and implemented in **Zomato** (an Indian food delivery app under
 
 ---
 
-## 2. Two-Stage AI Nutritional Scoring Pipeline
+## 2. Two-Stage AI Nutritional Scoring Pipeline (Algorithm: NutriDecomp-NER + WNDS-5)
 
 ### Stage 1: `Mx` Recipe Input → AI Gram-to-Macro Decomposition
 

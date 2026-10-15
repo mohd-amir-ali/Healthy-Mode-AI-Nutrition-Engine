@@ -55,6 +55,101 @@ a {
 }
 
 /* ==========================================================================
+   CUSTOM SELECT DROPDOWNS & RANGE SLIDERS (Fixes native browser arrow & focus)
+   ========================================================================== */
+.hm-select-dark {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 12px 48px 12px 18px;
+  border-radius: 12px;
+  background-color: #14171A;
+  color: var(--lime-neon);
+  border: 1.5px solid rgba(140, 230, 46, 0.65);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%238CE62E' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 17px 17px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.hm-select-dark:hover {
+  border-color: var(--lime-neon);
+  background-color: #1A1E23;
+}
+
+.hm-select-dark:focus {
+  outline: none;
+  border-color: var(--lime-neon);
+  box-shadow: 0 0 0 3px rgba(140, 230, 46, 0.28);
+}
+
+.hm-select-light {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  padding: 12px 48px 12px 16px;
+  border-radius: 12px;
+  background-color: var(--bg-cream);
+  color: var(--ink-dark);
+  border: 1.5px solid var(--border-strong);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.92rem;
+  line-height: 1.3;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2328381D' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 17px 17px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hm-select-light:hover {
+  border-color: var(--forest-hero);
+}
+
+.hm-select-light:focus {
+  outline: none;
+  border-color: var(--forest-hero);
+  box-shadow: 0 0 0 3px rgba(40, 56, 29, 0.16);
+}
+
+input[type="range"].hm-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 7px;
+  background: #D8D2C5;
+  border-radius: 999px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].hm-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--forest-hero);
+  border: 2.5px solid var(--lime-neon);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+input[type="range"].hm-range::-webkit-slider-thumb:hover {
+  transform: scale(1.12);
+}
+
+/* ==========================================================================
    TOP INDUSTRY CONTEXT BAR
    ========================================================================== */
 .context-top-bar {
@@ -233,11 +328,29 @@ a {
   font-style: italic;
   font-weight: 800;
   font-size: clamp(2.8rem, 5.4vw, 4.4rem);
-  line-height: 0.92;
+  line-height: 0.94;
   letter-spacing: -0.03em;
   color: var(--lime-neon);
   text-transform: uppercase;
   margin-bottom: 18px;
+  display: inline-block;
+}
+
+.hm-mode-line {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.01em;
+}
+
+/* Precision Vector 'O' with Uniform Thick Wall & Centered Heart Counter */
+.hm-o-svg {
+  width: 0.76em;
+  height: 0.74em;
+  display: inline-block;
+  vertical-align: -0.03em;
+  margin: 0 0.025em 0 0.015em;
+  transform: skewX(-9deg);
+  flex-shrink: 0;
 }
 
 .hm-hero-lead {
@@ -500,7 +613,7 @@ a {
 }
 
 /* ==========================================================================
-   EDITORIAL CARDS, TABLES, AND SLIDERS
+   EDITORIAL CARDS, TABLES, SLIDERS, AND LIVE AI WORKING TRACE
    ========================================================================== */
 .editorial-card {
   background-color: var(--bg-surface);
@@ -527,7 +640,7 @@ a {
   align-items: center;
   gap: 10px;
   padding: 12px 22px;
-  border-radius: var(--radius-pill);
+  border-radius: 999px;
   background-color: var(--lime-neon);
   color: #14171A;
   font-weight: 800;
@@ -546,7 +659,7 @@ a {
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
-  border-radius: var(--radius-pill);
+  border-radius: 999px;
   background-color: var(--forest-hero);
   color: #FFFFFF;
   font-weight: 700;
@@ -558,6 +671,60 @@ a {
 .btn-secondary-dark:hover {
   background-color: var(--obsidian-card);
   border-color: var(--lime-neon);
+}
+
+.ing-slider-row {
+  padding: 12px 14px;
+  background-color: var(--bg-cream);
+  border: 1px solid var(--border-hairline);
+  border-radius: 14px;
+  margin-bottom: 10px;
+  transition: border-color 0.2s ease;
+}
+
+.ing-slider-row:hover {
+  border-color: var(--forest-hero);
+}
+
+.ing-slider-top {
+  display: grid;
+  grid-template-columns: 1.35fr 1.45fr 68px;
+  align-items: center;
+  gap: 12px;
+}
+
+.ing-live-math-strip {
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px dashed var(--border-strong);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.algo-working-box {
+  margin-top: 18px;
+  background-color: var(--obsidian-card);
+  color: #F3F4F6;
+  border-radius: 16px;
+  padding: 18px 20px;
+  border: 1px solid rgba(140, 230, 46, 0.35);
+}
+
+.algo-step-row {
+  background-color: var(--obsidian-inner);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 11px 14px;
+  margin-bottom: 8px;
+}
+
+.algo-step-row:last-child {
+  margin-bottom: 0;
 }
 
 .editorial-table {
@@ -592,23 +759,6 @@ a {
   font-size: 0.8rem;
 }
 
-/* Modal Backdrop */
-.dish-modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(15, 18, 22, 0.78);
-  backdrop-filter: blur(6px);
-  z-index: 999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-
-.dish-modal-backdrop.open {
-  display: flex;
-}
-
 .site-footer {
   border-top: 1px solid var(--border-hairline);
   margin-top: 56px;
@@ -624,19 +774,9 @@ a {
   gap: 12px;
 }
 
+
     .tab-section { display: none; }
     .tab-section.active { display: block; }
-    .ing-slider-row {
-      display: grid;
-      grid-template-columns: 1.4fr 1.6fr 75px;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 14px;
-      background-color: var(--bg-cream);
-      border: 1px solid var(--border-hairline);
-      border-radius: 12px;
-      margin-bottom: 8px;
-    }
     .sub-day-card {
       background-color: var(--bg-surface);
       border: 1px solid var(--border-hairline);
@@ -702,8 +842,8 @@ a {
           <div style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--lime-neon); margin-bottom: 8px;">
             ● AI-POWERED NUTRITIONAL TRANSPARENCY IN FOOD DELIVERY
           </div>
-          <div class="hm-display-logo">
-            HEALTHY<br/>M<span style="display:inline-flex; align-items:center; justify-content:center; width:0.88em; height:0.88em; background:#8CE62E; color:#1E2B15; border-radius:50%; font-style:normal; font-size:0.78em; vertical-align:middle; margin:0 2px;">♥</span>DE
+          <div class="hm-display-logo" aria-label="HEALTHY MODE">
+            HEALTHY<br/><span class="hm-mode-line">M<svg class="hm-o-svg" viewBox="0 0 100 100" role="img" aria-label="O with Heart"><path fill="#8CE62E" fill-rule="evenodd" d="M 50,4 C 77.5,4 95,22.5 95,50 C 95,77.5 77.5,96 50,96 C 22.5,96 5,77.5 5,50 C 5,22.5 22.5,4 50,4 Z M 50,72 C 46.5,68.5 27,54.5 27,39.5 C 27,30 34.5,23.5 42.5,23.5 C 46.5,23.5 48.8,25.5 50,28.5 C 51.2,25.5 53.5,23.5 57.5,23.5 C 65.5,23.5 73,30 73,39.5 C 73,54.5 53.5,68.5 50,72 Z"/></svg>DE</span>
           </div>
           <p class="hm-hero-lead">
             “I explore the space between <em>human curiosity</em> and <em>machine intelligence</em>—making everyday nourishment more useful, understandable, and human.”
@@ -801,6 +941,70 @@ a {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Named AI Algorithm & Two-Stage Pipeline Architecture Card -->
+      <section class="editorial-card" style="border-left: 6px solid var(--forest-hero); margin-bottom: 28px;">
+        <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--border-hairline); margin-bottom: 20px;">
+          <div>
+            <span class="eyebrow-label">CORE AI ALGORITHM SPECIFICATION // TWO-STAGE HYBRID ARCHITECTURE</span>
+            <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ink-dark); margin-top: 2px;">
+              Algorithm Name: <code style="background: var(--forest-hero); color: var(--lime-neon); padding: 4px 10px; border-radius: 8px; font-size: 1.15rem;">NutriDecomp-NER + WNDS-5</code>
+            </h2>
+            <p style="font-size: 0.92rem; color: var(--slate-muted); margin-top: 6px; max-width: 880px;">
+              Rather than relying on an unverified black-box text guess, Healthy Mode uses a <strong>Two-Stage Hybrid AI &amp; Deterministic Biometric Scoring Pipeline</strong> combining <strong>Semantic Recipe Entity Decomposition (<code>NutriDecomp-NER</code>)</strong> with the <strong>5-Parameter Weighted Nutrient Density Scoring Algorithm (<code>WNDS-5</code>)</strong> grounded in the <strong>ICMR-NIN (Indian Food Composition Tables – IFCT)</strong> database.
+            </p>
+          </div>
+          <button type="button" onclick="switchTab('calculator')" class="btn-primary-lime" style="align-self: center;">
+            <span>🔬 See Live Algorithm Math Working</span>
+            <span>↗</span>
+          </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(295px, 1fr)); gap: 18px;">
+          <div style="background: var(--bg-cream); border: 1px solid var(--border-hairline); border-radius: 14px; padding: 18px 20px;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--forest-hero); margin-bottom: 6px;">
+              STAGE 1 AI MODEL // NUTRIDECOMP-NER + THERMAL REGRESSOR
+            </div>
+            <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;">1. Mx Prep Grams → ICMR-NIN Macro Vector</h3>
+            <p style="font-size: 0.85rem; color: var(--slate-muted); margin-bottom: 10px;">
+              Restaurant partners (<code>Mx</code>) enter approximate ingredient weights (<i>w<sub>i</sub></i> in grams) and cooking style. Our <strong>Food-NER Transformer</strong> maps each ingredient to its per-100g ICMR-NIN nutrient vector and adds cooking-method oil absorption (<i>α<sub>method</sub></i>):
+            </p>
+            <div style="background: var(--obsidian-card); color: var(--lime-neon); font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
+              Macro<sub>k</sub> = ∑ [ (w<sub>i</sub> ÷ 100) × ICMR_100g<sub>i,k</sub> ] + α<sub>method,k</sub><br/>
+              E<sub>kcal</sub> = 4(Protein) + 4(Carbs) + 9(Fat) &nbsp;[Neutral: 0% wt]
+            </div>
+          </div>
+
+          <div style="background: var(--bg-cream); border: 1px solid var(--border-hairline); border-radius: 14px; padding: 18px 20px;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--forest-hero); margin-bottom: 6px;">
+              STAGE 2 SCORING ENGINE // WNDS-5 WEIGHTED CLASSIFIER
+            </div>
+            <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;">2. 5-Parameter Weighted Nutrient Density</h3>
+            <p style="font-size: 0.85rem; color: var(--slate-muted); margin-bottom: 10px;">
+              Each dish is evaluated across five normalized biometric sub-scores (<code>0–100</code>) with explicit clinical weights and a threshold penalty for excess saturated fat (&gt;7.5g) and added sugar (&gt;6.0g):
+            </p>
+            <div style="background: var(--obsidian-card); color: var(--lime-neon); font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
+              Score = 0.35(S<sub>prot</sub>) + 0.20(S<sub>carb_GI</sub>) + 0.15(S<sub>fibre</sub>)<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ 0.15(S<sub>ing</sub>) + 0.15(S<sub>cook</sub>) − P<sub>satfat,sugar</sub>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-cream); border: 1px solid var(--border-hairline); border-radius: 14px; padding: 18px 20px;">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--forest-hero); margin-bottom: 6px;">
+              STAGE 3 DECISION GATE // HEARTS &amp; SUBSCRIPTIONS
+            </div>
+            <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;">3. 3-Tier Heart Mapping &amp; NLG Insights</h3>
+            <p style="font-size: 0.85rem; color: var(--slate-muted); margin-bottom: 10px;">
+              The composite <code>WNDS-5</code> score maps deterministically to the 3-Tier Nutritional Hearts and triggers rule-based Natural Language Generation (NLG) for customer pros/cons and <strong>Healthy Subscription</strong> eligibility:
+            </p>
+            <div style="background: var(--obsidian-card); color: #F3F4F6; font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
+              • <span style="color:#8CE62E;font-weight:700;">💚 High (≥ 72)</span> ➔ Subscription Eligible ✓<br/>
+              • <span style="color:#F5A623;font-weight:700;">💛 Medium (48 – 71.9)</span> ➔ Balanced Everyday<br/>
+              • <span style="color:#E0533C;font-weight:700;">🧡 Low (&lt; 48)</span> ➔ Indulgent / Occasional
             </div>
           </div>
         </div>
@@ -950,13 +1154,13 @@ a {
             </p>
           </div>
           <div>
-            <select id="calc-preset-select" onchange="loadPresetIntoCalculator(this.value)" style="padding: 11px 16px; border-radius: 12px; background: #14171A; color: var(--lime-neon); border: 1px solid var(--lime-neon); font-family: var(--font-sans); font-weight: 700; font-size: 0.9rem; cursor: pointer;"></select>
+            <select id="calc-preset-select" class="hm-select-dark" onchange="loadPresetIntoCalculator(this.value)"></select>
           </div>
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px; align-items: start; margin-bottom: 24px;">
-        <!-- Left Column: Mx Preparation Inputs (Ingredients in Grams + Cooking Method) -->
+      <div style="display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 24px; align-items: start; margin-bottom: 24px;">
+        <!-- Left Column: Mx Preparation Inputs (Ingredients in Grams + Cooking Method + Live AI Algorithm Mathematical Working) -->
         <div class="editorial-card" style="margin-bottom: 0;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-hairline);">
             <div>
@@ -967,17 +1171,20 @@ a {
           </div>
 
           <div style="margin-bottom: 16px;">
-            <label style="display: block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; margin-bottom: 6px;">COOKING METHOD (15% WEIGHT + OIL ABSORPTION FACTOR):</label>
-            <select id="calc-cooking-method" onchange="recalculateLiveDish()" style="width: 100%; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-strong); background: var(--bg-cream); font-weight: 600; font-size: 0.9rem;">
-              <option value="grilled">Grilled / Roasted (Low-Oil · Score: 92/100)</option>
-              <option value="steamed">Steamed / Poached / Raw Toss (Zero Added Oil · Score: 98/100)</option>
-              <option value="sauteed">Pan-Sautéed / Light Tadka (Moderate Oil · Score: 74/100)</option>
-              <option value="curry_simmer">Rich Gravy Simmer (High Butter/Cream · Score: 48/100)</option>
-              <option value="deep_fried">Deep-Fried in Oil (High Oil Absorption · Score: 18/100)</option>
+            <label style="display: block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; margin-bottom: 6px;">COOKING METHOD (15% WEIGHT + THERMAL OIL ABSORPTION α<sub>method</sub>):</label>
+            <select id="calc-cooking-method" class="hm-select-light" onchange="recalculateLiveDish()">
+              <option value="grilled">Grilled / Roasted (Low-Oil · +2.0g Fat · Score: 92/100)</option>
+              <option value="steamed">Steamed / Poached / Raw Toss (Zero Added Oil · +0.0g Fat · Score: 98/100)</option>
+              <option value="sauteed">Pan-Sautéed / Light Tadka (Moderate Oil · +6.5g Fat · Score: 74/100)</option>
+              <option value="curry_simmer">Rich Gravy Simmer (High Butter/Cream · +12.0g Fat · Score: 48/100)</option>
+              <option value="deep_fried">Deep-Fried in Oil (High Oil Absorption · +19.5g Fat · Score: 18/100)</option>
             </select>
           </div>
 
           <div id="calc-sliders-container"></div>
+
+          <!-- DIRECTLY BELOW SLIDERS: Named AI Algorithm & Live Step-by-Step Mathematical Working -->
+          <div id="algo-live-working-panel" class="algo-working-box"></div>
         </div>
 
         <!-- Right Column: Live Customer UI Card Preview (Matches IMG_2736.PNG & IMG_2737.PNG) -->
@@ -1108,7 +1315,7 @@ a {
 
           <div style="margin-bottom: 12px;">
             <label style="display: block; font-size: 0.78rem; color: #CBD5E1; margin-bottom: 4px;">1. Select Plan Duration:</label>
-            <select id="sub-duration" onchange="generateSubscriptionPlan()" style="width: 100%; padding: 10px 12px; border-radius: 10px; background: #14171A; color: #FFF; border: 1px solid rgba(140,230,46,0.4); font-weight: 700;">
+            <select id="sub-duration" class="hm-select-dark" onchange="generateSubscriptionPlan()" style="width: 100%;">
               <option value="3">3-Day Starter Plan (Lunch &amp; Dinner)</option>
               <option value="5" selected>5-Day Workweek Plan (Lunch &amp; Dinner)</option>
               <option value="15">15-Day Complete Lifestyle Transformation</option>
@@ -1117,7 +1324,7 @@ a {
 
           <div style="margin-bottom: 12px;">
             <label style="display: block; font-size: 0.78rem; color: #CBD5E1; margin-bottom: 4px;">2. Preferred Food Genre:</label>
-            <select id="sub-genre" onchange="generateSubscriptionPlan()" style="width: 100%; padding: 10px 12px; border-radius: 10px; background: #14171A; color: #FFF; border: 1px solid rgba(140,230,46,0.4); font-weight: 700;">
+            <select id="sub-genre" class="hm-select-dark" onchange="generateSubscriptionPlan()" style="width: 100%;">
               <option value="ALL">All High-Score Genres (Maximum Variety)</option>
               <option value="Salads & Grills">Salads &amp; Grills</option>
               <option value="High-Protein Bowls">High-Protein Athlete Bowls</option>
@@ -1206,18 +1413,30 @@ a {
       const box = document.getElementById("calc-sliders-container");
       box.innerHTML = activeCalculatorIngredients.map((item, idx) => {
         const db = INGREDIENTS_DB[item.id];
+        const f = item.grams / 100.0;
+        const p = (db.protein_100g * f).toFixed(1);
+        const ft = (db.fat_100g * f).toFixed(1);
+        const c = (db.carbs_100g * f).toFixed(1);
+        const fb = (db.fibre_100g * f).toFixed(1);
+        const kc = Math.round(db.kcal_100g * f);
         return `
           <div class="ing-slider-row">
-            <div>
-              <div style="font-weight: 700; font-size: 0.86rem;">${db.name}</div>
-              <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);">
-                Per 100g: ${db.protein_100g}g P · ${db.fat_100g}g F · ${db.carbs_100g}g C · ${db.fibre_100g}g Fib
+            <div class="ing-slider-top">
+              <div>
+                <div style="font-weight: 700; font-size: 0.88rem; color: var(--ink-dark);">${db.name}</div>
+                <div style="font-family: var(--font-mono); font-size: 0.66rem; color: var(--slate-muted);">
+                  ICMR-NIN 100g Vector: ${db.protein_100g}g P · ${db.fat_100g}g F · ${db.carbs_100g}g C · ${db.fibre_100g}g Fib · GIScore ${db.gi_score}
+                </div>
+              </div>
+              <input type="range" class="hm-range" min="0" max="220" step="5" value="${item.grams}"
+                oninput="updateIngredientGrams(${idx}, this.value)" />
+              <div style="font-family: var(--font-mono); font-weight: 800; font-size: 0.88rem; text-align: right; color: var(--forest-hero);" id="ing-val-${idx}">
+                ${item.grams}g
               </div>
             </div>
-            <input type="range" min="0" max="220" step="5" value="${item.grams}"
-              oninput="updateIngredientGrams(${idx}, this.value)" />
-            <div style="font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; text-align: right;" id="ing-val-${idx}">
-              ${item.grams}g
+            <div class="ing-live-math-strip" id="ing-math-${idx}">
+              <span><strong>NutriDecomp Scaling:</strong> (${item.grams}g ÷ 100) × [${db.protein_100g}P, ${db.fat_100g}F, ${db.carbs_100g}C, ${db.fibre_100g}Fib]</span>
+              <span style="color: var(--forest-hero); font-weight: 700;">= ${p}g P · ${ft}g F · ${c}g C · ${fb}g Fib · ${kc} kcal</span>
             </div>
           </div>
         `;
@@ -1225,8 +1444,22 @@ a {
     }
 
     function updateIngredientGrams(idx, newGrams) {
-      activeCalculatorIngredients[idx].grams = parseFloat(newGrams);
-      document.getElementById("ing-val-" + idx).innerText = newGrams + "g";
+      const g = parseFloat(newGrams);
+      activeCalculatorIngredients[idx].grams = g;
+      document.getElementById("ing-val-" + idx).innerText = g + "g";
+      const db = INGREDIENTS_DB[activeCalculatorIngredients[idx].id];
+      if (db && document.getElementById("ing-math-" + idx)) {
+        const f = g / 100.0;
+        const p = (db.protein_100g * f).toFixed(1);
+        const ft = (db.fat_100g * f).toFixed(1);
+        const c = (db.carbs_100g * f).toFixed(1);
+        const fb = (db.fibre_100g * f).toFixed(1);
+        const kc = Math.round(db.kcal_100g * f);
+        document.getElementById("ing-math-" + idx).innerHTML = `
+          <span><strong>NutriDecomp Scaling:</strong> (${g}g ÷ 100) × [${db.protein_100g}P, ${db.fat_100g}F, ${db.carbs_100g}C, ${db.fibre_100g}Fib]</span>
+          <span style="color: var(--forest-hero); font-weight: 700;">= ${p}g P · ${ft}g F · ${c}g C · ${fb}g Fib · ${kc} kcal</span>
+        `;
+      }
       recalculateLiveDish(false);
     }
 
@@ -1309,10 +1542,15 @@ a {
 
       return {
         kcal, protG, fatG, carbsG, fibreG, totalW: Math.round(totalW),
+        rawP: rawP.toFixed(1), rawF: rawF.toFixed(1), rawC: rawC.toFixed(1), rawFb: rawFb.toFixed(1),
+        rawSF: rawSF.toFixed(1), rawSu: rawSu.toFixed(1),
+        protKcalPct: protKcalPct.toFixed(1), baseGI: baseGI.toFixed(1), fbBonus: fbBonus.toFixed(1), microAvg: microAvg.toFixed(1),
         sProt: sProt.toFixed(1), sCarb: sCarb.toFixed(1), sFibre: sFibre.toFixed(1),
         sIng: sIng.toFixed(1), sCook: sCook.toFixed(1), penalty: penalty.toFixed(1),
+        wProt: (0.35 * sProt).toFixed(1), wCarb: (0.20 * sCarb).toFixed(1),
+        wFibre: (0.15 * sFibre).toFixed(1), wIng: (0.15 * sIng).toFixed(1), wCook: (0.15 * sCook).toFixed(1),
         finalScore: finalScore.toFixed(1), tier, heartIcon, borderCol,
-        pros, cons, rows, methodLabel: method.label, methodExtraFat: method.extra_fat_g
+        pros, cons, rows, methodLabel: method.label, methodExtraFat: method.extra_fat_g, methodExtraSat: method.extra_sat_g
       };
     }
 
@@ -1350,9 +1588,64 @@ a {
         subBadge.style.color = "#F59E0B";
       }
 
+      const pSumStr = res.rows.map(r => `${r.protein}g`).join(" + ") || "0g";
+      const fSumStr = res.rows.map(r => `${r.fat}g`).join(" + ") + (res.methodExtraFat > 0 ? ` + ${res.methodExtraFat}g (Cooking Oil α)` : "");
+      const cSumStr = res.rows.map(r => `${r.carbs}g`).join(" + ") || "0g";
+      const fbSumStr = res.rows.map(r => `${r.fibre}g`).join(" + ") || "0g";
+
+      const livePanel = document.getElementById("algo-live-working-panel");
+      if (livePanel) {
+        livePanel.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding-bottom:10px; border-bottom:1px solid rgba(140,230,46,0.28); margin-bottom:12px;">
+            <div>
+              <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--lime-neon); font-weight:700; letter-spacing:0.1em;">
+                STEP 2 // LIVE AI MODEL WORKING DIRECTLY FROM SLIDERS
+              </div>
+              <div style="font-size:0.98rem; font-weight:800; color:#FFFFFF; margin-top:2px;">
+                Algorithm: <code style="color:var(--lime-neon); background:rgba(140,230,46,0.14); padding:2px 8px; border-radius:6px;">NutriDecomp-NER + WNDS-5</code>
+              </div>
+            </div>
+            <span style="font-family:var(--font-mono); font-size:0.75rem; background:rgba(140,230,46,0.16); color:var(--lime-neon); padding:4px 10px; border-radius:999px; font-weight:700;">
+              Live Score: ${res.finalScore}/100 (${res.heartIcon} ${res.tier})
+            </span>
+          </div>
+
+          <div class="algo-step-row">
+            <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--lime-neon); font-weight:700; margin-bottom:5px;">
+              STAGE 1 (NutriDecomp-NER + ICMR-NIN Linear-Thermal Regressor) — MACRO SUMMATION:
+            </div>
+            <div style="font-family:var(--font-mono); font-size:0.73rem; color:#D1D5DB; line-height:1.65;">
+              • <strong>Protein:</strong> ∑(w<sub>i</sub>/100 × P<sub>100g</sub>) = ${pSumStr} = <strong>${res.rawP}g raw ➔ ${res.protG}g</strong><br/>
+              • <strong>Total Fat:</strong> ∑(w<sub>i</sub>/100 × F<sub>100g</sub>) + α<sub>oil</sub> = ${fSumStr} = <strong>${res.rawF}g raw ➔ ${res.fatG}g</strong> <em>(SatFat: ${res.rawSF}g)</em><br/>
+              • <strong>Carbs:</strong> ∑(w<sub>i</sub>/100 × C<sub>100g</sub>) = ${cSumStr} = <strong>${res.rawC}g raw ➔ ${res.carbsG}g</strong> <em>(Sugars: ${res.rawSu}g)</em><br/>
+              • <strong>Dietary Fibre:</strong> ∑(w<sub>i</sub>/100 × Fib<sub>100g</sub>) = ${fbSumStr} = <strong>${res.rawFb}g raw ➔ ${res.fibreG}g</strong><br/>
+              • <strong>Atwater Energy (Neutral · 0% Score Wt):</strong> 4(${res.protG}g P) + 4(${res.carbsG}g C) + 9(${res.fatG}g F) ≈ <strong style="color:#FFF;">${res.kcal} kcal</strong>
+            </div>
+          </div>
+
+          <div class="algo-step-row">
+            <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--lime-neon); font-weight:700; margin-bottom:5px;">
+              STAGE 2 (WNDS-5 Weighted Nutrient Density Scoring Algorithm) — 5 SUB-SCORE EQUATIONS:
+            </div>
+            <div style="font-family:var(--font-mono); font-size:0.72rem; color:#D1D5DB; line-height:1.7;">
+              1. <strong>Protein Density (35%):</strong> min(100, 58×(${res.rawP}g/25g) + 42×(${res.protKcalPct}% kcal/24%)) = <strong>${res.sProt}/100</strong> × 0.35 = <span style="color:var(--lime-neon);font-weight:700;">+${res.wProt} pts</span><br/>
+              2. <strong>Carb &amp; GI Quality (20%):</strong> min(100, 0.85×GI(${res.baseGI}) + FibreBonus(${res.fbBonus})) = <strong>${res.sCarb}/100</strong> × 0.20 = <span style="color:var(--lime-neon);font-weight:700;">+${res.wCarb} pts</span><br/>
+              3. <strong>Fibre &amp; Micros (15%):</strong> min(100, 65×(${res.rawFb}g/8.5g) + 0.35×Micro(${res.microAvg})) = <strong>${res.sFibre}/100</strong> × 0.15 = <span style="color:var(--lime-neon);font-weight:700;">+${res.wFibre} pts</span><br/>
+              4. <strong>Ingredient Quality (15%):</strong> ∑(w<sub>i</sub> × Quality<sub>i</sub>) ÷ ${res.totalW}g = <strong>${res.sIng}/100</strong> × 0.15 = <span style="color:var(--lime-neon);font-weight:700;">+${res.wIng} pts</span><br/>
+              5. <strong>Cooking Method (15%):</strong> ${res.methodLabel} Thermal Score = <strong>${res.sCook}/100</strong> × 0.15 = <span style="color:var(--lime-neon);font-weight:700;">+${res.wCook} pts</span><br/>
+              6. <strong>SatFat &amp; Sugar Penalty:</strong> −[1.15×max(0, ${res.rawSF}g−7.5g) + 1.10×max(0, ${res.rawSu}g−6.0g)] = <span style="color:#F59E0B;font-weight:700;">−${res.penalty} pts</span>
+            </div>
+          </div>
+
+          <div style="margin-top:10px; padding:10px 14px; border-radius:10px; background:rgba(140,230,46,0.12); border:1px solid rgba(140,230,46,0.35); font-family:var(--font-mono); font-size:0.75rem; color:#FFFFFF;">
+            <strong>FINAL WNDS-5 COMPOSITE SCORE:</strong> ${res.wProt} + ${res.wCarb} + ${res.wFibre} + ${res.wIng} + ${res.wCook} − ${res.penalty} = <strong style="color:var(--lime-neon); font-size:0.88rem;">${res.finalScore} / 100 ➔ ${res.heartIcon} ${res.tier}</strong>
+          </div>
+        `;
+      }
+
       document.getElementById("math-equation-strip").innerHTML =
-        `<div style="color:var(--lime-neon); font-weight:700; margin-bottom:4px;">LIVE WEIGHTED SCORE FORMULA EVALUATION:</div>` +
-        `Healthy Score = 0.35 × Protein(${res.sProt}) + 0.20 × Carb_GI(${res.sCarb}) + 0.15 × Fibre(${res.sFibre}) + 0.15 × Ingredient(${res.sIng}) + 0.15 × Cooking(${res.sCook}) − SatFat/Sugar_Penalty(${res.penalty}) = <strong style="color:var(--lime-neon); font-size:0.95rem;">${res.finalScore} / 100 → ${res.heartIcon} ${res.tier}</strong>`;
+        `<div style="color:var(--lime-neon); font-weight:700; margin-bottom:4px;">LIVE WNDS-5 WEIGHTED SCORE FORMULA EVALUATION (ALGORITHM: NutriDecomp-NER + WNDS-5):</div>` +
+        `Healthy Score = 0.35 × Protein(${res.sProt}) [${res.wProt}] + 0.20 × Carb_GI(${res.sCarb}) [${res.wCarb}] + 0.15 × Fibre(${res.sFibre}) [${res.wFibre}] + 0.15 × Ingredient(${res.sIng}) [${res.wIng}] + 0.15 × Cooking(${res.sCook}) [${res.wCook}] − Penalty(${res.penalty}) = <strong style="color:var(--lime-neon); font-size:0.95rem;">${res.finalScore} / 100 → ${res.heartIcon} ${res.tier}</strong>`;
 
       let rowsHtml = res.rows.map(r => `
         <tr>
