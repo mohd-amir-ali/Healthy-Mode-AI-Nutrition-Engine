@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" fill="none">
+  <defs>
+    <filter id="highGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#9BE13B" flood-opacity="0.55"/>
+    </filter>
+    <linearGradient id="centerGem" x1="0" y1="78" x2="0" y2="176" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#C8FA5F"/>
+      <stop offset="100%" stop-color="#9BE13B"/>
+    </linearGradient>
+  </defs>
+  <!-- 3D Polygonal Faceted Lime-Green Gem Heart (Clear/Transparent Background) -->
+  <g filter="url(#highGlow)">
+    <!-- Outer Gem Base -->
+    <polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#6CA322" stroke-width="4" stroke-linejoin="round"/>
+    <!-- Top Left Facets -->
+    <polygon points="84,34 128,58 128,88 94,70" fill="#B5EE56"/>
+    <polygon points="42,66 84,34 94,70 68,94" fill="#84C22E"/>
+    <!-- Top Right Facets -->
+    <polygon points="172,34 128,58 128,88 162,70" fill="#A4E246"/>
+    <polygon points="214,66 172,34 162,70 188,94" fill="#CDF970"/>
+    <!-- Mid Left & Right Facets -->
+    <polygon points="38,118 42,66 68,94 72,130" fill="#A6E448"/>
+    <polygon points="218,118 214,66 188,94 184,130" fill="#B9F15A"/>
+    <!-- Lower Left & Right Bevel Facets -->
+    <polygon points="76,166 38,118 72,130 128,180 128,216" fill="#7AB628"/>
+    <polygon points="180,166 218,118 184,130 128,180 128,216" fill="#B2EC53"/>
+    <!-- Facet Ridge Highlight Lines -->
+    <polyline points="84,34 94,70 128,88 162,70 172,34" stroke="#E6FFAD" stroke-width="2.5" fill="none"/>
+    <polyline points="42,66 68,94 72,130 128,180 184,130 188,94 214,66" stroke="#E6FFAD" stroke-width="2.5" fill="none"/>
+    <line x1="128" y1="180" x2="128" y2="216" stroke="#E6FFAD" stroke-width="3"/>
+    <!-- Inner Glowing Heart Table Facet -->
+    <path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="url(#centerGem)" stroke="#E9FFB8" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+</svg>
