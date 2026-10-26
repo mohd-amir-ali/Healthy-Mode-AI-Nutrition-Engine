@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HEALTHY MODE // AI Nutritional Scoring &amp; Subscription Engine — Case Study by Mohd Amir Ali</title>
+  <title>HEALTHY MODE // AI Nutritional Scoring &amp; Subscription Engine · Case Study by Mohd Amir Ali</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%238CE62E'/%3E%3Cpath d='M50 76 C50 76 22 57 22 37 C22 25 31 18 41 18 C46 18 49 21 50 25 C51 21 54 18 59 18 C69 18 78 25 78 37 C78 44 74 50 69 56' fill='none' stroke='%23182813' stroke-width='8.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M50 76 C45 72 34 63 27 52' fill='none' stroke='%23182813' stroke-width='8.5' stroke-linecap='round'/%3E%3Cpath d='M65 46 L68 56 L78 59 L68 62 L65 72 L62 62 L52 59 L62 56 Z' fill='%23182813'/%3E%3C/svg%3E" />
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800;1,900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
   /* Botanical Healthy Mode + Editorial Portfolio Palette */
@@ -323,34 +324,102 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
   }
 }
 
-.hm-display-logo {
+.hm-hero-brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* Iconic Zomato Healthy Mode 'ON' Vertical Toggle Pill (from Reference Image) */
+.hm-on-pill-toggle {
+  width: 62px;
+  height: 118px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #162614 0%, #0F1B0E 100%);
+  border: 2.5px solid var(--lime-neon);
+  box-shadow: 0 0 24px rgba(140, 230, 46, 0.28), inset 0 0 14px rgba(140, 230, 46, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 6px 7px;
+  flex-shrink: 0;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease;
+}
+
+.hm-on-pill-toggle:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 0 34px rgba(140, 230, 46, 0.55), inset 0 0 18px rgba(140, 230, 46, 0.24);
+}
+
+.hm-on-pill-text {
   font-family: var(--font-sans);
-  font-style: italic;
+  font-size: 1.05rem;
   font-weight: 800;
-  font-size: clamp(2.8rem, 5.4vw, 4.4rem);
-  line-height: 0.94;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.04em;
+  color: var(--lime-neon);
+  line-height: 1;
+}
+
+.hm-on-pill-knob {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--lime-neon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(140, 230, 46, 0.65);
+}
+
+.hm-introducing-kicker {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 4px;
+  padding-left: 2px;
+}
+
+.hm-display-logo {
+  font-family: 'Barlow Condensed', var(--font-sans);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(3.3rem, 6.2vw, 5.15rem);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
   color: var(--lime-neon);
   text-transform: uppercase;
-  margin-bottom: 18px;
   display: inline-block;
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.32);
 }
 
 .hm-mode-line {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.01em;
+  align-items: center;
+  gap: 0.015em;
 }
 
-/* Precision Vector 'O' with Uniform Thick Wall & Centered Heart Counter */
+/* Precision Vector 'O' Badge with Outlined Heart + 4-Point Plus/Star Sparkle */
 .hm-o-svg {
   width: 0.76em;
-  height: 0.74em;
+  height: 0.76em;
   display: inline-block;
-  vertical-align: -0.03em;
+  vertical-align: middle;
   margin: 0 0.025em 0 0.015em;
-  transform: skewX(-9deg);
+  transform: skewX(-7deg);
   flex-shrink: 0;
+  filter: drop-shadow(0 0 14px rgba(140, 230, 46, 0.35));
+  transition: transform 0.28s ease, filter 0.28s ease;
+}
+
+.hm-display-logo:hover .hm-o-svg {
+  transform: skewX(-7deg) scale(1.08);
+  filter: drop-shadow(0 0 22px rgba(140, 230, 46, 0.75));
 }
 
 .hm-hero-lead {
@@ -373,12 +442,57 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
   margin-bottom: 22px;
 }
 
-/* 3-Heart Progress Scale Box (Matches "Your guide to making healthy food choices") */
+/* Floating Levitation & Interactive Hover for "Your guide to making healthy food choices" + BBQ Salad Box */
+@keyframes guideCardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes sparklePulse {
+  0%, 100% {
+    transform: scale(0.85) rotate(0deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.28) rotate(15deg);
+    opacity: 1;
+  }
+}
+
 .heart-scale-card {
-  background-color: rgba(20, 23, 27, 0.72);
-  border: 1px solid rgba(140, 230, 46, 0.28);
-  border-radius: 22px;
+  background-color: rgba(20, 23, 27, 0.82);
+  backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(140, 230, 46, 0.34);
+  border-radius: 24px;
   padding: 26px 28px;
+  box-shadow: 0 20px 44px -10px rgba(0, 0, 0, 0.48), 0 0 24px rgba(140, 230, 46, 0.1);
+  animation: guideCardFloat 5.2s ease-in-out infinite;
+  transition: transform 0.34s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.34s ease, border-color 0.34s ease;
+}
+
+.heart-scale-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-10px) scale(1.018);
+  border-color: rgba(140, 230, 46, 0.85);
+  box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.72), 0 0 36px rgba(140, 230, 46, 0.34);
+}
+
+.hero-sample-dish-box {
+  background: #14171A;
+  border-radius: 16px;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(140, 230, 46, 0.35);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.hero-sample-dish-box:hover {
+  transform: translateY(-4px) scale(1.012);
+  border-color: var(--lime-neon);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.55), 0 0 22px rgba(140, 230, 46, 0.28);
 }
 
 .heart-scale-title {
@@ -400,12 +514,13 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
 .heart-track-line {
   position: absolute;
-  left: 48px;
-  right: 48px;
-  top: 22px;
-  height: 3px;
-  background: linear-gradient(90deg, #E0533C 0%, #F5A623 50%, #8CE62E 100%);
+  left: 52px;
+  right: 52px;
+  top: 26px;
+  height: 3.5px;
+  background: linear-gradient(90deg, #D95B2B 0%, #ECC347 50%, #8CE62E 100%);
   z-index: 1;
+  border-radius: 99px;
 }
 
 .heart-node {
@@ -416,12 +531,40 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), filter 0.25s ease;
+}
+
+.heart-node:hover {
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* High Green Heart Node: Sparkling Neon Lime Highlight on Hover */
+.heart-node-high .neon-sparkle-group {
+  opacity: 0.35;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform-origin: center;
+}
+
+.heart-node-high:hover {
+  transform: translateY(-5px) scale(1.18);
+  filter: drop-shadow(0 0 14px rgba(140, 230, 46, 0.95)) drop-shadow(0 0 28px rgba(190, 242, 100, 0.75));
+}
+
+.heart-node-high:hover .neon-sparkle-group {
+  opacity: 1;
+  animation: sparklePulse 0.9s ease-in-out infinite;
 }
 
 .heart-node-label {
   font-size: 0.88rem;
   font-weight: 700;
   color: #E5E7EB;
+}
+
+.inline-heart-svg {
+  display: inline-block;
+  vertical-align: -0.18em;
+  flex-shrink: 0;
 }
 
 /* Signature Dark Nutritional Info Pill (Matches IMG_2736.PNG & IMG_2737.PNG) */
@@ -810,9 +953,12 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
   <header class="site-header">
     <div class="header-inner">
       <a onclick="switchTab('overview')" class="brand-lockup">
-        <div class="brand-heart-badge">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="#8CE62E">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        <div class="brand-heart-badge" title="Healthy Mode O-Heart-Plus Project Emblem">
+          <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+            <circle cx="50" cy="50" r="46" fill="#8CE62E"/>
+            <path d="M50 75 C44 70 23 55 23 37 C23 25.5 31.5 18.5 41 18.5 C46 18.5 48.8 21 50 24.8 C51.2 21 54 18.5 59 18.5 C68.5 18.5 77 25.5 77 37 C77 43.2 73.8 49 69 54.2" stroke="#182813" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M50 75 C45 71 35 62 28 51" stroke="#182813" stroke-width="8" stroke-linecap="round"/>
+            <path d="M65 46 L68.2 55.8 L78 59 L68.2 62.2 L65 72 L61.8 62.2 L52 59 L61.8 55.8 Z" fill="#182813"/>
           </svg>
         </div>
         <div class="brand-text">
@@ -826,8 +972,11 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
         <a id="nav-calculator" onclick="switchTab('calculator')" class="nav-link">02. Live Mx-to-AI Calculator</a>
         <a id="nav-explorer" onclick="switchTab('explorer')" class="nav-link">03. Know Your Food Menu</a>
         <a id="nav-subscription" onclick="switchTab('subscription')" class="nav-link">04. Healthy Subscriptions</a>
-        <a href="HCI_Design_Study.html" class="nav-cta" style="border-color: var(--forest-hero); color: var(--forest-hero);">🧠 HCI &amp; Figma Canvas <span>↗</span></a>
-        <a href="Product_Case_Study_Report.html" class="nav-cta">📄 Read Full Report <span>↗</span></a>
+        <a href="Product_Case_Study_Report.html" class="nav-cta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Read Full Report</span>
+          <span>↗</span>
+        </a>
       </nav>
     </div>
   </header>
@@ -837,77 +986,149 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
     <!-- ================= TAB 1: OVERVIEW & HEALTHY SCORE ALGORITHM ================= -->
     <div id="tab-overview" class="tab-section active">
 
-      <!-- Botanical Olive Hero Banner (Matches IMG_2734.PNG) -->
+      <!-- Botanical Olive Hero Banner (Matches Reference Image & IMG_2734.PNG) -->
       <section class="healthy-hero-banner">
         <div>
-          <div style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--lime-neon); margin-bottom: 8px;">
-            ● AI-POWERED NUTRITIONAL TRANSPARENCY IN FOOD DELIVERY
+          <div style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; color: var(--lime-neon); margin-bottom: 12px; display: inline-flex; align-items: center; gap: 8px;">
+            <svg width="10" height="10" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="#8CE62E"/></svg>
+            <span>AI-POWERED NUTRITIONAL TRANSPARENCY IN FOOD DELIVERY</span>
           </div>
-          <div class="hm-display-logo" aria-label="HEALTHY MODE">
-            HEALTHY<br/><span class="hm-mode-line">M<svg class="hm-o-svg" viewBox="0 0 100 100" role="img" aria-label="O with Heart"><path fill="#8CE62E" fill-rule="evenodd" d="M 50,4 C 77.5,4 95,22.5 95,50 C 95,77.5 77.5,96 50,96 C 22.5,96 5,77.5 5,50 C 5,22.5 22.5,4 50,4 Z M 50,72 C 46.5,68.5 27,54.5 27,39.5 C 27,30 34.5,23.5 42.5,23.5 C 46.5,23.5 48.8,25.5 50,28.5 C 51.2,25.5 53.5,23.5 57.5,23.5 C 65.5,23.5 73,30 73,39.5 C 73,54.5 53.5,68.5 50,72 Z"/></svg>DE</span>
+
+          <div class="hm-hero-brand-lockup" aria-label="INTRODUCING HEALTHY MODE">
+            <!-- Iconic Vertical 'ON' Toggle Pill with O-Heart-Plus Knob -->
+            <div class="hm-on-pill-toggle" onclick="switchTab('explorer')" title="Healthy Mode ON · Click to Explore Menu">
+              <span class="hm-on-pill-text">ON</span>
+              <div class="hm-on-pill-knob">
+                <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
+                  <path d="M50 76 C43 70 20 54 20 35 C20 23 29 15 39.5 15 C45 15 48.5 18 50 22 C51.5 18 55 15 60.5 15 C71 15 80 23 80 35 C80 42 76.5 48 71 53.5" stroke="#182813" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M50 76 C44 71 33 61 25 49" stroke="#182813" stroke-width="8.5" stroke-linecap="round"/>
+                  <path d="M66 45 L69.5 55.5 L80 59 L69.5 62.5 L66 73 L62.5 62.5 L52 59 L62.5 55.5 Z" fill="#182813"/>
+                </svg>
+              </div>
+            </div>
+
+            <div>
+              <div class="hm-introducing-kicker">INTRODUCING</div>
+              <div class="hm-display-logo">
+                HEALTHY<br/><span class="hm-mode-line">M<svg class="hm-o-svg" viewBox="0 0 100 100" role="img" aria-label="O with Heart and Plus Sparkle">
+                  <circle cx="50" cy="50" r="46" fill="#8CE62E"/>
+                  <path d="M50 75 C44 70 23 55 23 37 C23 25.5 31.5 18.5 41 18.5 C46 18.5 48.8 21 50 24.8 C51.2 21 54 18.5 59 18.5 C68.5 18.5 77 25.5 77 37 C77 43.2 73.8 49 69 54.2" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M50 75 C45 71 35 62 28 51" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round"/>
+                  <path d="M65 46 L68.4 55.6 L78 59 L68.4 62.4 L65 72 L61.6 62.4 L52 59 L61.6 55.6 Z" fill="#182813"/>
+                </svg>DE</span>
+              </div>
+            </div>
           </div>
+
           <p class="hm-hero-lead">
-            “I explore the space between <em>human curiosity</em> and <em>machine intelligence</em>—making everyday nourishment more useful, understandable, and human.”
+            “I explore the space between <em>human curiosity</em> and <em>machine intelligence</em>, making everyday nourishment more useful, understandable, and human.”
           </p>
           <p class="hm-hero-sub">
-            Implemented in <strong>Zomato</strong> (India's leading food delivery platform), <strong>Healthy Mode</strong> bridges the gap between restaurant partner (<code>Mx</code>) kitchen preparation and consumer health. By combining minimal merchant recipe inputs with an <strong>AI Macro-Estimation &amp; 5-Parameter Weighted Scoring Engine</strong>, it transforms opaque menus into clear nutritional hearts—setting an industry standard that all food-delivery competitors should adopt.
+            Implemented in <strong>Zomato</strong> (India's leading food delivery platform), <strong>Healthy Mode</strong> bridges the gap between restaurant partner (<code>Mx</code>) kitchen preparation and consumer health. By combining minimal merchant recipe inputs with an <strong>AI Macro-Estimation &amp; 5-Parameter Weighted Scoring Engine</strong>, it transforms opaque menus into clear nutritional hearts and sets an industry standard that all food-delivery competitors should adopt.
           </p>
           <div style="display: flex; gap: 12px; flex-wrap: wrap;">
             <button type="button" onclick="switchTab('calculator')" class="btn-primary-lime">
-              <span>⚡ Test Live Mx-to-AI Nutrition Calculator</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Test Live Mx-to-AI Nutrition Calculator</span>
               <span>↗</span>
             </button>
             <button type="button" onclick="switchTab('subscription')" class="btn-secondary-dark">
-              <span>📅 Explore Healthy Subscriptions (Phase 2)</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8CE62E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Explore Healthy Subscriptions (Phase 2)</span>
               <span>↗</span>
             </button>
           </div>
         </div>
 
-        <!-- Right: 3-Heart Scale Card + Featured Dish Card Preview (Matches IMG_2734.PNG) -->
+        <!-- Right: Floating 3-Heart Scale Card + Featured Dish Card Preview -->
         <div>
           <div class="heart-scale-card" style="margin-bottom: 18px;">
             <div class="heart-scale-title">Your guide to making healthy food choices</div>
             <div class="heart-track-row">
               <div class="heart-track-line"></div>
-              <!-- Low Heart (Quarter Filled Orange-Red) -->
-              <div class="heart-node" onclick="switchTab('explorer'); filterMenuByTier('Low')">
-                <svg width="44" height="44" viewBox="0 0 48 48">
-                  <circle cx="24" cy="24" r="22" fill="#1E241B" stroke="#E0533C" stroke-width="1.5"/>
-                  <path d="M24 36l-1.8-1.6C15.4 28.2 11 24.2 11 19.3 11 15.4 14 12.4 17.9 12.4c2.2 0 4.3 1 5.7 2.6 1.4-1.6 3.5-2.6 5.7-2.6 3.9 0 6.9 3 6.9 6.9 0 4.9-4.4 8.9-11.2 15.1L24 36z" fill="none" stroke="#E0533C" stroke-width="2.2"/>
-                  <path d="M17 28 C20 31, 23 34, 24 35 C25 34, 28 31, 31 28 Z" fill="#E0533C"/>
+
+              <!-- Low Heart (Exact Generated Quarter-Filled Wavy Terracotta Heart) -->
+              <div class="heart-node" onclick="switchTab('explorer'); filterMenuByTier('Low')" title="Filter Low Healthy Score Dishes">
+                <svg width="52" height="52" viewBox="0 0 256 256" fill="none">
+                  <circle cx="128" cy="128" r="118" fill="#181C17" stroke="#D95B2B" stroke-width="8"/>
+                  <defs>
+                    <clipPath id="heroLowHeartClip">
+                      <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z"/>
+                    </clipPath>
+                    <linearGradient id="heroLowLiquidGrad" x1="0" y1="145" x2="0" y2="202" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#E26334"/>
+                      <stop offset="100%" stop-color="#C84B20"/>
+                    </linearGradient>
+                  </defs>
+                  <g clip-path="url(#heroLowHeartClip)">
+                    <path d="M40 158 Q88 148 128 158 T216 154 L216 212 L40 212 Z" fill="url(#heroLowLiquidGrad)"/>
+                    <path d="M44 158 Q88 148 128 158 T212 154" stroke="#F0855B" stroke-width="5" stroke-linecap="round"/>
+                  </g>
+                  <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z" stroke="#D95B2B" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <span class="heart-node-label">Low</span>
               </div>
 
-              <!-- Medium Heart (Half Filled Amber-Gold) -->
-              <div class="heart-node" onclick="switchTab('explorer'); filterMenuByTier('Medium')">
-                <svg width="44" height="44" viewBox="0 0 48 48">
-                  <circle cx="24" cy="24" r="22" fill="#1E241B" stroke="#F5A623" stroke-width="1.5"/>
+              <!-- Medium Heart (Exact Generated Half-Filled Wavy Golden-Amber Heart) -->
+              <div class="heart-node" onclick="switchTab('explorer'); filterMenuByTier('Medium')" title="Filter Medium Healthy Score Dishes">
+                <svg width="52" height="52" viewBox="0 0 256 256" fill="none">
+                  <circle cx="128" cy="128" r="118" fill="#181C17" stroke="#DFB134" stroke-width="8"/>
                   <defs>
-                    <clipPath id="halfHeart">
-                      <rect x="0" y="23" width="48" height="25"/>
+                    <clipPath id="heroMedHeartClip">
+                      <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z"/>
                     </clipPath>
+                    <linearGradient id="heroMedLiquidGrad" x1="0" y1="114" x2="0" y2="202" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#ECC347"/>
+                      <stop offset="100%" stop-color="#D4A024"/>
+                    </linearGradient>
                   </defs>
-                  <path d="M24 36l-1.8-1.6C15.4 28.2 11 24.2 11 19.3 11 15.4 14 12.4 17.9 12.4c2.2 0 4.3 1 5.7 2.6 1.4-1.6 3.5-2.6 5.7-2.6 3.9 0 6.9 3 6.9 6.9 0 4.9-4.4 8.9-11.2 15.1L24 36z" fill="#F5A623" clip-path="url(#halfHeart)"/>
-                  <path d="M24 36l-1.8-1.6C15.4 28.2 11 24.2 11 19.3 11 15.4 14 12.4 17.9 12.4c2.2 0 4.3 1 5.7 2.6 1.4-1.6 3.5-2.6 5.7-2.6 3.9 0 6.9 3 6.9 6.9 0 4.9-4.4 8.9-11.2 15.1L24 36z" fill="none" stroke="#F5A623" stroke-width="2.2"/>
+                  <g clip-path="url(#heroMedHeartClip)">
+                    <path d="M40 124 Q88 112 128 126 T216 120 L216 212 L40 212 Z" fill="url(#heroMedLiquidGrad)"/>
+                    <path d="M44 124 Q88 112 128 126 T212 120" stroke="#F8DC78" stroke-width="5" stroke-linecap="round"/>
+                  </g>
+                  <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z" stroke="#DFB134" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <span class="heart-node-label">Medium</span>
               </div>
 
-              <!-- High Heart (Glowing Lime-Green Faceted Full Heart) -->
-              <div class="heart-node" onclick="switchTab('explorer'); filterMenuByTier('High')">
-                <svg width="48" height="48" viewBox="0 0 48 48">
-                  <circle cx="24" cy="24" r="23" fill="rgba(140,230,46,0.18)" stroke="#8CE62E" stroke-width="2"/>
-                  <path d="M24 36l-1.8-1.6C15.4 28.2 11 24.2 11 19.3 11 15.4 14 12.4 17.9 12.4c2.2 0 4.3 1 5.7 2.6 1.4-1.6 3.5-2.6 5.7-2.6 3.9 0 6.9 3 6.9 6.9 0 4.9-4.4 8.9-11.2 15.1L24 36z" fill="#8CE62E" stroke="#D9F99D" stroke-width="1.5"/>
-                  <polygon points="24,16 18,21 24,27 30,21" fill="#BEF264" opacity="0.65"/>
+              <!-- High Heart (Exact Generated 3D Faceted Lime-Green Gem Heart + Neon Sparkle Burst on Hover) -->
+              <div class="heart-node heart-node-high" onclick="switchTab('explorer'); filterMenuByTier('High')" title="Hover for Neon Sparkle · Click to Filter High Healthy Score Dishes">
+                <svg width="56" height="56" viewBox="0 0 256 256" fill="none">
+                  <circle cx="128" cy="128" r="118" fill="rgba(140, 230, 46, 0.16)" stroke="#8CE62E" stroke-width="10"/>
+                  <defs>
+                    <linearGradient id="heroCenterGem" x1="0" y1="78" x2="0" y2="176" gradientUnits="userSpaceOnUse">
+                      <stop offset="0%" stop-color="#C8FA5F"/>
+                      <stop offset="100%" stop-color="#9BE13B"/>
+                    </linearGradient>
+                  </defs>
+                  <g transform="translate(22, 20) scale(0.83)">
+                    <polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#6CA322" stroke-width="4" stroke-linejoin="round"/>
+                    <polygon points="84,34 128,58 128,88 94,70" fill="#B5EE56"/>
+                    <polygon points="42,66 84,34 94,70 68,94" fill="#84C22E"/>
+                    <polygon points="172,34 128,58 128,88 162,70" fill="#A4E246"/>
+                    <polygon points="214,66 172,34 162,70 188,94" fill="#CDF970"/>
+                    <polygon points="38,118 42,66 68,94 72,130" fill="#A6E448"/>
+                    <polygon points="218,118 214,66 188,94 184,130" fill="#B9F15A"/>
+                    <polygon points="76,166 38,118 72,130 128,180 128,216" fill="#7AB628"/>
+                    <polygon points="180,166 218,118 184,130 128,180 128,216" fill="#B2EC53"/>
+                    <polyline points="84,34 94,70 128,88 162,70 172,34" stroke="#E6FFAD" stroke-width="3" fill="none"/>
+                    <polyline points="42,66 68,94 72,130 128,180 184,130 188,94 214,66" stroke="#E6FFAD" stroke-width="3" fill="none"/>
+                    <line x1="128" y1="180" x2="128" y2="216" stroke="#E6FFAD" stroke-width="3.5"/>
+                    <path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="url(#heroCenterGem)" stroke="#E9FFB8" stroke-width="3" stroke-linejoin="round"/>
+                  </g>
+                  <!-- Neon Sparkle Rays on Hover -->
+                  <g class="neon-sparkle-group">
+                    <path d="M214 38 L219 52 L233 57 L219 62 L214 76 L209 62 L195 57 L209 52 Z" fill="#E6FFAD"/>
+                    <path d="M42 46 L45 55 L54 58 L45 61 L42 70 L39 61 L30 58 L39 55 Z" fill="#BEF264"/>
+                    <path d="M218 182 L221 191 L230 194 L221 197 L218 206 L215 197 L206 194 L215 191 Z" fill="#8CE62E"/>
+                  </g>
                 </svg>
                 <span class="heart-node-label" style="color: var(--lime-neon);">High</span>
               </div>
             </div>
 
-            <!-- Sample Macro Pill from IMG_2734.PNG & IMG_2737.PNG -->
-            <div style="background: #14171A; border-radius: 16px; padding: 14px 16px; border: 1px solid rgba(140,230,46,0.35);">
+            <!-- Floating Sample Macro Pill (BBQ Cottage Cheese Salad) -->
+            <div class="hero-sample-dish-box">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
                 <span style="display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.92rem;">
                   <span class="veg-square"></span> BBQ Cottage Cheese Salad
@@ -921,7 +1142,12 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
                 </div>
                 <div class="macros-green-pill">
                   <div class="macro-col">
-                    <span class="val" style="color: var(--lime-neon);">💚</span>
+                    <span class="val" style="display: flex; justify-content: center; align-items: center;">
+                      <svg width="22" height="22" viewBox="0 0 256 256" fill="none">
+                        <polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="8" stroke-linejoin="round"/>
+                        <path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="5" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
                     <span class="lbl" style="color: #FFF; font-weight: 700;">High</span>
                   </div>
                   <div class="macro-col">
@@ -960,7 +1186,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
             </p>
           </div>
           <button type="button" onclick="switchTab('calculator')" class="btn-primary-lime" style="align-self: center;">
-            <span>🔬 See Live Algorithm Math Working</span>
+            <svg class="inline-heart-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/><path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/></svg> <span>See Live Algorithm Math Working</span>
             <span>↗</span>
           </button>
         </div>
@@ -1003,9 +1229,9 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
               The composite <code>WNDS-5</code> score maps deterministically to the 3-Tier Nutritional Hearts and triggers rule-based Natural Language Generation (NLG) for customer pros/cons and <strong>Healthy Subscription</strong> eligibility:
             </p>
             <div style="background: var(--obsidian-card); color: #F3F4F6; font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
-              • <span style="color:#8CE62E;font-weight:700;">💚 High (≥ 72)</span> ➔ Subscription Eligible ✓<br/>
-              • <span style="color:#F5A623;font-weight:700;">💛 Medium (48 – 71.9)</span> ➔ Balanced Everyday<br/>
-              • <span style="color:#E0533C;font-weight:700;">🧡 Low (&lt; 48)</span> ➔ Indulgent / Occasional
+              • <span style="color:#8CE62E;font-weight:700;"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High (≥ 72)</span> ➔ Subscription Eligible ✓<br/>
+              • <span style="color:#F5A623;font-weight:700;"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Medium (48 – 71.9)</span> ➔ Balanced Everyday<br/>
+              • <span style="color:#E0533C;font-weight:700;"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Low (&lt; 48)</span> ➔ Indulgent / Occasional
             </div>
           </div>
         </div>
@@ -1108,13 +1334,13 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px;">
             <div style="display: flex; align-items: center; gap: 14px;">
-              <div class="param-circle-icon" style="width: 42px; height: 42px;">🔥</div>
+              <div class="param-circle-icon" style="width: 42px; height: 42px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1.5 3.2 4.5 5.4 4.5 9.5a4.5 4.5 0 1 1-9 0c0-2.2 1.1-4.1 2.4-5.6.5 1.6 1.8 2.4 2.1 2.4.3 0 0-3.4 0-6.3z"/></svg></div>
               <p style="font-size: 0.86rem; color: #D1D5DB;">
                 <strong style="color: #FFFFFF;">Calories don't</strong> affect the healthy score, as they are a neutral metric &amp; depend on your daily intake and goals.
               </p>
             </div>
             <div style="display: flex; align-items: center; gap: 14px;">
-              <div class="param-circle-icon" style="width: 42px; height: 42px;">✨</div>
+              <div class="param-circle-icon" style="width: 42px; height: 42px;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 16l.9 2.1L22 19l-2.1.9L19 22l-.9-2.1L16 19l2.1-.9L19 16z"/></svg></div>
               <p style="font-size: 0.86rem; color: #D1D5DB;">
                 Nutrition info shown are derived from <strong style="color: #FFFFFF;">restaurant (Mx) inputs &amp; AI-generated estimates</strong>. Actual values may vary with preparation and are for reference only.
               </p>
@@ -1207,7 +1433,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
               </div>
               <div class="macros-green-pill" id="card-macro-pill">
                 <div class="macro-col">
-                  <span class="val" id="card-heart-icon">💚</span>
+                  <span class="val" id="card-heart-icon"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg></span>
                   <span class="lbl" id="card-tier-label" style="color: #FFFFFF; font-weight: 700;">High</span>
                 </div>
                 <div class="macro-col">
@@ -1283,13 +1509,13 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
           <div>
             <span class="eyebrow-label">03 // CUSTOMER DISCOVERY EXPERIENCE</span>
-            <h2 style="font-size: 1.45rem; font-weight: 800;">Know Your Food Better — Healthy Mode Menu</h2>
+            <h2 style="font-size: 1.45rem; font-weight: 800;">Know Your Food Better: Healthy Mode Menu</h2>
           </div>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
             <button type="button" class="nav-link active" id="flt-ALL" onclick="filterMenuByTier('ALL')">All Dishes</button>
-            <button type="button" class="nav-link" id="flt-High" onclick="filterMenuByTier('High')">💚 High Score Only</button>
-            <button type="button" class="nav-link" id="flt-Medium" onclick="filterMenuByTier('Medium')">💛 Medium Score</button>
-            <button type="button" class="nav-link" id="flt-Low" onclick="filterMenuByTier('Low')">🧡 Low Score (Comparison)</button>
+            <button type="button" class="nav-link" id="flt-High" onclick="filterMenuByTier('High')"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High Score Only</button>
+            <button type="button" class="nav-link" id="flt-Medium" onclick="filterMenuByTier('Medium')"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Medium Score</button>
+            <button type="button" class="nav-link" id="flt-Low" onclick="filterMenuByTier('Low')"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Low Score (Comparison)</button>
           </div>
         </div>
       </div>
@@ -1306,7 +1532,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
             Healthy Subscriptions: Automated Nutritious Lunches &amp; Dinners
           </h2>
           <p style="font-size: 0.94rem; color: #D1D5DB; line-height: 1.65;">
-            Once <strong>Healthy Mode</strong> established a trusted <code>Low → High</code> nutritional scoring baseline, it unlocked <strong>Healthy Subscriptions</strong>—allowing busy professionals to pre-plan and schedule <strong>3-day, 5-day, or 15-day</strong> Lunch and Dinner plans. Only dishes that pass the strict <strong><code>💚 High</code> Healthy Score gate</strong> qualify for subscription rotation.
+            Once <strong>Healthy Mode</strong> established a trusted <code>Low → High</code> nutritional scoring baseline, it unlocked <strong>Healthy Subscriptions</strong>, allowing busy professionals to pre-plan and schedule <strong>3-day, 5-day, or 15-day</strong> Lunch and Dinner plans. Only dishes that pass the strict <strong><code><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High</code> Healthy Score gate</strong> qualify for subscription rotation.
           </p>
         </div>
 
@@ -1534,11 +1760,11 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       const rawWeighted = 0.35 * sProt + 0.20 * sCarb + 0.15 * sFibre + 0.15 * sIng + 0.15 * sCook;
       const finalScore = Math.max(12, Math.min(99, rawWeighted - penalty));
 
-      let tier = "Low", heartIcon = "🧡", borderCol = "rgba(224,83,60,0.45)";
+      let tier = "Low", heartIcon = `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`, borderCol = "rgba(224,83,60,0.45)";
       if (finalScore >= 72) {
-        tier = "High"; heartIcon = "💚"; borderCol = "rgba(140,230,46,0.45)";
+        tier = "High"; heartIcon = `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg>`; borderCol = "rgba(140,230,46,0.45)";
       } else if (finalScore >= 48) {
-        tier = "Medium"; heartIcon = "💛"; borderCol = "rgba(245,166,35,0.45)";
+        tier = "Medium"; heartIcon = `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`; borderCol = "rgba(245,166,35,0.45)";
       }
 
       return {
@@ -1563,7 +1789,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       document.getElementById("card-veg-icon").className = activeDishVeg ? "veg-square" : "nonveg-square";
       document.getElementById("card-dish-title").innerText = activeDishTitle;
       document.getElementById("card-kcal").innerText = res.kcal;
-      document.getElementById("card-heart-icon").innerText = res.heartIcon;
+      document.getElementById("card-heart-icon").innerHTML = res.heartIcon;
       document.getElementById("card-tier-label").innerText = res.tier;
       document.getElementById("card-prot").innerText = res.protG + "g";
       document.getElementById("card-fat").innerText = res.fatG + "g";
@@ -1573,11 +1799,11 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
       document.getElementById("card-pros-list").innerHTML = res.pros.length
         ? res.pros.map(p => `<div class="commentary-item"><span style="color:var(--lime-neon); font-weight:800;">✓</span><div><strong style="color:#FFF;">${p[0]}</strong> – ${p[1]}</div></div>`).join("")
-        : `<div class="commentary-item"><span>—</span><div>Add vegetables or lean protein to boost score</div></div>`;
+        : `<div class="commentary-item"><span>•</span><div>Add vegetables or lean protein to boost score</div></div>`;
 
       document.getElementById("card-cons-list").innerHTML = res.cons.length
         ? res.cons.map(c => `<div class="commentary-item"><span style="color:var(--amber-warn); font-weight:800;">ⓘ</span><div><strong style="color:var(--amber-warn);">${c[0]}</strong> – ${c[1]}</div></div>`).join("")
-        : `<div class="commentary-item"><span style="color:var(--lime-neon);">✓</span><div>Clean macro profile — no high saturated fat or refined carb warnings</div></div>`;
+        : `<div class="commentary-item"><span style="color:var(--lime-neon);">✓</span><div>Clean macro profile with zero high saturated fat or refined carb warnings</div></div>`;
 
       document.getElementById("card-score-numeric").innerText = `WEIGHTED HEALTHY SCORE: ${res.finalScore} / 100 (${res.tier.toUpperCase()})`;
       const subBadge = document.getElementById("card-sub-badge");
@@ -1613,7 +1839,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
           <div class="algo-step-row">
             <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--lime-neon); font-weight:700; margin-bottom:5px;">
-              STAGE 1 (NutriDecomp-NER + ICMR-NIN Linear-Thermal Regressor) — MACRO SUMMATION:
+              STAGE 1 (NutriDecomp-NER + ICMR-NIN Linear-Thermal Regressor) · MACRO SUMMATION:
             </div>
             <div style="font-family:var(--font-mono); font-size:0.73rem; color:#D1D5DB; line-height:1.65;">
               • <strong>Protein:</strong> ∑(w<sub>i</sub>/100 × P<sub>100g</sub>) = ${pSumStr} = <strong>${res.rawP}g raw ➔ ${res.protG}g</strong><br/>
@@ -1626,7 +1852,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
           <div class="algo-step-row">
             <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--lime-neon); font-weight:700; margin-bottom:5px;">
-              STAGE 2 (WNDS-5 Weighted Nutrient Density Scoring Algorithm) — 5 SUB-SCORE EQUATIONS:
+              STAGE 2 (WNDS-5 Weighted Nutrient Density Scoring Algorithm) · 5 SUB-SCORE EQUATIONS:
             </div>
             <div style="font-family:var(--font-mono); font-size:0.72rem; color:#D1D5DB; line-height:1.7;">
               1. <strong>Protein Density (35%):</strong> min(100, 58×(${res.rawP}g/25g) + 42×(${res.protKcalPct}% kcal/24%)) = <strong>${res.sProt}/100</strong> × 0.35 = <span style="color:var(--lime-neon);font-weight:700;">+${res.wProt} pts</span><br/>
@@ -1707,7 +1933,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
       grid.innerHTML = list.map(d => {
         const n = d.nutrition;
-        const heart = n.tier === "High" ? "💚" : (n.tier === "Medium" ? "💛" : "🧡");
+        const heart = n.tier === "High" ? `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg>` : (n.tier === "Medium" ? `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>` : `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`);
         const prosHtml = n.what_makes_healthy.map(p =>
           `<div class="commentary-item"><span style="color:var(--lime-neon);">✓</span><div><strong style="color:#FFF;">${p[0]}</strong> – ${p[1]}</div></div>`
         ).join("");
@@ -1747,7 +1973,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
             <div style="margin-bottom: 12px;">
               <div class="commentary-heading">WHAT MAKES THIS HEALTHY</div>
-              ${prosHtml || '<div class="commentary-item"><span>—</span><div>Indulgent preparation</div></div>'}
+              ${prosHtml || '<div class="commentary-item"><span>•</span><div>Indulgent preparation</div></div>'}
             </div>
 
             ${consHtml ? `<div style="padding-top:10px; border-top:1px dashed rgba(255,255,255,0.12);"><div class="commentary-heading">TO CONSIDER</div>${consHtml}</div>` : ''}
@@ -1816,7 +2042,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           </div>
 
           <div style="padding: 10px 12px; background: var(--bg-cream); border-radius: 12px; margin-bottom: 10px;">
-            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);">☀️ LUNCH (1:00 PM · OFFICE) — 💚 High (${s.lunchDish.nutrition.healthy_score})</div>
+            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);"><svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg> LUNCH (1:00 PM · OFFICE) · <svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High (${s.lunchDish.nutrition.healthy_score})</div>
             <div style="font-weight: 800; font-size: 0.92rem; margin-top: 2px;">${s.lunchDish.title}</div>
             <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--forest-hero); margin-top: 3px;">
               ${s.lunchDish.nutrition.protein}g P · ${s.lunchDish.nutrition.fat}g F · ${s.lunchDish.nutrition.carbs}g C · ${s.lunchDish.nutrition.fibre}g Fib (${s.lunchDish.nutrition.kcal} kcal)
@@ -1824,7 +2050,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           </div>
 
           <div style="padding: 10px 12px; background: var(--bg-cream); border-radius: 12px;">
-            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);">🌙 DINNER (8:00 PM · HOME) — 💚 High (${s.dinnerDish.nutrition.healthy_score})</div>
+            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);"><svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> DINNER (8:00 PM · HOME) · <svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High (${s.dinnerDish.nutrition.healthy_score})</div>
             <div style="font-weight: 800; font-size: 0.92rem; margin-top: 2px;">${s.dinnerDish.title}</div>
             <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--forest-hero); margin-top: 3px;">
               ${s.dinnerDish.nutrition.protein}g P · ${s.dinnerDish.nutrition.fat}g F · ${s.dinnerDish.nutrition.carbs}g C · ${s.dinnerDish.nutrition.fibre}g Fib (${s.dinnerDish.nutrition.kcal} kcal)
