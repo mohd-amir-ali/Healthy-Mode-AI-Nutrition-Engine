@@ -1,0 +1,12 @@
+{
+  "name": "Healthy Mode - AI Nutrition & Subscriptions Engine (Mohd Amir Ali)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "pip install -r requirements.txt",
+  "forwardPorts": [5060],
+  "portsAttributes": {
+    "5060": {
+      "label": "Healthy Mode Web App (Mohd Amir Ali)",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}
