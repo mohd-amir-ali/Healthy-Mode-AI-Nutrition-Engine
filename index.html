@@ -1984,7 +1984,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       activeDishVeg = found.veg;
       document.getElementById("calc-cooking-method").value = found.cooking_method;
 
-      - Clone ingredients and allow adjusting any of them
+      // Clone ingredients and allow adjusting any of them
       activeCalculatorIngredients = found.ingredients.map(x => ({ id: x.id, grams: x.grams }));
       renderCalculatorSliders();
       recalculateLiveDish(true);
@@ -2307,9 +2307,176 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       document.getElementById("math-breakdown-tbody").innerHTML = rowsHtml;
     }
 
-    - =========================================================================
-    - TAB 3: CUSTOMER MENU EXPLORER
-    - =========================================================================
+    // =========================================================================
+    // HERO 3-HEART HOVER PREVIEW SWITCHER & CURSOR-FOLLOWING TEXT TOOLTIP
+    // =========================================================================
+    const HERO_TIER_PREVIEWS = {
+      High: {
+        veg: true,
+        title: "BBQ Cottage Cheese Salad",
+        score: "SCORE: 82.4 / 100",
+        scoreCol: "#8CE62E",
+        kcal: 400,
+        heartSvg: `<svg class="inline-heart-svg high-neon-heart" width="22" height="22" viewBox="-28 -28 312 312" fill="none" style="overflow:visible;"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#6CA322" stroke-width="6" stroke-linejoin="round"/><polygon points="84,34 128,58 128,88 94,70" fill="#B5EE56"/><polygon points="172,34 128,58 128,88 162,70" fill="#A4E246"/><polygon points="76,166 38,118 72,130 128,180 128,216" fill="#7AB628"/><polygon points="180,166 218,118 184,130 128,180 128,216" fill="#B2EC53"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="5" stroke-linejoin="round"/><path d="M222 24 L227 38 L241 43 L227 48 L222 62 L217 48 L203 43 L217 38 Z" fill="#E6FFAD"/></svg>`,
+        tier: "High",
+        prot: "23g",
+        fat: "26g",
+        carbs: "26g",
+        fibre: "9g",
+        borderCol: "rgba(140, 230, 46, 0.55)"
+      },
+      Medium: {
+        veg: true,
+        title: "Charcoal Paneer Tikka Wheat Roll",
+        score: "SCORE: 63.8 / 100",
+        scoreCol: "#ECC347",
+        kcal: 520,
+        heartSvg: `<svg class="inline-heart-svg" width="22" height="22" viewBox="-16 -16 288 288" fill="none" style="overflow:visible;"><path d="M 42,118 Q 85,106 128,118 T 214,114 C 200,158 128,212 128,212 C 128,212 56,158 42,118 Z" fill="#ECC347"/><path d="M 46,118 Q 85,106 128,118 T 210,114" stroke="#F8DC78" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`,
+        tier: "Medium",
+        prot: "21g",
+        fat: "24g",
+        carbs: "52g",
+        fibre: "6g",
+        borderCol: "rgba(236, 195, 71, 0.55)"
+      },
+      Low: {
+        veg: false,
+        title: "Butter Chicken & Butter Naan Combo",
+        score: "SCORE: 34.2 / 100",
+        scoreCol: "#E26334",
+        kcal: 780,
+        heartSvg: `<svg class="inline-heart-svg" width="22" height="22" viewBox="-16 -16 288 288" fill="none" style="overflow:visible;"><path d="M 68,158 Q 98,148 128,158 T 188,155 C 162,184 128,212 128,212 C 128,212 94,184 68,158 Z" fill="#E26334"/><path d="M 72,158 Q 98,148 128,158 T 184,155" stroke="#F0855B" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`,
+        tier: "Low",
+        prot: "28g",
+        fat: "46g",
+        carbs: "64g",
+        fibre: "3g",
+        borderCol: "rgba(226, 99, 52, 0.55)"
+      }
+    };
+
+    function previewHeroHeartTier(tier) {
+      const p = HERO_TIER_PREVIEWS[tier] || HERO_TIER_PREVIEWS.High;
+      const vegEl = document.getElementById("hero-prev-veg");
+      if (vegEl) vegEl.className = p.veg ? "veg-square" : "nonveg-square";
+      const titleEl = document.getElementById("hero-prev-title");
+      if (titleEl) titleEl.innerText = p.title;
+      const scoreEl = document.getElementById("hero-prev-score");
+      if (scoreEl) {
+        scoreEl.innerText = p.score;
+        scoreEl.style.color = p.scoreCol;
+      }
+      const kcalEl = document.getElementById("hero-prev-kcal");
+      if (kcalEl) kcalEl.innerText = p.kcal;
+      const heartEl = document.getElementById("hero-prev-heart");
+      if (heartEl) heartEl.innerHTML = p.heartSvg;
+      const tierEl = document.getElementById("hero-prev-tier");
+      if (tierEl) {
+        tierEl.innerText = p.tier;
+        tierEl.style.color = p.scoreCol;
+      }
+      document.getElementById("hero-prev-prot").innerText = p.prot;
+      document.getElementById("hero-prev-fat").innerText = p.fat;
+      document.getElementById("hero-prev-carbs").innerText = p.carbs;
+      document.getElementById("hero-prev-fibre").innerText = p.fibre;
+      const boxEl = document.getElementById("hero-preview-dish-box");
+      if (boxEl) boxEl.style.borderColor = p.borderCol;
+      const pillEl = document.getElementById("hero-prev-pill");
+      if (pillEl) pillEl.style.borderColor = p.borderCol;
+    }
+
+    function showHeartCursorTip(e, text, color) {
+      const tip = document.getElementById("cursor-heart-tooltip");
+      if (!tip) return;
+      tip.innerText = text;
+      tip.style.color = color || "#8CE62E";
+      tip.style.left = e.clientX + "px";
+      tip.style.top = e.clientY + "px";
+      tip.classList.add("visible");
+    }
+
+    function moveHeartCursorTip(e) {
+      const tip = document.getElementById("cursor-heart-tooltip");
+      if (!tip) return;
+      tip.style.left = e.clientX + "px";
+      tip.style.top = e.clientY + "px";
+    }
+
+    function hideHeartCursorTip() {
+      const tip = document.getElementById("cursor-heart-tooltip");
+      if (tip) tip.classList.remove("visible");
+    }
+
+    // Smart AI Kitchen Swap in Tab 2 Calculator
+    function applySmartKitchenSwap() {
+      const cookSel = document.getElementById("calc-cooking-method");
+      if (cookSel.value === "deep_fried" || cookSel.value === "curry_simmer" || cookSel.value === "sauteed") {
+        cookSel.value = "grilled";
+      } else {
+        cookSel.value = "steamed";
+      }
+      activeCalculatorIngredients.forEach(item => {
+        const db = INGREDIENTS_DB[item.id];
+        if (!db) return;
+        if (db.protein_100g >= 14 || db.fibre_100g >= 2.5) {
+          item.grams = Math.min(220, Math.max(85, Math.round((item.grams * 1.35) / 5) * 5));
+        } else if (db.sat_fat_100g >= 10 || db.gi_score < 60) {
+          item.grams = Math.max(15, Math.round((item.grams * 0.45) / 5) * 5);
+        }
+      });
+      renderCalculatorSliders();
+      recalculateLiveDish(false);
+    }
+
+    // Word-by-Word Scroll Reveal Transition for Stage Code Snippets
+    function initScrollCodeWordReveal() {
+      const blocks = document.querySelectorAll(".scroll-code-block");
+      blocks.forEach(block => {
+        if (block.dataset.tokenized) return;
+        block.dataset.tokenized = "true";
+        let wordIdx = 0;
+        const walk = (node) => {
+          if (node.nodeType === 3) {
+            const text = node.nodeValue;
+            if (!text.trim()) return;
+            const frag = document.createDocumentFragment();
+            const parts = text.split(/(\s+)/);
+            parts.forEach(part => {
+              if (/^\s+$/.test(part) || !part) {
+                frag.appendChild(document.createTextNode(part));
+              } else {
+                const span = document.createElement("span");
+                span.className = "code-word-token";
+                span.style.transitionDelay = (wordIdx * 38) + "ms";
+                span.textContent = part;
+                wordIdx++;
+                frag.appendChild(span);
+              }
+            });
+            node.parentNode.replaceChild(frag, node);
+          } else if (node.nodeType === 1 && node.tagName !== "SVG" && node.tagName !== "BR") {
+            Array.from(node.childNodes).forEach(walk);
+          }
+        };
+        Array.from(block.childNodes).forEach(walk);
+      });
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+          } else {
+            entry.target.classList.remove("revealed");
+          }
+        });
+      }, { threshold: 0.25 });
+
+      blocks.forEach(b => obs.observe(b));
+    }
+
+    // =========================================================================
+    // TAB 3: CUSTOMER MENU EXPLORER & INTERACTIVE DISH DETAIL MODAL
+    // =========================================================================
     function filterMenuByTier(tier) {
       currentMenuFilter = tier;
       ["ALL", "High", "Medium", "Low"].forEach(t => {
@@ -2327,82 +2494,211 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
       grid.innerHTML = list.map(d => {
         const n = d.nutrition;
-        const heart = n.tier === "High" ? `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg>` : (n.tier === "Medium" ? `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>` : `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`);
+        const heart = n.tier === "High" ? `<svg class="inline-heart-svg high-neon-heart" width="22" height="22" viewBox="-28 -28 312 312" fill="none" style="overflow:visible;"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#6CA322" stroke-width="6" stroke-linejoin="round"/><polygon points="84,34 128,58 128,88 94,70" fill="#B5EE56"/><polygon points="172,34 128,58 128,88 162,70" fill="#A4E246"/><polygon points="76,166 38,118 72,130 128,180 128,216" fill="#7AB628"/><polygon points="180,166 218,118 184,130 128,180 128,216" fill="#B2EC53"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="5" stroke-linejoin="round"/><path d="M222 24 L227 38 L241 43 L227 48 L222 62 L217 48 L203 43 L217 38 Z" fill="#E6FFAD"/></svg>` : (n.tier === "Medium" ? `<svg class="inline-heart-svg" width="22" height="22" viewBox="-16 -16 288 288" fill="none" style="overflow:visible;"><path d="M 42,118 Q 85,106 128,118 T 214,114 C 200,158 128,212 128,212 C 128,212 56,158 42,118 Z" fill="#ECC347"/><path d="M 46,118 Q 85,106 128,118 T 210,114" stroke="#F8DC78" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>` : `<svg class="inline-heart-svg" width="22" height="22" viewBox="-16 -16 288 288" fill="none" style="overflow:visible;"><path d="M 68,158 Q 98,148 128,158 T 188,155 C 162,184 128,212 128,212 C 128,212 94,184 68,158 Z" fill="#E26334"/><path d="M 72,158 Q 98,148 128,158 T 184,155" stroke="#F0855B" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`);
         const prosHtml = n.what_makes_healthy.map(p =>
-          `<div class="commentary-item"><span style="color:var(--lime-neon);">✓</span><div><strong style="color:#FFF;">${p[0]}</strong> – ${p[1]}</div></div>`
+          `<div class="commentary-item"><span style="color:var(--lime-neon);">✓</span><div><strong style="color:#FFF;">${p[0]}</strong> · ${p[1]}</div></div>`
         ).join("");
         const consHtml = n.to_consider.map(c =>
-          `<div class="commentary-item"><span style="color:var(--amber-warn);">ⓘ</span><div><strong style="color:var(--amber-warn);">${c[0]}</strong> – ${c[1]}</div></div>`
+          `<div class="commentary-item"><span style="color:var(--amber-warn);">ⓘ</span><div><strong style="color:var(--amber-warn);">${c[0]}</strong> · ${c[1]}</div></div>`
         ).join("");
 
         return `
-          <div class="zomato-nutrition-card">
-            <div class="dish-header-row" style="justify-content: space-between;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="${d.veg ? 'veg-square' : 'nonveg-square'}"></span>
-                <div>
-                  <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">${d.title}</h3>
-                  <div style="font-size: 0.75rem; color: #9CA3AF;">${d.restaurant} · ₹${d.price_inr} · ${d.prep_time_min} mins</div>
+          <div class="zomato-nutrition-card explorer-card-flex" onclick="openDishDetailModal('${d.id}')">
+            <div>
+              <div class="dish-header-row" style="justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span class="${d.veg ? 'veg-square' : 'nonveg-square'}"></span>
+                  <div>
+                    <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">${d.title}</h3>
+                    <div style="font-size: 0.75rem; color: #9CA3AF;">${d.restaurant} · ₹${d.price_inr} · ${d.prep_time_min} mins</div>
+                  </div>
+                </div>
+                <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--lime-neon); font-weight: 800; background: rgba(140,230,46,0.12); padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(140,230,46,0.3);">${n.healthy_score}/100</span>
+              </div>
+
+              <div class="macro-strip-container">
+                <div class="kcal-neutral-box">
+                  <span class="num">${n.kcal}</span>
+                  <span class="unit">kcal</span>
+                </div>
+                <div class="macros-green-pill">
+                  <div class="macro-col">
+                    <span class="val" style="display:flex; justify-content:center;">${heart}</span>
+                    <span class="lbl" style="color:#FFF; font-weight:700;">${n.tier}</span>
+                  </div>
+                  <div class="macro-col"><span class="val">${n.protein}g</span><span class="lbl">protein</span></div>
+                  <div class="macro-col"><span class="val">${n.fat}g</span><span class="lbl">fat</span></div>
+                  <div class="macro-col"><span class="val">${n.carbs}g</span><span class="lbl">carbs</span></div>
+                  <div class="macro-col"><span class="val">${n.fibre}g</span><span class="lbl">fibre</span></div>
                 </div>
               </div>
-              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--lime-neon); font-weight: 700;">${n.healthy_score}/100</span>
-            </div>
 
-            <div class="macro-strip-container">
-              <div class="kcal-neutral-box">
-                <span class="num">${n.kcal}</span>
-                <span class="unit">kcal</span>
+              <div style="margin-bottom: 12px;">
+                <div class="commentary-heading">WHAT MAKES THIS HEALTHY</div>
+                ${prosHtml || '<div class="commentary-item"><span>•</span><div>Indulgent preparation</div></div>'}
               </div>
-              <div class="macros-green-pill">
-                <div class="macro-col">
-                  <span class="val">${heart}</span>
-                  <span class="lbl" style="color:#FFF; font-weight:700;">${n.tier}</span>
-                </div>
-                <div class="macro-col"><span class="val">${n.protein}g</span><span class="lbl">protein</span></div>
-                <div class="macro-col"><span class="val">${n.fat}g</span><span class="lbl">fat</span></div>
-                <div class="macro-col"><span class="val">${n.carbs}g</span><span class="lbl">carbs</span></div>
-                <div class="macro-col"><span class="val">${n.fibre}g</span><span class="lbl">fibre</span></div>
+
+              ${consHtml ? `<div style="padding-top:10px; border-top:1px dashed rgba(255,255,255,0.12); margin-bottom: 12px;"><div class="commentary-heading">TO CONSIDER</div>${consHtml}</div>` : ''}
+            </div>
+
+            <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <button type="button" onclick="event.stopPropagation(); switchTab('calculator'); document.getElementById('calc-preset-select').value='${d.id}'; loadPresetIntoCalculator('${d.id}');" style="background: rgba(140,230,46,0.14); border: 1px solid rgba(140,230,46,0.45); color: var(--lime-neon); padding: 7px 13px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.71rem; font-weight: 700; cursor: pointer;">
+                  Inspect Math in Calculator ↗
+                </button>
+                <button type="button" onclick="event.stopPropagation(); openDishDetailModal('${d.id}');" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: #E5E7EB; padding: 7px 11px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.69rem; font-weight: 600; cursor: pointer;">
+                  Full Details
+                </button>
               </div>
-            </div>
-
-            <div style="margin-bottom: 12px;">
-              <div class="commentary-heading">WHAT MAKES THIS HEALTHY</div>
-              ${prosHtml || '<div class="commentary-item"><span>•</span><div>Indulgent preparation</div></div>'}
-            </div>
-
-            ${consHtml ? `<div style="padding-top:10px; border-top:1px dashed rgba(255,255,255,0.12);"><div class="commentary-heading">TO CONSIDER</div>${consHtml}</div>` : ''}
-
-            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between;">
-              <button type="button" onclick="switchTab('calculator'); document.getElementById('calc-preset-select').value='${d.id}'; loadPresetIntoCalculator('${d.id}');" style="background: transparent; border: 1px solid rgba(140,230,46,0.4); color: var(--lime-neon); padding: 6px 12px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.72rem; cursor: pointer;">
-                Inspect Math in Calculator ↗
-              </button>
-              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #9CA3AF; align-self: center;">${d.genre}</span>
+              <span style="font-family: var(--font-mono); font-size: 0.68rem; color: #CBD5E1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 999px; white-space: nowrap;">
+                ${d.genre}
+              </span>
             </div>
           </div>
         `;
       }).join("");
     }
 
-    - =========================================================================
-    - TAB 4: HEALTHY SUBSCRIPTIONS (3 / 5 / 15-DAY SCHEDULER)
-    - =========================================================================
+    function openDishDetailModal(dishId) {
+      const d = PRESET_DISHES.find(x => x.id === dishId) || PRESET_DISHES[0];
+      const res = computeJSNutrition(d.ingredients, d.cooking_method, true);
+      const heart = res.tier === "High" ? `<svg class="inline-heart-svg high-neon-heart" width="22" height="22" viewBox="-28 -28 312 312" fill="none" style="overflow:visible;"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#6CA322" stroke-width="6" stroke-linejoin="round"/><polygon points="84,34 128,58 128,88 94,70" fill="#B5EE56"/><polygon points="172,34 128,58 128,88 162,70" fill="#A4E246"/><polygon points="76,166 38,118 72,130 128,180 128,216" fill="#7AB628"/><polygon points="180,166 218,118 184,130 128,180 128,216" fill="#B2EC53"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="5" stroke-linejoin="round"/><path d="M222 24 L227 38 L241 43 L227 48 L222 62 L217 48 L203 43 L217 38 Z" fill="#E6FFAD"/></svg>` : (res.tier === "Medium" ? `<svg class="inline-heart-svg" width="22" height="22" viewBox="-16 -16 288 288" fill="none" style="overflow:visible;"><path d="M 42,118 Q 85,106 128,118 T 214,114 C 200,158 128,212 128,212 C 128,212 56,158 42,118 Z" fill="#ECC347"/><path d="M 46,118 Q 85,106 128,118 T 210,114" stroke="#F8DC78" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>` : `<svg class="inline-heart-svg" width="22" height="22" viewBox="-16 -16 288 288" fill="none" style="overflow:visible;"><path d="M 68,158 Q 98,148 128,158 T 188,155 C 162,184 128,212 128,212 C 128,212 94,184 68,158 Z" fill="#E26334"/><path d="M 72,158 Q 98,148 128,158 T 184,155" stroke="#F0855B" stroke-width="7" stroke-linecap="round" fill="none"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`);
+      const modal = document.getElementById("dish-detail-modal");
+      const content = document.getElementById("dish-detail-modal-content");
+      if (!modal || !content) return;
+
+      content.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:14px; margin-bottom:16px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="${d.veg ? 'veg-square' : 'nonveg-square'}"></span>
+              <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--lime-neon); font-weight:700;">${d.genre.toUpperCase()}</span>
+            </div>
+            <h3 style="font-size:1.35rem; font-weight:800; color:#FFFFFF; margin-top:4px;">${d.title}</h3>
+            <div style="font-size:0.82rem; color:#9CA3AF; margin-top:2px;">${d.restaurant} · ₹${d.price_inr} · ${d.prep_time_min} mins prep · Cooking: ${res.methodLabel}</div>
+          </div>
+          <button type="button" onclick="closeDishDetailModal()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#FFF; width:34px; height:34px; border-radius:50%; cursor:pointer; font-weight:800;">✕</button>
+        </div>
+
+        <div class="macro-strip-container" style="margin-top:0; margin-bottom:16px;">
+          <div class="kcal-neutral-box">
+            <span class="num">${d.nutrition.kcal}</span>
+            <span class="unit">kcal</span>
+          </div>
+          <div class="macros-green-pill">
+            <div class="macro-col">
+              <span class="val" style="display:flex; justify-content:center;">${heart}</span>
+              <span class="lbl" style="color:#FFF; font-weight:700;">${d.nutrition.tier} (${d.nutrition.healthy_score})</span>
+            </div>
+            <div class="macro-col"><span class="val">${d.nutrition.protein}g</span><span class="lbl">protein</span></div>
+            <div class="macro-col"><span class="val">${d.nutrition.fat}g</span><span class="lbl">fat</span></div>
+            <div class="macro-col"><span class="val">${d.nutrition.carbs}g</span><span class="lbl">carbs</span></div>
+            <div class="macro-col"><span class="val">${d.nutrition.fibre}g</span><span class="lbl">fibre</span></div>
+          </div>
+        </div>
+
+        <div style="font-family:var(--font-mono); font-size:0.7rem; font-weight:700; color:var(--lime-neon); margin-bottom:8px;">
+          MERCHANT (Mx) INGREDIENT GRAM BREAKDOWN &amp; ICMR-NIN MACRO VECTORS
+        </div>
+        <div style="background:#0F1216; border:1px solid rgba(255,255,255,0.1); border-radius:14px; overflow:hidden; margin-bottom:16px;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.78rem;">
+            <thead>
+              <tr style="background:#1C2128; color:#9CA3AF; font-family:var(--font-mono); font-size:0.66rem; text-align:left;">
+                <th style="padding:8px 12px;">Ingredient</th>
+                <th style="padding:8px 10px;">Grams</th>
+                <th style="padding:8px 10px;">Prot</th>
+                <th style="padding:8px 10px;">Fat</th>
+                <th style="padding:8px 10px;">Carbs</th>
+                <th style="padding:8px 10px;">Fibre</th>
+                <th style="padding:8px 10px;">Kcal</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${res.rows.map(r => `
+                <tr style="border-top:1px solid rgba(255,255,255,0.06);">
+                  <td style="padding:8px 12px; font-weight:700; color:#FFF;">${r.name}</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.grams}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono); color:#8CE62E;">${r.protein}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.fat}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.carbs}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.fibre}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.kcal}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:${d.nutrition.tier === 'High' ? '#8CE62E' : '#F59E0B'};">
+            ${d.nutrition.tier === 'High' ? '✓ Qualifies for Healthy Subscriptions' : '✕ Below High (≥72) Subscription Gate'}
+          </span>
+          <div style="display:flex; gap:10px;">
+            <button type="button" onclick="closeDishDetailModal(); switchTab('calculator'); document.getElementById('calc-preset-select').value='${d.id}'; loadPresetIntoCalculator('${d.id}');" class="btn-primary-lime" style="padding:9px 18px; font-size:0.78rem;">
+              Open &amp; Customize in Live Calculator ↗
+            </button>
+          </div>
+        </div>
+      `;
+      modal.classList.add("open");
+    }
+
+    function closeDishDetailModal() {
+      const modal = document.getElementById("dish-detail-modal");
+      if (modal) modal.classList.remove("open");
+    }
+
+    // =========================================================================
+    // TAB 4: HEALTHY SUBSCRIPTIONS (INTERACTIVE SLOT SWAP + 5s AUTO-CLOSING MODAL)
+    // =========================================================================
+    let activeSubscriptionSchedule = [];
+    let activeSubPool = [];
+    let subModalTimer = null;
+    let subModalCountdownInterval = null;
+
     function generateSubscriptionPlan() {
       const days = parseInt(document.getElementById("sub-duration").value, 10);
       const genre = document.getElementById("sub-genre").value;
 
-      - Hard eligibility gate: Only High-scored dishes qualify for Healthy Subscriptions
       let pool = PRESET_DISHES.filter(d => d.nutrition.tier === "High");
       if (genre !== "ALL") {
         const filtered = pool.filter(d => d.genre === genre);
         if (filtered.length > 0) pool = filtered;
       }
+      activeSubPool = pool;
 
-      const schedule = [];
+      activeSubscriptionSchedule = [];
+      for (let day = 1; day <= days; day++) {
+        const lunchIdx = (day * 2 - 2) % pool.length;
+        const dinnerIdx = (day * 2 - 1) % pool.length;
+        activeSubscriptionSchedule.push({
+          day,
+          lunchIdx,
+          dinnerIdx
+        });
+      }
+      renderSubscriptionView();
+    }
+
+    function swapSubscriptionMeal(dayIndex, slotType) {
+      if (!activeSubPool.length) return;
+      const item = activeSubscriptionSchedule[dayIndex];
+      if (!item) return;
+      if (slotType === "lunch") {
+        item.lunchIdx = (item.lunchIdx + 1) % activeSubPool.length;
+      } else {
+        item.dinnerIdx = (item.dinnerIdx + 1) % activeSubPool.length;
+      }
+      renderSubscriptionView();
+    }
+
+    function renderSubscriptionView() {
+      const days = activeSubscriptionSchedule.length || 5;
       let totalProt = 0, totalKcal = 0, totalFibre = 0, totalCost = 0;
 
-      for (let day = 1; day <= days; day++) {
-        const lunchDish = pool[(day * 2 - 2) % pool.length];
-        const dinnerDish = pool[(day * 2 - 1) % pool.length];
+      const enriched = activeSubscriptionSchedule.map((s, idx) => {
+        const lunchDish = activeSubPool[s.lunchIdx % activeSubPool.length];
+        const dinnerDish = activeSubPool[s.dinnerIdx % activeSubPool.length];
         const dayProt = lunchDish.nutrition.protein + dinnerDish.nutrition.protein;
         const dayKcal = lunchDish.nutrition.kcal + dinnerDish.nutrition.kcal;
         const dayFibre = lunchDish.nutrition.fibre + dinnerDish.nutrition.fibre;
@@ -2410,9 +2706,8 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
         totalKcal += dayKcal;
         totalFibre += dayFibre;
         totalCost += (lunchDish.price_inr + dinnerDish.price_inr);
-
-        schedule.push({ day, lunchDish, dinnerDish, dayProt, dayKcal, dayFibre });
-      }
+        return { idx, day: s.day, lunchDish, dinnerDish, dayProt, dayKcal, dayFibre };
+      });
 
       const discountedCost = Math.round(totalCost * 0.85);
       document.getElementById("sub-summary-strip").innerHTML = `
@@ -2420,13 +2715,23 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           <span class="eyebrow-label">ACTIVE SUBSCRIPTION BLUEPRINT (${days} DAYS · ${days * 2} NUTRITIOUS MEALS)</span>
           <h3 style="font-size: 1.25rem; font-weight: 800;">Avg Daily Intake: <span style="color:var(--forest-hero);">${Math.round(totalProt / days)}g Protein</span> · ${Math.round(totalFibre / days)}g Fibre · ${Math.round(totalKcal / days)} kcal/day</h3>
         </div>
-        <div style="text-align: right; font-family: var(--font-mono);">
-          <div style="font-size: 0.72rem; color: var(--slate-muted);">15% SUBSCRIPTION BUNDLE SAVING</div>
-          <div style="font-size: 1.35rem; font-weight: 800; color: var(--forest-hero);">₹${discountedCost.toLocaleString()} <span style="font-size:0.85rem; text-decoration:line-through; color:var(--slate-muted);">₹${totalCost.toLocaleString()}</span></div>
+        <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+          <div style="text-align: right; font-family: var(--font-mono);">
+            <div style="font-size: 0.72rem; color: var(--slate-muted);">15% SUBSCRIPTION BUNDLE SAVING</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--forest-hero);">₹${discountedCost.toLocaleString()} <span style="font-size:0.85rem; text-decoration:line-through; color:var(--slate-muted);">₹${totalCost.toLocaleString()}</span></div>
+          </div>
+          <button type="button" class="btn-primary-lime" onclick="openSubConfirmModal(${days}, ${Math.round(totalProt / days)}, ${Math.round(totalFibre / days)}, ${Math.round(totalKcal / days)}, ${discountedCost}, ${totalCost})">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Lock &amp; Activate Subscription Plan</span>
+          </button>
         </div>
       `;
 
-      document.getElementById("sub-schedule-grid").innerHTML = schedule.map(s => `
+      const sunSvg = `<svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`;
+      const moonSvg = `<svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+      const swapSvg = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>`;
+
+      document.getElementById("sub-schedule-grid").innerHTML = enriched.map(s => `
         <div class="sub-day-card">
           <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-hairline); padding-bottom: 10px; margin-bottom: 12px;">
             <span style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--forest-hero);">DAY ${String(s.day).padStart(2, '0')} SCHEDULE</span>
@@ -2436,22 +2741,116 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           </div>
 
           <div style="padding: 10px 12px; background: var(--bg-cream); border-radius: 12px; margin-bottom: 10px;">
-            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);"><svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg> LUNCH (1:00 PM · OFFICE) · <svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High (${s.lunchDish.nutrition.healthy_score})</div>
-            <div style="font-weight: 800; font-size: 0.92rem; margin-top: 2px;">${s.lunchDish.title}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);">${sunSvg} LUNCH (1:00 PM · OFFICE) · <svg class="inline-heart-svg high-neon-heart" width="22" height="22" viewBox="-28 -28 312 312" fill="none" style="overflow:visible;"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#6CA322" stroke-width="6" stroke-linejoin="round"/><polygon points="84,34 128,58 128,88 94,70" fill="#B5EE56"/><polygon points="172,34 128,58 128,88 162,70" fill="#A4E246"/><polygon points="76,166 38,118 72,130 128,180 128,216" fill="#7AB628"/><polygon points="180,166 218,118 184,130 128,180 128,216" fill="#B2EC53"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="5" stroke-linejoin="round"/><path d="M222 24 L227 38 L241 43 L227 48 L222 62 L217 48 L203 43 L217 38 Z" fill="#E6FFAD"/></svg> High (${s.lunchDish.nutrition.healthy_score})</div>
+              <button type="button" class="sub-swap-btn" onclick="swapSubscriptionMeal(${s.idx}, 'lunch')">${swapSvg} Swap Meal</button>
+            </div>
+            <div style="font-weight: 800; font-size: 0.92rem; margin-top: 4px;">${s.lunchDish.title}</div>
             <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--forest-hero); margin-top: 3px;">
               ${s.lunchDish.nutrition.protein}g P · ${s.lunchDish.nutrition.fat}g F · ${s.lunchDish.nutrition.carbs}g C · ${s.lunchDish.nutrition.fibre}g Fib (${s.lunchDish.nutrition.kcal} kcal)
             </div>
           </div>
 
           <div style="padding: 10px 12px; background: var(--bg-cream); border-radius: 12px;">
-            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);"><svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> DINNER (8:00 PM · HOME) · <svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High (${s.dinnerDish.nutrition.healthy_score})</div>
-            <div style="font-weight: 800; font-size: 0.92rem; margin-top: 2px;">${s.dinnerDish.title}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);">${moonSvg} DINNER (8:00 PM · HOME) · <svg class="inline-heart-svg high-neon-heart" width="22" height="22" viewBox="-28 -28 312 312" fill="none" style="overflow:visible;"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#6CA322" stroke-width="6" stroke-linejoin="round"/><polygon points="84,34 128,58 128,88 94,70" fill="#B5EE56"/><polygon points="172,34 128,58 128,88 162,70" fill="#A4E246"/><polygon points="76,166 38,118 72,130 128,180 128,216" fill="#7AB628"/><polygon points="180,166 218,118 184,130 128,180 128,216" fill="#B2EC53"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="5" stroke-linejoin="round"/><path d="M222 24 L227 38 L241 43 L227 48 L222 62 L217 48 L203 43 L217 38 Z" fill="#E6FFAD"/></svg> High (${s.dinnerDish.nutrition.healthy_score})</div>
+              <button type="button" class="sub-swap-btn" onclick="swapSubscriptionMeal(${s.idx}, 'dinner')">${swapSvg} Swap Meal</button>
+            </div>
+            <div style="font-weight: 800; font-size: 0.92rem; margin-top: 4px;">${s.dinnerDish.title}</div>
             <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--forest-hero); margin-top: 3px;">
               ${s.dinnerDish.nutrition.protein}g P · ${s.dinnerDish.nutrition.fat}g F · ${s.dinnerDish.nutrition.carbs}g C · ${s.dinnerDish.nutrition.fibre}g Fib (${s.dinnerDish.nutrition.kcal} kcal)
             </div>
           </div>
         </div>
       `).join("");
+    }
+
+    function openSubConfirmModal(days, avgProt, avgFibre, avgKcal, discountedCost, totalCost) {
+      const genreSelect = document.getElementById("sub-genre");
+      const genreText = genreSelect ? genreSelect.options[genreSelect.selectedIndex].text : "All High-Score Genres";
+      const modal = document.getElementById("sub-confirm-modal");
+      const content = document.getElementById("sub-confirm-modal-content");
+      if (!modal || !content) return;
+
+      let secondsLeft = 5;
+      content.innerHTML = `
+        <div style="width:68px; height:68px; margin:0 auto 14px; border-radius:50%; background:rgba(140,230,46,0.16); border:2px solid var(--lime-neon); display:flex; align-items:center; justify-content:center; box-shadow:0 0 28px rgba(140,230,46,0.45);">
+          <svg width="42" height="42" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" fill="#8CE62E"/><path d="M50 75 C44 70 23 55 23 37 C23 25.5 31.5 18.5 41 18.5 C46 18.5 48.8 21 50 24.8 C51.2 21 54 18.5 59 18.5 C68.5 18.5 77 25.5 77 37 C77 43.2 73.8 49 69 54.2" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 75 C45 71 35 62 28 51" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round"/><path d="M65 46 L68.4 55.6 L78 59 L68.4 62.4 L65 72 L61.6 62.4 L52 59 L61.6 55.6 Z" fill="#182813"/></svg>
+        </div>
+        <div style="font-family:var(--font-mono); font-size:0.72rem; font-weight:800; color:var(--lime-neon); letter-spacing:0.12em;">
+          ✓ HEALTHY SUBSCRIPTION LOCKED &amp; SCHEDULED
+        </div>
+        <h3 style="font-size:1.5rem; font-weight:800; color:#FFFFFF; margin-top:6px;">
+          ${days}-Day Automated Healthy Meal Plan Confirmed
+        </h3>
+        <p style="font-size:0.86rem; color:#9CA3AF; margin-top:4px; margin-bottom:18px;">
+          Every scheduled Lunch and Dinner is verified above the strict <strong style="color:var(--lime-neon);">High (≥72)</strong> Healthy Score gate.
+        </p>
+
+        <div style="background:#0F1216; border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:16px 18px; text-align:left; font-size:0.84rem; margin-bottom:18px;">
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.1);">
+            <span style="color:#9CA3AF;">Selected Plan Duration:</span>
+            <strong style="color:#FFF;">${days} Days (${days * 2} High-Score Meals)</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.1);">
+            <span style="color:#9CA3AF;">Preferred Food Genre:</span>
+            <strong style="color:var(--lime-neon);">${genreText}</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.1);">
+            <span style="color:#9CA3AF;">Daily Delivery Windows:</span>
+            <strong style="color:#FFF;">1:00 PM (Office) &amp; 8:00 PM (Home)</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.1);">
+            <span style="color:#9CA3AF;">Avg Daily Macro Target:</span>
+            <strong style="color:#8CE62E;">${avgProt}g Protein · ${avgFibre}g Fibre · ${avgKcal} kcal</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:8px 0 2px;">
+            <span style="color:#9CA3AF;">Bundle Total (15% Saving):</span>
+            <strong style="color:#FFF; font-size:1.05rem;">₹${discountedCost.toLocaleString()} <span style="font-size:0.78rem; color:#64748B; text-decoration:line-through;">₹${totalCost.toLocaleString()}</span></strong>
+          </div>
+        </div>
+
+        <div style="width:100%; height:5px; background:rgba(255,255,255,0.1); border-radius:999px; overflow:hidden; margin-bottom:12px;">
+          <div id="sub-modal-progress-bar" style="width:100%; height:100%; background:var(--lime-neon); transition:width 5s linear;"></div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span id="sub-modal-timer-txt" style="font-family:var(--font-mono); font-size:0.72rem; color:#9CA3AF;">
+            Auto-closing notification in 5s...
+          </span>
+          <button type="button" onclick="closeSubConfirmModal()" class="btn-primary-lime" style="padding:8px 18px; font-size:0.78rem;">
+            Done · Close Now
+          </button>
+        </div>
+      `;
+
+      modal.classList.add("open");
+      setTimeout(() => {
+        const bar = document.getElementById("sub-modal-progress-bar");
+        if (bar) bar.style.width = "0%";
+      }, 40);
+
+      if (subModalTimer) clearTimeout(subModalTimer);
+      if (subModalCountdownInterval) clearInterval(subModalCountdownInterval);
+
+      subModalCountdownInterval = setInterval(() => {
+        secondsLeft--;
+        const txt = document.getElementById("sub-modal-timer-txt");
+        if (txt && secondsLeft > 0) {
+          txt.innerText = `Auto-closing notification in ${secondsLeft}s...`;
+        }
+      }, 1000);
+
+      subModalTimer = setTimeout(() => {
+        closeSubConfirmModal();
+      }, 5000);
+    }
+
+    function closeSubConfirmModal() {
+      const modal = document.getElementById("sub-confirm-modal");
+      if (modal) modal.classList.remove("open");
+      if (subModalTimer) clearTimeout(subModalTimer);
+      if (subModalCountdownInterval) clearInterval(subModalCountdownInterval);
     }
 
     window.addEventListener("DOMContentLoaded", () => {
