@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HEALTHY MODE // AI Nutritional Scoring &amp; Subscription Engine · Case Study by Mohd Amir Ali</title>
+  <title>HEALTHY MODE - AI Nutritional Scoring &amp; Subscription Engine · Case Study by Mohd Amir Ali</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%238CE62E'/%3E%3Cpath d='M50 76 C50 76 22 57 22 37 C22 25 31 18 41 18 C46 18 49 21 50 25 C51 21 54 18 59 18 C69 18 78 25 78 37 C78 44 74 50 69 56' fill='none' stroke='%23182813' stroke-width='8.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M50 76 C45 72 34 63 27 52' fill='none' stroke='%23182813' stroke-width='8.5' stroke-linecap='round'/%3E%3Cpath d='M65 46 L68 56 L78 59 L68 62 L65 72 L62 62 L52 59 L62 56 Z' fill='%23182813'/%3E%3C/svg%3E" />
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800;1,900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
@@ -931,6 +931,334 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       border-color: var(--forest-hero);
       transform: translateY(-2px);
     }
+  
+/* ==========================================================================
+   ENHANCED HOVER, FLOATING, CURSOR TOOLTIP, MODALS & WORD-BY-WORD TRANSITIONS
+   ========================================================================== */
+.hm-hero-brand-lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  position: relative;
+  padding: 10px 18px 12px 0;
+  border-radius: 20px;
+  transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hm-hero-brand-lockup::before {
+  content: "";
+  position: absolute;
+  inset: -12px -24px -12px -16px;
+  background: radial-gradient(ellipse at center, rgba(140, 230, 46, 0.22) 0%, rgba(140, 230, 46, 0.06) 52%, transparent 75%);
+  opacity: 0;
+  transition: opacity 0.34s ease, transform 0.34s ease;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 28px;
+}
+
+.hm-hero-brand-lockup:hover::before {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.hm-hero-brand-lockup > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hm-hero-brand-lockup:hover .hm-display-logo {
+  color: #A8F542;
+  text-shadow: 0 0 16px rgba(140, 230, 46, 0.52), 0 0 34px rgba(140, 230, 46, 0.24);
+  transform: translateY(-2px);
+}
+
+.hm-hero-brand-lockup:hover .hm-o-svg {
+  transform: skewX(-7deg) scale(1.07);
+  filter: drop-shadow(0 0 18px rgba(140, 230, 46, 0.72));
+}
+
+.hm-hero-brand-lockup:hover .hm-introducing-kicker {
+  color: #E6FFAD;
+  text-shadow: 0 0 12px rgba(140, 230, 46, 0.45);
+}
+
+/* Faster, Noticeably Smooth Floating Levitation for Guide Card */
+@keyframes guideCardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-13px);
+  }
+}
+
+.heart-scale-card {
+  animation: guideCardFloat 2.2s ease-in-out infinite !important;
+}
+
+.heart-scale-card:hover {
+  animation-play-state: paused !important;
+  transform: translateY(-12px) scale(1.018) !important;
+}
+
+/* Per-Heart Color Neon Highlights (Red/Orange for Low, Amber for Medium, Intense Sparkle Lime for High) */
+.heart-node svg {
+  overflow: visible !important;
+}
+
+.heart-node-low:hover {
+  transform: translateY(-5px) scale(1.13);
+  filter: drop-shadow(0 0 12px rgba(226, 99, 52, 0.85)) drop-shadow(0 0 22px rgba(217, 91, 43, 0.55));
+}
+
+.heart-node-medium:hover {
+  transform: translateY(-5px) scale(1.13);
+  filter: drop-shadow(0 0 12px rgba(236, 195, 71, 0.88)) drop-shadow(0 0 22px rgba(223, 177, 52, 0.55));
+}
+
+.heart-node-high:hover {
+  transform: translateY(-6px) scale(1.22) !important;
+  filter: drop-shadow(0 0 18px rgba(140, 230, 46, 1)) drop-shadow(0 0 36px rgba(190, 242, 100, 0.92)) drop-shadow(0 0 54px rgba(140, 230, 46, 0.65)) !important;
+}
+
+.high-neon-heart {
+  filter: drop-shadow(0 0 8px rgba(140, 230, 46, 0.85)) drop-shadow(0 0 16px rgba(190, 242, 100, 0.55));
+}
+
+/* Modern Cursor-Following Floating Text Label (Pure Typography, No Clunky Box) */
+#cursor-heart-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -140%) scale(0.94);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.85);
+}
+
+#cursor-heart-tooltip.visible {
+  opacity: 1;
+  transform: translate(-50%, -155%) scale(1);
+}
+
+/* Word-by-Word Scroll Reveal Transition for Stage Code Snippets */
+.scroll-code-block .code-word-token {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+  transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
+}
+
+.scroll-code-block.revealed .code-word-token {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Interactive 5-Parameter Weight Bar inside "What is Healthy Score?" */
+.param-weight-bar-wrap {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.param-weight-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.param-weight-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #65A30D 0%, #8CE62E 100%);
+  box-shadow: 0 0 10px rgba(140, 230, 46, 0.55);
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.param-row-card:hover .param-weight-fill {
+  filter: brightness(1.22);
+  box-shadow: 0 0 16px rgba(140, 230, 46, 0.9);
+}
+
+/* Live 5-Parameter Sub-Score Progress Bars on Customer Card (Tab 2) */
+.live-subscore-bars-box {
+  background: var(--obsidian-inner);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.subscore-bar-row {
+  margin-bottom: 9px;
+}
+
+.subscore-bar-row:last-child {
+  margin-bottom: 0;
+}
+
+.subscore-bar-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  color: #D1D5DB;
+  margin-bottom: 4px;
+}
+
+.subscore-bar-track {
+  width: 100%;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.subscore-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+}
+
+/* Smart AI Kitchen Swap Button & Hover Explanation Tooltip */
+.kitchen-swap-wrap {
+  position: relative;
+  margin-top: 12px;
+}
+
+.btn-kitchen-swap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(140, 230, 46, 0.16) 0%, rgba(40, 56, 29, 0.85) 100%);
+  border: 1.5px solid rgba(140, 230, 46, 0.55);
+  color: var(--lime-neon);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.btn-kitchen-swap:hover {
+  background: var(--lime-neon);
+  color: #14171A;
+  box-shadow: 0 0 22px rgba(140, 230, 46, 0.45);
+  transform: translateY(-1px);
+}
+
+.kitchen-swap-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #0F1419;
+  border: 1px solid var(--lime-neon);
+  color: #E5E7EB;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 30;
+}
+
+.kitchen-swap-wrap:hover .kitchen-swap-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Menu Explorer Card Flex Alignment & Hover */
+.explorer-card-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.24s ease, box-shadow 0.24s ease;
+}
+
+.explorer-card-flex:hover {
+  transform: translateY(-4px);
+  border-color: rgba(140, 230, 46, 0.55);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45), 0 0 20px rgba(140, 230, 46, 0.14);
+}
+
+/* Popup Modals (Dish Detail Modal & 5s Auto-Closing Subscription Modal) */
+.hm-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 15, 19, 0.78);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hm-modal-backdrop.open {
+  display: flex;
+}
+
+.hm-modal-box {
+  background: #15181E;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(140, 230, 46, 0.5);
+  border-radius: 24px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px 30px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.75), 0 0 36px rgba(140, 230, 46, 0.2);
+  position: relative;
+}
+
+.sub-swap-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  color: var(--forest-hero);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.sub-swap-btn:hover {
+  background: var(--forest-hero);
+  color: var(--lime-neon);
+  border-color: var(--forest-hero);
+}
+
   </style>
 </head>
 <body>
@@ -953,16 +1281,9 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
   <header class="site-header">
     <div class="header-inner">
       <a onclick="switchTab('overview')" class="brand-lockup">
-        <div class="brand-heart-badge" title="Healthy Mode O-Heart-Plus Project Emblem">
-          <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
-            <circle cx="50" cy="50" r="46" fill="#8CE62E"/>
-            <path d="M50 75 C44 70 23 55 23 37 C23 25.5 31.5 18.5 41 18.5 C46 18.5 48.8 21 50 24.8 C51.2 21 54 18.5 59 18.5 C68.5 18.5 77 25.5 77 37 C77 43.2 73.8 49 69 54.2" stroke="#182813" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M50 75 C45 71 35 62 28 51" stroke="#182813" stroke-width="8" stroke-linecap="round"/>
-            <path d="M65 46 L68.2 55.8 L78 59 L68.2 62.2 L65 72 L61.8 62.2 L52 59 L61.8 55.8 Z" fill="#182813"/>
-          </svg>
-        </div>
+        <div class="brand-heart-badge"><svg width="28" height="28" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" fill="#8CE62E"/><path d="M50 75 C44 70 23 55 23 37 C23 25.5 31.5 18.5 41 18.5 C46 18.5 48.8 21 50 24.8 C51.2 21 54 18.5 59 18.5 C68.5 18.5 77 25.5 77 37 C77 43.2 73.8 49 69 54.2" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 75 C45 71 35 62 28 51" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round"/><path d="M65 46 L68.4 55.6 L78 59 L68.4 62.4 L65 72 L61.6 62.4 L52 59 L61.6 55.6 Z" fill="#182813"/></svg></div>
         <div class="brand-text">
-          <span class="brand-name">HEALTHY MODE <span style="color: var(--forest-hero);">//</span> AI NUTRITION ENGINE</span>
+          <span class="brand-name">HEALTHY MODE <span style="color: var(--forest-hero);">-</span> AI NUTRITION ENGINE</span>
           <span class="brand-tagline">Product Specialist · Engineer at Heart · Case Study</span>
         </div>
       </a>
@@ -994,29 +1315,10 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
             <span>AI-POWERED NUTRITIONAL TRANSPARENCY IN FOOD DELIVERY</span>
           </div>
 
-          <div class="hm-hero-brand-lockup" aria-label="INTRODUCING HEALTHY MODE">
-            <!-- Iconic Vertical 'ON' Toggle Pill with O-Heart-Plus Knob -->
-            <div class="hm-on-pill-toggle" onclick="switchTab('explorer')" title="Healthy Mode ON · Click to Explore Menu">
-              <span class="hm-on-pill-text">ON</span>
-              <div class="hm-on-pill-knob">
-                <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
-                  <path d="M50 76 C43 70 20 54 20 35 C20 23 29 15 39.5 15 C45 15 48.5 18 50 22 C51.5 18 55 15 60.5 15 C71 15 80 23 80 35 C80 42 76.5 48 71 53.5" stroke="#182813" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M50 76 C44 71 33 61 25 49" stroke="#182813" stroke-width="8.5" stroke-linecap="round"/>
-                  <path d="M66 45 L69.5 55.5 L80 59 L69.5 62.5 L66 73 L62.5 62.5 L52 59 L62.5 55.5 Z" fill="#182813"/>
-                </svg>
-              </div>
-            </div>
-
-            <div>
-              <div class="hm-introducing-kicker">INTRODUCING</div>
-              <div class="hm-display-logo">
-                HEALTHY<br/><span class="hm-mode-line">M<svg class="hm-o-svg" viewBox="0 0 100 100" role="img" aria-label="O with Heart and Plus Sparkle">
-                  <circle cx="50" cy="50" r="46" fill="#8CE62E"/>
-                  <path d="M50 75 C44 70 23 55 23 37 C23 25.5 31.5 18.5 41 18.5 C46 18.5 48.8 21 50 24.8 C51.2 21 54 18.5 59 18.5 C68.5 18.5 77 25.5 77 37 C77 43.2 73.8 49 69 54.2" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M50 75 C45 71 35 62 28 51" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round"/>
-                  <path d="M65 46 L68.4 55.6 L78 59 L68.4 62.4 L65 72 L61.6 62.4 L52 59 L61.6 55.6 Z" fill="#182813"/>
-                </svg>DE</span>
-              </div>
+                    <div class="hm-hero-brand-lockup" aria-label="INTRODUCING HEALTHY MODE">
+            <div class="hm-introducing-kicker">INTRODUCING</div>
+            <div class="hm-display-logo">
+              HEALTHY<br/><span class="hm-mode-line">M<svg class="hm-o-svg" viewBox="0 0 100 100" role="img" aria-label="O with Heart and Plus"><circle cx="50" cy="50" r="46" fill="#8CE62E"/><path d="M50 75 C44 70 23 55 23 37 C23 25.5 31.5 18.5 41 18.5 C46 18.5 48.8 21 50 24.8 C51.2 21 54 18.5 59 18.5 C68.5 18.5 77 25.5 77 37 C77 43.2 73.8 49 69 54.2" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 75 C45 71 35 62 28 51" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round"/><path d="M65 46 L68.4 55.6 L78 59 L68.4 62.4 L65 72 L61.6 62.4 L52 59 L61.6 55.6 Z" fill="#182813"/></svg>DE</span>
             </div>
           </div>
 
@@ -1040,67 +1342,73 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           </div>
         </div>
 
-        <!-- Right: Floating 3-Heart Scale Card + Featured Dish Card Preview -->
+                <!-- Right: Floating 3-Heart Scale Card + Hover-Linked Dish Preview -->
         <div>
-          <div class="heart-scale-card" style="margin-bottom: 18px;">
+          <div class="heart-scale-card" style="margin-bottom: 18px;" onmouseleave="previewHeroHeartTier('High')">
             <div class="heart-scale-title">Your guide to making healthy food choices</div>
-            <div class="heart-track-row">
+                        <div class="heart-track-row">
               <div class="heart-track-line"></div>
 
-              <!-- Low Heart (Exact Generated Quarter-Filled Wavy Terracotta Heart) -->
-              <div class="heart-node" onclick="switchTab('explorer'); filterMenuByTier('Low')" title="Filter Low Healthy Score Dishes">
-                <svg width="52" height="52" viewBox="0 0 256 256" fill="none">
-                  <circle cx="128" cy="128" r="118" fill="#181C17" stroke="#D95B2B" stroke-width="8"/>
+              <!-- Low Heart (Exact Clipped Quarter-Filled Wavy Terracotta Heart · Red-Orange Neon Hover) -->
+              <div class="heart-node heart-node-low"
+                   onmouseenter="previewHeroHeartTier('Low'); showHeartCursorTip(event, 'Click to filter low healthy dishes ↗', '#F0855B')"
+                   onmousemove="moveHeartCursorTip(event)"
+                   onmouseleave="hideHeartCursorTip()"
+                   onclick="switchTab('explorer'); filterMenuByTier('Low')">
+                <svg width="56" height="56" viewBox="-40 -40 336 336" fill="none" style="overflow: visible;">
                   <defs>
-                    <clipPath id="heroLowHeartClip">
+                    <clipPath id="heroLowClipMaster">
                       <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z"/>
                     </clipPath>
-                    <linearGradient id="heroLowLiquidGrad" x1="0" y1="145" x2="0" y2="202" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="heroLowGradMaster" x1="0" y1="148" x2="0" y2="202" gradientUnits="userSpaceOnUse">
                       <stop offset="0%" stop-color="#E26334"/>
                       <stop offset="100%" stop-color="#C84B20"/>
                     </linearGradient>
                   </defs>
-                  <g clip-path="url(#heroLowHeartClip)">
-                    <path d="M40 158 Q88 148 128 158 T216 154 L216 212 L40 212 Z" fill="url(#heroLowLiquidGrad)"/>
-                    <path d="M44 158 Q88 148 128 158 T212 154" stroke="#F0855B" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="128" cy="128" r="118" fill="#181C17" stroke="#D95B2B" stroke-width="9"/>
+                  <g clip-path="url(#heroLowClipMaster)">
+                    <path d="M36 160 Q88 148 128 160 T220 156 L220 212 L36 212 Z" fill="url(#heroLowGradMaster)"/>
+                    <path d="M40 160 Q88 148 128 160 T216 156" stroke="#F0855B" stroke-width="5.5" stroke-linecap="round" fill="none"/>
                   </g>
-                  <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z" stroke="#D95B2B" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z" stroke="#D95B2B" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                 </svg>
-                <span class="heart-node-label">Low</span>
+                <span class="heart-node-label" id="hero-lbl-Low">Low</span>
               </div>
 
-              <!-- Medium Heart (Exact Generated Half-Filled Wavy Golden-Amber Heart) -->
-              <div class="heart-node" onclick="switchTab('explorer'); filterMenuByTier('Medium')" title="Filter Medium Healthy Score Dishes">
-                <svg width="52" height="52" viewBox="0 0 256 256" fill="none">
-                  <circle cx="128" cy="128" r="118" fill="#181C17" stroke="#DFB134" stroke-width="8"/>
+              <!-- Medium Heart (Exact Clipped Half-Filled Wavy Golden-Amber Heart · Amber Neon Hover) -->
+              <div class="heart-node heart-node-medium"
+                   onmouseenter="previewHeroHeartTier('Medium'); showHeartCursorTip(event, 'Click to filter medium healthy dishes ↗', '#F8DC78')"
+                   onmousemove="moveHeartCursorTip(event)"
+                   onmouseleave="hideHeartCursorTip()"
+                   onclick="switchTab('explorer'); filterMenuByTier('Medium')">
+                <svg width="56" height="56" viewBox="-40 -40 336 336" fill="none" style="overflow: visible;">
                   <defs>
-                    <clipPath id="heroMedHeartClip">
+                    <clipPath id="heroMedClipMaster">
                       <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z"/>
                     </clipPath>
-                    <linearGradient id="heroMedLiquidGrad" x1="0" y1="114" x2="0" y2="202" gradientUnits="userSpaceOnUse">
+                    <linearGradient id="heroMedGradMaster" x1="0" y1="114" x2="0" y2="202" gradientUnits="userSpaceOnUse">
                       <stop offset="0%" stop-color="#ECC347"/>
                       <stop offset="100%" stop-color="#D4A024"/>
                     </linearGradient>
                   </defs>
-                  <g clip-path="url(#heroMedHeartClip)">
-                    <path d="M40 124 Q88 112 128 126 T216 120 L216 212 L40 212 Z" fill="url(#heroMedLiquidGrad)"/>
-                    <path d="M44 124 Q88 112 128 126 T212 120" stroke="#F8DC78" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="128" cy="128" r="118" fill="#181C17" stroke="#DFB134" stroke-width="9"/>
+                  <g clip-path="url(#heroMedClipMaster)">
+                    <path d="M36 124 Q88 112 128 126 T220 120 L220 212 L36 212 Z" fill="url(#heroMedGradMaster)"/>
+                    <path d="M40 124 Q88 112 128 126 T216 120" stroke="#F8DC78" stroke-width="5.5" stroke-linecap="round" fill="none"/>
                   </g>
-                  <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z" stroke="#DFB134" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M128 198 C128 198 52 148 52 96 C52 68 74 50 98 50 C113 50 123 58 128 68 C133 58 143 50 158 50 C182 50 204 68 204 96 C204 148 128 198 128 198 Z" stroke="#DFB134" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
                 </svg>
-                <span class="heart-node-label">Medium</span>
+                <span class="heart-node-label" id="hero-lbl-Medium">Medium</span>
               </div>
 
-              <!-- High Heart (Exact Generated 3D Faceted Lime-Green Gem Heart + Neon Sparkle Burst on Hover) -->
-              <div class="heart-node heart-node-high" onclick="switchTab('explorer'); filterMenuByTier('High')" title="Hover for Neon Sparkle · Click to Filter High Healthy Score Dishes">
-                <svg width="56" height="56" viewBox="0 0 256 256" fill="none">
-                  <circle cx="128" cy="128" r="118" fill="rgba(140, 230, 46, 0.16)" stroke="#8CE62E" stroke-width="10"/>
-                  <defs>
-                    <linearGradient id="heroCenterGem" x1="0" y1="78" x2="0" y2="176" gradientUnits="userSpaceOnUse">
-                      <stop offset="0%" stop-color="#C8FA5F"/>
-                      <stop offset="100%" stop-color="#9BE13B"/>
-                    </linearGradient>
-                  </defs>
+              <!-- High Heart (Exact Generated 3D Faceted Lime-Green Gem Heart + Unclipped Neon Sparkle Burst on Hover) -->
+              <div class="heart-node heart-node-high"
+                   onmouseenter="previewHeroHeartTier('High'); showHeartCursorTip(event, 'Click to filter high healthy dishes ↗', '#A8F542')"
+                   onmousemove="moveHeartCursorTip(event)"
+                   onmouseleave="hideHeartCursorTip()"
+                   onclick="switchTab('explorer'); filterMenuByTier('High')">
+                <svg width="62" height="62" viewBox="-44 -44 344 344" fill="none" style="overflow: visible;">
+                  <circle cx="128" cy="128" r="118" fill="rgba(140, 230, 46, 0.18)" stroke="#8CE62E" stroke-width="10"/>
                   <g transform="translate(22, 20) scale(0.83)">
                     <polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#6CA322" stroke-width="4" stroke-linejoin="round"/>
                     <polygon points="84,34 128,58 128,88 94,70" fill="#B5EE56"/>
@@ -1114,56 +1422,53 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
                     <polyline points="84,34 94,70 128,88 162,70 172,34" stroke="#E6FFAD" stroke-width="3" fill="none"/>
                     <polyline points="42,66 68,94 72,130 128,180 184,130 188,94 214,66" stroke="#E6FFAD" stroke-width="3" fill="none"/>
                     <line x1="128" y1="180" x2="128" y2="216" stroke="#E6FFAD" stroke-width="3.5"/>
-                    <path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="url(#heroCenterGem)" stroke="#E9FFB8" stroke-width="3" stroke-linejoin="round"/>
+                    <path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="3" stroke-linejoin="round"/>
                   </g>
-                  <!-- Neon Sparkle Rays on Hover -->
+                  <!-- Unclipped Outer & Inner Neon Sparkles on Hover -->
                   <g class="neon-sparkle-group">
-                    <path d="M214 38 L219 52 L233 57 L219 62 L214 76 L209 62 L195 57 L209 52 Z" fill="#E6FFAD"/>
-                    <path d="M42 46 L45 55 L54 58 L45 61 L42 70 L39 61 L30 58 L39 55 Z" fill="#BEF264"/>
-                    <path d="M218 182 L221 191 L230 194 L221 197 L218 206 L215 197 L206 194 L215 191 Z" fill="#8CE62E"/>
+                    <path d="M238 -6 L245 14 L265 21 L245 28 L238 48 L231 28 L211 21 L231 14 Z" fill="#E6FFAD"/>
+                    <path d="M14 6 L19 20 L33 25 L19 30 L14 44 L9 30 L-5 25 L9 20 Z" fill="#BEF264"/>
+                    <path d="M244 196 L249 210 L263 215 L249 220 L244 234 L239 220 L225 215 L239 210 Z" fill="#8CE62E"/>
+                    <path d="M18 204 L22 214 L32 218 L22 222 L18 232 L14 222 L4 218 L14 214 Z" fill="#D9F99D"/>
                   </g>
                 </svg>
-                <span class="heart-node-label" style="color: var(--lime-neon);">High</span>
+                <span class="heart-node-label" id="hero-lbl-High" style="color: var(--lime-neon);">High</span>
               </div>
             </div>
 
-            <!-- Floating Sample Macro Pill (BBQ Cottage Cheese Salad) -->
-            <div class="hero-sample-dish-box">
+            <!-- Hover-Linked Dish Preview Box (Defaults to BBQ Cottage Cheese Salad, updates on Low/Medium/High hover) -->
+            <div class="hero-sample-dish-box" id="hero-preview-dish-box" onclick="switchTab('calculator')">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
                 <span style="display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.92rem;">
-                  <span class="veg-square"></span> BBQ Cottage Cheese Salad
+                  <span id="hero-prev-veg" class="veg-square"></span>
+                  <span id="hero-prev-title">BBQ Cottage Cheese Salad</span>
                 </span>
-                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--lime-neon);">SCORE: 82.4 / 100</span>
+                <span id="hero-prev-score" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--lime-neon); font-weight: 700;">SCORE: 82.4 / 100</span>
               </div>
               <div class="macro-strip-container" style="margin: 0;">
                 <div class="kcal-neutral-box">
-                  <span class="num">400</span>
+                  <span class="num" id="hero-prev-kcal">400</span>
                   <span class="unit">kcal</span>
                 </div>
-                <div class="macros-green-pill">
+                <div class="macros-green-pill" id="hero-prev-pill">
                   <div class="macro-col">
-                    <span class="val" style="display: flex; justify-content: center; align-items: center;">
-                      <svg width="22" height="22" viewBox="0 0 256 256" fill="none">
-                        <polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="8" stroke-linejoin="round"/>
-                        <path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="5" stroke-linejoin="round"/>
-                      </svg>
-                    </span>
-                    <span class="lbl" style="color: #FFF; font-weight: 700;">High</span>
+                    <span class="val" id="hero-prev-heart" style="display: flex; justify-content: center; align-items: center;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" /></span>
+                    <span class="lbl" id="hero-prev-tier" style="color: #FFF; font-weight: 700;">High</span>
                   </div>
                   <div class="macro-col">
-                    <span class="val">23g</span>
+                    <span class="val" id="hero-prev-prot">23g</span>
                     <span class="lbl">protein</span>
                   </div>
                   <div class="macro-col">
-                    <span class="val">26g</span>
+                    <span class="val" id="hero-prev-fat">26g</span>
                     <span class="lbl">fat</span>
                   </div>
                   <div class="macro-col">
-                    <span class="val">26g</span>
+                    <span class="val" id="hero-prev-carbs">26g</span>
                     <span class="lbl">carbs</span>
                   </div>
                   <div class="macro-col">
-                    <span class="val">9g</span>
+                    <span class="val" id="hero-prev-fibre">9g</span>
                     <span class="lbl">fibre</span>
                   </div>
                 </div>
@@ -1177,7 +1482,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       <section class="editorial-card" style="border-left: 6px solid var(--forest-hero); margin-bottom: 28px;">
         <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--border-hairline); margin-bottom: 20px;">
           <div>
-            <span class="eyebrow-label">CORE AI ALGORITHM SPECIFICATION // TWO-STAGE HYBRID ARCHITECTURE</span>
+            <span class="eyebrow-label">CORE AI ALGORITHM SPECIFICATION - TWO-STAGE HYBRID ARCHITECTURE</span>
             <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--ink-dark); margin-top: 2px;">
               Algorithm Name: <code style="background: var(--forest-hero); color: var(--lime-neon); padding: 4px 10px; border-radius: 8px; font-size: 1.15rem;">NutriDecomp-NER + WNDS-5</code>
             </h2>
@@ -1194,13 +1499,13 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(295px, 1fr)); gap: 18px;">
           <div style="background: var(--bg-cream); border: 1px solid var(--border-hairline); border-radius: 14px; padding: 18px 20px;">
             <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--forest-hero); margin-bottom: 6px;">
-              STAGE 1 AI MODEL // NUTRIDECOMP-NER + THERMAL REGRESSOR
+              STAGE 1 AI MODEL - NUTRIDECOMP-NER + THERMAL REGRESSOR
             </div>
             <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;">1. Mx Prep Grams → ICMR-NIN Macro Vector</h3>
             <p style="font-size: 0.85rem; color: var(--slate-muted); margin-bottom: 10px;">
               Restaurant partners (<code>Mx</code>) enter approximate ingredient weights (<i>w<sub>i</sub></i> in grams) and cooking style. Our <strong>Food-NER Transformer</strong> maps each ingredient to its per-100g ICMR-NIN nutrient vector and adds cooking-method oil absorption (<i>α<sub>method</sub></i>):
             </p>
-            <div style="background: var(--obsidian-card); color: var(--lime-neon); font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
+            <div class="scroll-code-block" style="background: var(--obsidian-card); color: var(--lime-neon); font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
               Macro<sub>k</sub> = ∑ [ (w<sub>i</sub> ÷ 100) × ICMR_100g<sub>i,k</sub> ] + α<sub>method,k</sub><br/>
               E<sub>kcal</sub> = 4(Protein) + 4(Carbs) + 9(Fat) &nbsp;[Neutral: 0% wt]
             </div>
@@ -1208,13 +1513,13 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
           <div style="background: var(--bg-cream); border: 1px solid var(--border-hairline); border-radius: 14px; padding: 18px 20px;">
             <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--forest-hero); margin-bottom: 6px;">
-              STAGE 2 SCORING ENGINE // WNDS-5 WEIGHTED CLASSIFIER
+              STAGE 2 SCORING ENGINE - WNDS-5 WEIGHTED CLASSIFIER
             </div>
             <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;">2. 5-Parameter Weighted Nutrient Density</h3>
             <p style="font-size: 0.85rem; color: var(--slate-muted); margin-bottom: 10px;">
               Each dish is evaluated across five normalized biometric sub-scores (<code>0–100</code>) with explicit clinical weights and a threshold penalty for excess saturated fat (&gt;7.5g) and added sugar (&gt;6.0g):
             </p>
-            <div style="background: var(--obsidian-card); color: var(--lime-neon); font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
+            <div class="scroll-code-block" style="background: var(--obsidian-card); color: var(--lime-neon); font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
               Score = 0.35(S<sub>prot</sub>) + 0.20(S<sub>carb_GI</sub>) + 0.15(S<sub>fibre</sub>)<br/>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+ 0.15(S<sub>ing</sub>) + 0.15(S<sub>cook</sub>) − P<sub>satfat,sugar</sub>
             </div>
@@ -1222,16 +1527,16 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
           <div style="background: var(--bg-cream); border: 1px solid var(--border-hairline); border-radius: 14px; padding: 18px 20px;">
             <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--forest-hero); margin-bottom: 6px;">
-              STAGE 3 DECISION GATE // HEARTS &amp; SUBSCRIPTIONS
+              STAGE 3 DECISION GATE - HEARTS &amp; SUBSCRIPTIONS
             </div>
             <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;">3. 3-Tier Heart Mapping &amp; NLG Insights</h3>
             <p style="font-size: 0.85rem; color: var(--slate-muted); margin-bottom: 10px;">
               The composite <code>WNDS-5</code> score maps deterministically to the 3-Tier Nutritional Hearts and triggers rule-based Natural Language Generation (NLG) for customer pros/cons and <strong>Healthy Subscription</strong> eligibility:
             </p>
-            <div style="background: var(--obsidian-card); color: #F3F4F6; font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.55;">
-              • <span style="color:#8CE62E;font-weight:700;"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High (≥ 72)</span> ➔ Subscription Eligible ✓<br/>
-              • <span style="color:#F5A623;font-weight:700;"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Medium (48 – 71.9)</span> ➔ Balanced Everyday<br/>
-              • <span style="color:#E0533C;font-weight:700;"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Low (&lt; 48)</span> ➔ Indulgent / Occasional
+            <div class="scroll-code-block" style="background: var(--obsidian-card); color: #F3F4F6; font-family: var(--font-mono); font-size: 0.75rem; padding: 10px 12px; border-radius: 10px; line-height: 1.65;">
+              • <span style="color:#8CE62E;font-weight:700;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" /> High (≥ 72)</span> ➔ Subscription Eligible ✓<br/>
+              • <span style="color:#F5A623;font-weight:700;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Im1lZEhlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im1lZExpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTE0IiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUNDMzQ3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Q0QTAyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBIYWxmLUZpbGxlZCBXYXZ5IEdvbGRlbiBMaXF1aWQgSW5zaWRlIEhlYXJ0IChDbGVhci9UcmFuc3BhcmVudCBCYWNrZ3JvdW5kKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjbWVkSGVhcnRDbGlwKSI+CiAgICA8cGF0aCBkPSJNMjQgMTIyIFE4MCAxMDggMTI4IDEyNCBUMjMyIDExOCBMMjMyIDIzMCBMMjQgMjMwIFoiIGZpbGw9InVybCgjbWVkTGlxdWlkR3JhZCkiLz4KICAgIDxwYXRoIGQ9Ik0yOCAxMjIgUTgwIDEwOCAxMjggMTI0IFQyMjggMTE4IiBzdHJva2U9IiNGOERDNzgiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CiAgPC9nPgogIDwhLS0gU21vb3RoIEdvbGRlbi1BbWJlciBIZWFydCBPdXRsaW5lIC0tPgogIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiIHN0cm9rZT0iI0RGQjEzNCIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=" alt="Medium Heart" class="inline-heart-svg" width="22" height="22" /> Medium (48 – 71.9)</span> ➔ Balanced Everyday<br/>
+              • <span style="color:#E0533C;font-weight:700;"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Imxvd0hlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imxvd0xpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTUwIiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTI2MzM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0M4NEIyMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBRdWFydGVyLUZpbGxlZCBXYXZ5IExpcXVpZCBJbnNpZGUgSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNsb3dIZWFydENsaXApIj4KICAgIDxwYXRoIGQ9Ik0yNCAxNjYgUTgyIDE1NCAxMjggMTY2IFQyMzIgMTYyIEwyMzIgMjMwIEwyNCAyMzAgWiIgZmlsbD0idXJsKCNsb3dMaXF1aWRHcmFkKSIvPgogICAgPHBhdGggZD0iTTI4IDE2NiBRODIgMTU0IDEyOCAxNjYgVDIyOCAxNjIiIHN0cm9rZT0iI0YwODU1QiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KICA8L2c+CiAgPCEtLSBTbW9vdGggVGVycmFjb3R0YS1PcmFuZ2UgSGVhcnQgT3V0bGluZSAtLT4KICA8cGF0aCBkPSJNMTI4IDIxNCBDMTI4IDIxNCAzNiAxNTQgMzYgOTIgQzM2IDU4IDYyIDM2IDkyIDM2IEMxMTAgMzYgMTIyIDQ2IDEyOCA1OCBDMTM0IDQ2IDE0NiAzNiAxNjQgMzYgQzE5NCAzNiAyMjAgNTggMjIwIDkyIEMyMjAgMTU0IDEyOCAyMTQgMTI4IDIxNCBaIiBzdHJva2U9IiNEOTVCMkIiIHN0cm9rZS13aWR0aD0iMTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K" alt="Low Heart" class="inline-heart-svg" width="22" height="22" /> Low (&lt; 48)</span> ➔ Indulgent / Occasional
             </div>
           </div>
         </div>
@@ -1253,76 +1558,118 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           </div>
         </div>
 
-        <div class="params-grid">
+                <div class="params-grid">
           <div class="param-row-card">
             <div class="param-circle-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 1 5 5c0 2-1.5 3.5-3 4.5V19a2 2 0 0 1-4 0v-7.5C8.5 10.5 7 9 7 7a5 5 0 0 1 5-5z"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5"/><path d="M3 10l7-7"/><path d="M14 21l7-7"/><path d="M2 6l4-4"/><path d="M18 22l4-4"/></svg>
             </div>
-            <div>
-              <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">Protein density (35%)</h3>
-              <p style="font-size: 0.86rem; color: #9CA3AF; margin-top: 4px;">
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.06rem; font-weight: 800; color: #FFFFFF;">Protein density</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; color: var(--lime-neon); background: rgba(140,230,46,0.14); padding: 2px 8px; border-radius: 999px;">35% Weight</span>
+              </div>
+              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
                 Dishes with good-quality protein per portion, like lean meats, eggs, legumes, dairy or tofu score higher.
               </p>
+              <div class="param-weight-bar-wrap">
+                <div class="param-weight-track"><div class="param-weight-fill" style="width: 100%;"></div></div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--lime-neon);">0.35 × S_prot</span>
+              </div>
             </div>
           </div>
 
           <div class="param-row-card">
             <div class="param-circle-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 16h20M4 16c0-5 4-9 8-9s8 4 8 9M9 11l1 2M15 11l-1 2"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M12 6c-3 0-5 2-5 5 3 0 5-2 5-5z"/><path d="M12 10c3 0 5 2 5 5-3 0-5-2-5-5z"/><path d="M12 14c-3 0-5 2-5 5 3 0 5-2 5-5z"/></svg>
             </div>
-            <div>
-              <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">Carb density &amp; quality (GI) (20%)</h3>
-              <p style="font-size: 0.86rem; color: #9CA3AF; margin-top: 4px;">
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.06rem; font-weight: 800; color: #FFFFFF;">Carb density &amp; quality (GI)</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; color: var(--lime-neon); background: rgba(140,230,46,0.14); padding: 2px 8px; border-radius: 999px;">20% Weight</span>
+              </div>
+              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
                 Whole grains and low-GI carbs boost the score, refined carbs can lower the score unless balanced with fibre or protein.
               </p>
+              <div class="param-weight-bar-wrap">
+                <div class="param-weight-track"><div class="param-weight-fill" style="width: 58%;"></div></div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--lime-neon);">0.20 × S_carb</span>
+              </div>
             </div>
           </div>
 
           <div class="param-row-card">
             <div class="param-circle-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22v-9M12 13c-4 0-7-3-7-7 4 0 7 3 7 7zM12 13c4 0 7-3 7-7-4 0-7 3-7 7zM7 22h10"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
             </div>
-            <div>
-              <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">Fibre &amp; micronutrients (15%)</h3>
-              <p style="font-size: 0.86rem; color: #9CA3AF; margin-top: 4px;">
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.06rem; font-weight: 800; color: #FFFFFF;">Fibre &amp; micronutrients</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; color: var(--lime-neon); background: rgba(140,230,46,0.14); padding: 2px 8px; border-radius: 999px;">15% Weight</span>
+              </div>
+              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
                 Vegetables, fruits, legumes, herbs and seeds score higher.
               </p>
+              <div class="param-weight-bar-wrap">
+                <div class="param-weight-track"><div class="param-weight-fill" style="width: 44%;"></div></div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--lime-neon);">0.15 × S_fibre</span>
+              </div>
             </div>
           </div>
 
           <div class="param-row-card">
             <div class="param-circle-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="6"/><path d="M9 10l2 2 4-4M9 15l-2 6 5-2 5 2-2-6"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
             </div>
-            <div>
-              <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">Ingredient quality (15%)</h3>
-              <p style="font-size: 0.86rem; color: #9CA3AF; margin-top: 4px;">
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.06rem; font-weight: 800; color: #FFFFFF;">Ingredient quality</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; color: var(--lime-neon); background: rgba(140,230,46,0.14); padding: 2px 8px; border-radius: 999px;">15% Weight</span>
+              </div>
+              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
                 Whole, fresh, and minimally processed foods score higher; processed or artificial ingredients score lower.
               </p>
+              <div class="param-weight-bar-wrap">
+                <div class="param-weight-track"><div class="param-weight-fill" style="width: 44%;"></div></div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--lime-neon);">0.15 × S_ing</span>
+              </div>
             </div>
           </div>
 
           <div class="param-row-card">
             <div class="param-circle-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 15h13a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3zM16 15l5-2M7 10V6M11 10V5M15 10V6"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15h16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M6 15c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M9 5v2"/><path d="M12 4v3"/><path d="M15 5v2"/></svg>
             </div>
-            <div>
-              <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">Cooking method (15%)</h3>
-              <p style="font-size: 0.86rem; color: #9CA3AF; margin-top: 4px;">
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.06rem; font-weight: 800; color: #FFFFFF;">Cooking method</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; color: var(--lime-neon); background: rgba(140,230,46,0.14); padding: 2px 8px; border-radius: 999px;">15% Weight</span>
+              </div>
+              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
                 Low-oil, steamed, or grilled dishes score higher; deep-fried ones score lower.
               </p>
+              <div class="param-weight-bar-wrap">
+                <div class="param-weight-track"><div class="param-weight-fill" style="width: 44%;"></div></div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--lime-neon);">0.15 × S_cook</span>
+              </div>
             </div>
           </div>
 
           <div class="param-row-card">
             <div class="param-circle-icon" style="color: #F59E0B; border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.12);">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4"/></svg>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             </div>
-            <div>
-              <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">Saturated fats &amp; sugar (Penalty)</h3>
-              <p style="font-size: 0.86rem; color: #9CA3AF; margin-top: 4px;">
-                High saturated fats and sugar content penalise the score.
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="font-size: 1.06rem; font-weight: 800; color: #FFFFFF;">Saturated fats &amp; sugar</h3>
+                <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 800; color: #F59E0B; background: rgba(245,158,11,0.14); padding: 2px 8px; border-radius: 999px;">Penalty Gate</span>
+              </div>
+              <p style="font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;">
+                High saturated fats (&gt;7.5g) and added sugar (&gt;6.0g) penalise the score.
               </p>
+              <div class="param-weight-bar-wrap">
+                <div class="param-weight-track"><div class="param-weight-fill" style="width: 38%; background: linear-gradient(90deg, #D97706 0%, #F59E0B 100%); box-shadow: 0 0 10px rgba(245,158,11,0.5);"></div></div>
+                <span style="font-family: var(--font-mono); font-size: 0.68rem; color: #F59E0B;">Up to −22 pts</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1352,7 +1699,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       <!-- Industry Impact & Why Competitors Should Adopt This Setup -->
       <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 22px;">
         <div class="editorial-card" style="margin-bottom: 0; border-left: 5px solid var(--forest-hero);">
-          <span class="eyebrow-label">01 // REAL-WORLD IMPLEMENTATION AT ZOMATO (ETERNAL)</span>
+          <span class="eyebrow-label">01 - REAL-WORLD IMPLEMENTATION AT ZOMATO (ETERNAL)</span>
           <h3 style="font-size: 1.22rem; font-weight: 800; margin-bottom: 10px;">Why This Architecture Changed Food Delivery</h3>
           <p style="font-size: 0.92rem; color: var(--slate-muted);">
             Historically, food delivery platforms optimized purely for impulse cravings, leaving health-conscious customers guessing macro counts. By deriving structured nutritional hearts from minimal <strong>Merchant Partner (<code>Mx</code>)</strong> preparation quantities + AI recipe decomposition, Zomato eliminated the 20-minute menu-reading barrier without requiring small kitchens to pay for expensive laboratory food testing.
@@ -1360,7 +1707,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
         </div>
 
         <div class="editorial-card" style="margin-bottom: 0; border-left: 5px solid #D97706;">
-          <span class="eyebrow-label">02 // PUBLIC HEALTH IMPACT &amp; INDUSTRY CALL TO ACTION</span>
+          <span class="eyebrow-label">02 - PUBLIC HEALTH IMPACT &amp; INDUSTRY CALL TO ACTION</span>
           <h3 style="font-size: 1.22rem; font-weight: 800; margin-bottom: 10px;">Why Competitors Should Adopt Nutritional Transparency</h3>
           <p style="font-size: 0.92rem; color: var(--slate-muted);">
             Mainstreaming upfront protein, fibre, carb-quality, and ingredient commentary sends a powerful positive message to the public: ordering in does not have to compromise long-term health. When competing food-delivery platforms adopt standardized nutritional scoring, it incentivizes restaurants nationwide to reduce deep-frying oils, swap refined flour for whole grains, and unlock recurring <strong>Healthy Subscriptions</strong>.
@@ -1374,7 +1721,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       <div class="editorial-card" style="background: var(--forest-hero); color: #FFFFFF; padding: 24px 30px; margin-bottom: 24px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
           <div>
-            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--lime-neon); letter-spacing: 0.12em;">02 // TRANSPARENT STEP-BY-STEP MATHEMATICAL ENGINE</span>
+            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--lime-neon); letter-spacing: 0.12em;">02 - TRANSPARENT STEP-BY-STEP MATHEMATICAL ENGINE</span>
             <h2 style="font-size: 1.55rem; font-weight: 800; margin-top: 4px;">Live Merchant (<code>Mx</code>) Input → AI Nutritional Heart Calculator</h2>
             <p style="font-size: 0.9rem; color: #D1D5DB; margin-top: 4px;">
               Select any restaurant dish below or drag the <code>Mx</code> ingredient gram sliders to see every mathematical calculation behind the macros and Healthy Score in real time.
@@ -1391,7 +1738,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
         <div class="editorial-card" style="margin-bottom: 0;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border-hairline);">
             <div>
-              <span class="eyebrow-label">STEP 1 // MERCHANT PARTNER (Mx) KITCHEN INPUTS</span>
+              <span class="eyebrow-label">STEP 1 - MERCHANT PARTNER (Mx) KITCHEN INPUTS</span>
               <h3 style="font-size: 1.15rem; font-weight: 800;">Approximate Preparation Quantities (Grams)</h3>
             </div>
             <span id="calc-total-weight" style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; background: var(--bg-elevated); padding: 4px 10px; border-radius: 999px;">361g Serving</span>
@@ -1433,7 +1780,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
               </div>
               <div class="macros-green-pill" id="card-macro-pill">
                 <div class="macro-col">
-                  <span class="val" id="card-heart-icon"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg></span>
+                  <span class="val" id="card-heart-icon"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" /></span>
                   <span class="lbl" id="card-tier-label" style="color: #FFFFFF; font-weight: 700;">High</span>
                 </div>
                 <div class="macro-col">
@@ -1455,6 +1802,9 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
               </div>
             </div>
 
+                        <!-- Live Animated 5-Parameter Sub-Score Progress Bars -->
+            <div class="live-subscore-bars-box" id="card-live-subscores"></div>
+
             <div style="margin-bottom: 16px;">
               <div class="commentary-heading">WHAT MAKES THIS HEALTHY</div>
               <div id="card-pros-list"></div>
@@ -1463,6 +1813,17 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
             <div style="padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.14);">
               <div class="commentary-heading">TO CONSIDER</div>
               <div id="card-cons-list"></div>
+            </div>
+
+            <!-- Smart AI Kitchen Swap Optimizer with Hover Explanation -->
+            <div class="kitchen-swap-wrap">
+              <div class="kitchen-swap-tooltip">
+                <strong style="color: var(--lime-neon);">Smart AI Kitchen Reformulator (Mx Assistant):</strong> Automatically upgrades the cooking method to low-oil Grilled/Steamed and balances high-protein/high-fibre ingredients so the kitchen team can turn a Low or Medium dish into a High (≥72) Subscription-Eligible dish.
+              </div>
+              <button type="button" class="btn-kitchen-swap" onclick="applySmartKitchenSwap()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3z"/><path d="M19 16l.9 2.1L22 19l-2.1.9L19 22l-.9-2.1L16 19l2.1-.9L19 16z"/></svg>
+                <span id="btn-kitchen-swap-label">Smart AI Kitchen Swap: Boost to High Subscription Gate</span>
+              </button>
             </div>
 
             <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.74rem;">
@@ -1479,7 +1840,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
       <!-- Bottom Full-Width Card: Step-by-Step Mathematical Proof Table -->
       <div class="editorial-card">
-        <span class="eyebrow-label">STEP 2 &amp; STEP 3 // COMPLETE MATHEMATICAL TRANSPARENCY FOR CUSTOMERS</span>
+        <span class="eyebrow-label">STEP 2 &amp; STEP 3 - COMPLETE MATHEMATICAL TRANSPARENCY FOR CUSTOMERS</span>
         <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 14px;">Exact Sub-Score Equations &amp; Ingredient Gram-to-Macro Derivation</h3>
 
         <div id="math-equation-strip" style="background: var(--obsidian-card); color: #F3F4F6; border-radius: 14px; padding: 16px 20px; font-family: var(--font-mono); font-size: 0.82rem; margin-bottom: 20px; line-height: 1.7;"></div>
@@ -1508,14 +1869,14 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       <div class="editorial-card" style="padding: 22px 28px; margin-bottom: 24px;">
         <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
           <div>
-            <span class="eyebrow-label">03 // CUSTOMER DISCOVERY EXPERIENCE</span>
+            <span class="eyebrow-label">03 - CUSTOMER DISCOVERY EXPERIENCE</span>
             <h2 style="font-size: 1.45rem; font-weight: 800;">Know Your Food Better: Healthy Mode Menu</h2>
           </div>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
             <button type="button" class="nav-link active" id="flt-ALL" onclick="filterMenuByTier('ALL')">All Dishes</button>
-            <button type="button" class="nav-link" id="flt-High" onclick="filterMenuByTier('High')"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High Score Only</button>
-            <button type="button" class="nav-link" id="flt-Medium" onclick="filterMenuByTier('Medium')"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Medium Score</button>
-            <button type="button" class="nav-link" id="flt-Low" onclick="filterMenuByTier('Low')"><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Low Score (Comparison)</button>
+            <button type="button" class="nav-link" id="flt-High" onclick="filterMenuByTier('High')"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" /> High Score Only</button>
+            <button type="button" class="nav-link" id="flt-Medium" onclick="filterMenuByTier('Medium')"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Im1lZEhlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im1lZExpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTE0IiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUNDMzQ3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Q0QTAyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBIYWxmLUZpbGxlZCBXYXZ5IEdvbGRlbiBMaXF1aWQgSW5zaWRlIEhlYXJ0IChDbGVhci9UcmFuc3BhcmVudCBCYWNrZ3JvdW5kKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjbWVkSGVhcnRDbGlwKSI+CiAgICA8cGF0aCBkPSJNMjQgMTIyIFE4MCAxMDggMTI4IDEyNCBUMjMyIDExOCBMMjMyIDIzMCBMMjQgMjMwIFoiIGZpbGw9InVybCgjbWVkTGlxdWlkR3JhZCkiLz4KICAgIDxwYXRoIGQ9Ik0yOCAxMjIgUTgwIDEwOCAxMjggMTI0IFQyMjggMTE4IiBzdHJva2U9IiNGOERDNzgiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CiAgPC9nPgogIDwhLS0gU21vb3RoIEdvbGRlbi1BbWJlciBIZWFydCBPdXRsaW5lIC0tPgogIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiIHN0cm9rZT0iI0RGQjEzNCIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=" alt="Medium Heart" class="inline-heart-svg" width="22" height="22" /> Medium Score</button>
+            <button type="button" class="nav-link" id="flt-Low" onclick="filterMenuByTier('Low')"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Imxvd0hlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imxvd0xpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTUwIiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTI2MzM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0M4NEIyMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBRdWFydGVyLUZpbGxlZCBXYXZ5IExpcXVpZCBJbnNpZGUgSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNsb3dIZWFydENsaXApIj4KICAgIDxwYXRoIGQ9Ik0yNCAxNjYgUTgyIDE1NCAxMjggMTY2IFQyMzIgMTYyIEwyMzIgMjMwIEwyNCAyMzAgWiIgZmlsbD0idXJsKCNsb3dMaXF1aWRHcmFkKSIvPgogICAgPHBhdGggZD0iTTI4IDE2NiBRODIgMTU0IDEyOCAxNjYgVDIyOCAxNjIiIHN0cm9rZT0iI0YwODU1QiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KICA8L2c+CiAgPCEtLSBTbW9vdGggVGVycmFjb3R0YS1PcmFuZ2UgSGVhcnQgT3V0bGluZSAtLT4KICA8cGF0aCBkPSJNMTI4IDIxNCBDMTI4IDIxNCAzNiAxNTQgMzYgOTIgQzM2IDU4IDYyIDM2IDkyIDM2IEMxMTAgMzYgMTIyIDQ2IDEyOCA1OCBDMTM0IDQ2IDE0NiAzNiAxNjQgMzYgQzE5NCAzNiAyMjAgNTggMjIwIDkyIEMyMjAgMTU0IDEyOCAyMTQgMTI4IDIxNCBaIiBzdHJva2U9IiNEOTVCMkIiIHN0cm9rZS13aWR0aD0iMTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K" alt="Low Heart" class="inline-heart-svg" width="22" height="22" /> Low Score (Comparison)</button>
           </div>
         </div>
       </div>
@@ -1527,12 +1888,12 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
     <div id="tab-subscription" class="tab-section">
       <div class="healthy-hero-banner" style="padding: 30px 36px; margin-bottom: 24px;">
         <div>
-          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--lime-neon); letter-spacing: 0.14em;">04 // PHASE 2 PRODUCT EVOLUTION DERIVED FROM HEALTHY MODE</span>
+          <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--lime-neon); letter-spacing: 0.14em;">04 - PHASE 2 PRODUCT EVOLUTION DERIVED FROM HEALTHY MODE</span>
           <h2 style="font-size: 2.1rem; font-weight: 800; color: #FFFFFF; margin: 6px 0 12px; line-height: 1.1;">
             Healthy Subscriptions: Automated Nutritious Lunches &amp; Dinners
           </h2>
           <p style="font-size: 0.94rem; color: #D1D5DB; line-height: 1.65;">
-            Once <strong>Healthy Mode</strong> established a trusted <code>Low → High</code> nutritional scoring baseline, it unlocked <strong>Healthy Subscriptions</strong>, allowing busy professionals to pre-plan and schedule <strong>3-day, 5-day, or 15-day</strong> Lunch and Dinner plans. Only dishes that pass the strict <strong><code><svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High</code> Healthy Score gate</strong> qualify for subscription rotation.
+            Once <strong>Healthy Mode</strong> established a trusted <code>Low → High</code> nutritional scoring baseline, it unlocked <strong>Healthy Subscriptions</strong>, allowing busy professionals to pre-plan and schedule <strong>3-day, 5-day, or 15-day</strong> Lunch and Dinner plans. Only dishes that pass the strict <strong><code><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" /> High</code> Healthy Score gate</strong> qualify for subscription rotation.
           </p>
         </div>
 
@@ -1592,6 +1953,19 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
     </footer>
 
   </main>
+
+  <!-- Cursor-Following Floating Heart Text Label -->
+  <div id="cursor-heart-tooltip"></div>
+
+  <!-- Interactive Dish Detail Popup Modal (Tab 3 Menu Explorer) -->
+  <div id="dish-detail-modal" class="hm-modal-backdrop" onclick="if(event.target===this) closeDishDetailModal()">
+    <div class="hm-modal-box" id="dish-detail-modal-content"></div>
+  </div>
+
+  <!-- 5-Second Auto-Closing Subscription Confirmation Popup Modal (Tab 4) -->
+  <div id="sub-confirm-modal" class="hm-modal-backdrop" onclick="if(event.target===this) closeSubConfirmModal()">
+    <div class="hm-modal-box" id="sub-confirm-modal-content" style="max-width: 560px; text-align: center;"></div>
+  </div>
 
   <script>
     const ENGINE_DATA = {"ingredients_db": {"cottage_cheese": {"name": "Cottage cheese (Paneer)", "protein_100g": 18.3, "fat_100g": 20.8, "sat_fat_100g": 13.1, "carbs_100g": 1.2, "sugar_100g": 0.5, "fibre_100g": 0.0, "kcal_100g": 265, "gi_score": 92, "quality_score": 88, "micro_score": 82, "pro_tag": ["Cottage cheese", "excellent source of protein"], "con_tag": ["Cottage cheese", "contains saturated fat"]}, "broccoli": {"name": "Broccoli florets", "protein_100g": 2.8, "fat_100g": 0.4, "sat_fat_100g": 0.1, "carbs_100g": 6.6, "sugar_100g": 1.7, "fibre_100g": 4.6, "kcal_100g": 34, "gi_score": 98, "quality_score": 98, "micro_score": 98, "pro_tag": ["Broccoli", "rich in vitamins and fibre"], "con_tag": null}, "mixed_lettuce": {"name": "Mixed lettuce & greens", "protein_100g": 1.4, "fat_100g": 0.2, "sat_fat_100g": 0.0, "carbs_100g": 2.9, "sugar_100g": 0.8, "fibre_100g": 2.8, "kcal_100g": 17, "gi_score": 99, "quality_score": 98, "micro_score": 95, "pro_tag": ["Mixed lettuce", "hydrating and nutrient-dense"], "con_tag": null}, "bread_croutons": {"name": "Bread / Garlic baguette slice", "protein_100g": 7.6, "fat_100g": 3.2, "sat_fat_100g": 0.8, "carbs_100g": 49.5, "sugar_100g": 4.2, "fibre_100g": 2.4, "kcal_100g": 258, "gi_score": 42, "quality_score": 55, "micro_score": 40, "pro_tag": null, "con_tag": ["Bread", "potential for refined carbohydrates"]}, "chicken_breast": {"name": "Lean chicken breast", "protein_100g": 31.0, "fat_100g": 3.6, "sat_fat_100g": 1.0, "carbs_100g": 0.0, "sugar_100g": 0.0, "fibre_100g": 0.0, "kcal_100g": 165, "gi_score": 95, "quality_score": 94, "micro_score": 85, "pro_tag": ["Lean chicken breast", "high-density complete protein"], "con_tag": null}, "quinoa": {"name": "Cooked quinoa grain", "protein_100g": 4.4, "fat_100g": 1.9, "sat_fat_100g": 0.2, "carbs_100g": 21.3, "sugar_100g": 0.9, "fibre_100g": 2.8, "kcal_100g": 120, "gi_score": 90, "quality_score": 95, "micro_score": 90, "pro_tag": ["Quinoa", "low-GI complex carbohydrate & plant protein"], "con_tag": null}, "chickpeas": {"name": "Boiled chickpeas (Chana)", "protein_100g": 8.9, "fat_100g": 2.6, "sat_fat_100g": 0.3, "carbs_100g": 27.4, "sugar_100g": 4.8, "fibre_100g": 7.6, "kcal_100g": 164, "gi_score": 88, "quality_score": 94, "micro_score": 92, "pro_tag": ["Chickpeas", "packed with soluble dietary fibre and plant protein"], "con_tag": null}, "tofu": {"name": "Firm organic tofu", "protein_100g": 15.8, "fat_100g": 8.7, "sat_fat_100g": 1.3, "carbs_100g": 2.3, "sugar_100g": 0.6, "fibre_100g": 1.2, "kcal_100g": 144, "gi_score": 95, "quality_score": 92, "micro_score": 86, "pro_tag": ["Firm tofu", "low-saturated-fat plant protein"], "con_tag": null}, "olive_dressing": {"name": "Extra-virgin olive oil & herb dressing", "protein_100g": 0.0, "fat_100g": 52.0, "sat_fat_100g": 7.2, "carbs_100g": 6.0, "sugar_100g": 3.5, "fibre_100g": 0.0, "kcal_100g": 492, "gi_score": 85, "quality_score": 88, "micro_score": 78, "pro_tag": ["Olive oil & herbs", "heart-healthy monounsaturated fats"], "con_tag": null}, "refined_naan": {"name": "Refined flour (Maida) butter naan", "protein_100g": 8.2, "fat_100g": 11.5, "sat_fat_100g": 6.4, "carbs_100g": 54.0, "sugar_100g": 3.8, "fibre_100g": 1.8, "kcal_100g": 352, "gi_score": 25, "quality_score": 38, "micro_score": 30, "pro_tag": null, "con_tag": ["Refined flour naan", "high glycemic index refined carbs"]}, "butter_gravy": {"name": "Cream & butter makhani gravy", "protein_100g": 2.4, "fat_100g": 22.0, "sat_fat_100g": 13.8, "carbs_100g": 8.5, "sugar_100g": 5.2, "fibre_100g": 0.9, "kcal_100g": 242, "gi_score": 45, "quality_score": 48, "micro_score": 45, "pro_tag": null, "con_tag": ["Butter & cream gravy", "high in saturated fats and added sugar"]}}, "cooking_methods": {"grilled": {"label": "Grilled / Roasted (Low-Oil)", "score": 92, "extra_fat_g": 2.0, "extra_sat_g": 0.4}, "steamed": {"label": "Steamed / Poached / Raw Toss", "score": 98, "extra_fat_g": 0.0, "extra_sat_g": 0.0}, "sauteed": {"label": "Pan-Saut\u00e9ed / Light Tadka", "score": 74, "extra_fat_g": 6.5, "extra_sat_g": 1.8}, "curry_simmer": {"label": "Rich Gravy Simmer", "score": 48, "extra_fat_g": 12.0, "extra_sat_g": 6.5}, "deep_fried": {"label": "Deep-Fried in Oil", "score": 18, "extra_fat_g": 19.5, "extra_sat_g": 7.8}}, "dishes": [{"id": "bbq_cottage_cheese_salad", "title": "BBQ Cottage Cheese Salad", "restaurant": "Green Theory Kitchens", "genre": "Salads & Grills", "veg": true, "price_inr": 329, "prep_time_min": 18, "cooking_method": "grilled", "ingredients": [{"id": "cottage_cheese", "grams": 100}, {"id": "broccoli", "grams": 115}, {"id": "mixed_lettuce", "grams": 110}, {"id": "bread_croutons", "grams": 32}, {"id": "olive_dressing", "grams": 4}], "nutrition": {"kcal": 400, "protein": 23, "fat": 26, "carbs": 26, "fibre": 9, "sat_fat": 14.2, "sugar": 4.8, "total_weight_g": 361, "cooking_method": "Grilled / Roasted (Low-Oil)", "sub_scores": {"protein": 98.4, "protein_weighted": 34.4, "carb": 73.1, "carb_weighted": 14.6, "fibre": 100.0, "fibre_weighted": 15.0, "ingredient": 91.3, "ingredient_weighted": 13.7, "cooking": 92.0, "cooking_weighted": 13.8, "penalty": 7.7}, "healthy_score": 83.8, "tier": "High", "tier_color": "#8CE62E", "subscription_eligible": true, "what_makes_healthy": [["Cottage cheese", "excellent source of protein"], ["Broccoli", "rich in vitamins and fibre"], ["Mixed lettuce", "hydrating and nutrient-dense"], ["Olive oil & herbs", "heart-healthy monounsaturated fats"]], "to_consider": [["Cottage cheese", "contains saturated fat"], ["Bread", "potential for refined carbohydrates"]], "step1_breakdown": [{"name": "Cottage cheese (Paneer)", "grams": 100, "protein": 18.3, "fat": 20.8, "carbs": 1.2, "fibre": 0.0, "kcal": 265}, {"name": "Broccoli florets", "grams": 115, "protein": 3.2, "fat": 0.5, "carbs": 7.6, "fibre": 5.3, "kcal": 39}, {"name": "Mixed lettuce & greens", "grams": 110, "protein": 1.5, "fat": 0.2, "carbs": 3.2, "fibre": 3.1, "kcal": 19}, {"name": "Bread / Garlic baguette slice", "grams": 32, "protein": 2.4, "fat": 1.0, "carbs": 15.8, "fibre": 0.8, "kcal": 83}, {"name": "Extra-virgin olive oil & herb dressing", "grams": 4, "protein": 0.0, "fat": 2.1, "carbs": 0.2, "fibre": 0.0, "kcal": 20}]}}, {"id": "burrata_tomato_salad", "title": "Artisanal Burrata & Heirloom Tomato Bowl", "restaurant": "Fig & Olive Caf\u00e9", "genre": "Salads & Grills", "veg": true, "price_inr": 369, "prep_time_min": 15, "cooking_method": "steamed", "ingredients": [{"id": "cottage_cheese", "grams": 70}, {"id": "mixed_lettuce", "grams": 130}, {"id": "quinoa", "grams": 75}, {"id": "olive_dressing", "grams": 8}], "nutrition": {"kcal": 335, "protein": 15, "fat": 19, "carbs": 24, "fibre": 6, "sat_fat": 9.9, "sugar": 2.3, "total_weight_g": 283, "cooking_method": "Steamed / Poached / Raw Toss", "sub_scores": {"protein": 79.1, "protein_weighted": 27.7, "carb": 90.1, "carb_weighted": 18.0, "fibre": 75.4, "fibre_weighted": 11.3, "ingredient": 94.4, "ingredient_weighted": 14.2, "cooking": 98.0, "cooking_weighted": 14.7, "penalty": 2.8}, "healthy_score": 83.1, "tier": "High", "tier_color": "#8CE62E", "subscription_eligible": true, "what_makes_healthy": [["Cottage cheese", "excellent source of protein"], ["Mixed lettuce", "hydrating and nutrient-dense"], ["Quinoa", "low-GI complex carbohydrate & plant protein"], ["Olive oil & herbs", "heart-healthy monounsaturated fats"]], "to_consider": [["Cottage cheese", "contains saturated fat"]], "step1_breakdown": [{"name": "Cottage cheese (Paneer)", "grams": 70, "protein": 12.8, "fat": 14.6, "carbs": 0.8, "fibre": 0.0, "kcal": 186}, {"name": "Mixed lettuce & greens", "grams": 130, "protein": 1.8, "fat": 0.3, "carbs": 3.8, "fibre": 3.6, "kcal": 22}, {"name": "Cooked quinoa grain", "grams": 75, "protein": 3.3, "fat": 1.4, "carbs": 16.0, "fibre": 2.1, "kcal": 90}, {"name": "Extra-virgin olive oil & herb dressing", "grams": 8, "protein": 0.0, "fat": 4.2, "carbs": 0.5, "fibre": 0.0, "kcal": 39}]}}, {"id": "tandoori_chicken_quinoa", "title": "Chargrilled Chicken & Quinoa Power Bowl", "restaurant": "Protein Craft India", "genre": "High-Protein Bowls", "veg": false, "price_inr": 389, "prep_time_min": 22, "cooking_method": "grilled", "ingredients": [{"id": "chicken_breast", "grams": 125}, {"id": "quinoa", "grams": 110}, {"id": "broccoli", "grams": 95}, {"id": "mixed_lettuce", "grams": 70}, {"id": "olive_dressing", "grams": 5}], "nutrition": {"kcal": 425, "protein": 47, "fat": 12, "carbs": 32, "fibre": 9, "sat_fat": 2.3, "sugar": 3.3, "total_weight_g": 405, "cooking_method": "Grilled / Roasted (Low-Oil)", "sub_scores": {"protein": 100.0, "protein_weighted": 35.0, "carb": 91.6, "carb_weighted": 18.3, "fibre": 100.0, "fibre_weighted": 15.0, "ingredient": 95.8, "ingredient_weighted": 14.4, "cooking": 92.0, "cooking_weighted": 13.8, "penalty": 0.0}, "healthy_score": 96.5, "tier": "High", "tier_color": "#8CE62E", "subscription_eligible": true, "what_makes_healthy": [["Lean chicken breast", "high-density complete protein"], ["Quinoa", "low-GI complex carbohydrate & plant protein"], ["Broccoli", "rich in vitamins and fibre"], ["Mixed lettuce", "hydrating and nutrient-dense"]], "to_consider": [], "step1_breakdown": [{"name": "Lean chicken breast", "grams": 125, "protein": 38.8, "fat": 4.5, "carbs": 0.0, "fibre": 0.0, "kcal": 206}, {"name": "Cooked quinoa grain", "grams": 110, "protein": 4.8, "fat": 2.1, "carbs": 23.4, "fibre": 3.1, "kcal": 132}, {"name": "Broccoli florets", "grams": 95, "protein": 2.7, "fat": 0.4, "carbs": 6.3, "fibre": 4.4, "kcal": 32}, {"name": "Mixed lettuce & greens", "grams": 70, "protein": 1.0, "fat": 0.1, "carbs": 2.0, "fibre": 2.0, "kcal": 12}, {"name": "Extra-virgin olive oil & herb dressing", "grams": 5, "protein": 0.0, "fat": 2.6, "carbs": 0.3, "fibre": 0.0, "kcal": 25}]}}, {"id": "tofu_chickpea_harvest", "title": "Roasted Tofu & Spiced Chickpea Millet Bowl", "restaurant": "EatFit Harvest", "genre": "Plant-Powered Low-GI", "veg": true, "price_inr": 299, "prep_time_min": 18, "cooking_method": "grilled", "ingredients": [{"id": "tofu", "grams": 120}, {"id": "chickpeas", "grams": 110}, {"id": "broccoli", "grams": 90}, {"id": "mixed_lettuce", "grams": 80}], "nutrition": {"kcal": 435, "protein": 32, "fat": 16, "carbs": 41, "fibre": 16, "sat_fat": 2.4, "sugar": 8.2, "total_weight_g": 400, "cooking_method": "Grilled / Roasted (Low-Oil)", "sub_scores": {"protein": 100.0, "protein_weighted": 35.0, "carb": 95.0, "carb_weighted": 19.0, "fibre": 100.0, "fibre_weighted": 15.0, "ingredient": 95.1, "ingredient_weighted": 14.3, "cooking": 92.0, "cooking_weighted": 13.8, "penalty": 2.4}, "healthy_score": 94.7, "tier": "High", "tier_color": "#8CE62E", "subscription_eligible": true, "what_makes_healthy": [["Firm tofu", "low-saturated-fat plant protein"], ["Chickpeas", "packed with soluble dietary fibre and plant protein"], ["Broccoli", "rich in vitamins and fibre"], ["Mixed lettuce", "hydrating and nutrient-dense"]], "to_consider": [], "step1_breakdown": [{"name": "Firm organic tofu", "grams": 120, "protein": 19.0, "fat": 10.4, "carbs": 2.8, "fibre": 1.4, "kcal": 173}, {"name": "Boiled chickpeas (Chana)", "grams": 110, "protein": 9.8, "fat": 2.9, "carbs": 30.1, "fibre": 8.4, "kcal": 180}, {"name": "Broccoli florets", "grams": 90, "protein": 2.5, "fat": 0.4, "carbs": 5.9, "fibre": 4.1, "kcal": 31}, {"name": "Mixed lettuce & greens", "grams": 80, "protein": 1.1, "fat": 0.2, "carbs": 2.3, "fibre": 2.2, "kcal": 14}]}}, {"id": "homestyle_chana_paneer_thali", "title": "High-Protein Chana & Grilled Paneer Bowl", "restaurant": "Soulful Ghar Kitchen", "genre": "Balanced Indian Homestyle", "veg": true, "price_inr": 279, "prep_time_min": 20, "cooking_method": "grilled", "ingredients": [{"id": "cottage_cheese", "grams": 85}, {"id": "chickpeas", "grams": 135}, {"id": "broccoli", "grams": 75}, {"id": "mixed_lettuce", "grams": 65}], "nutrition": {"kcal": 520, "protein": 31, "fat": 24, "carbs": 45, "fibre": 16, "sat_fat": 12.0, "sugar": 8.7, "total_weight_g": 360, "cooking_method": "Grilled / Roasted (Low-Oil)", "sub_scores": {"protein": 100.0, "protein_weighted": 35.0, "carb": 92.1, "carb_weighted": 18.4, "fibre": 100.0, "fibre_weighted": 15.0, "ingredient": 94.1, "ingredient_weighted": 14.1, "cooking": 92.0, "cooking_weighted": 13.8, "penalty": 8.2}, "healthy_score": 88.1, "tier": "High", "tier_color": "#8CE62E", "subscription_eligible": true, "what_makes_healthy": [["Cottage cheese", "excellent source of protein"], ["Chickpeas", "packed with soluble dietary fibre and plant protein"], ["Broccoli", "rich in vitamins and fibre"], ["Mixed lettuce", "hydrating and nutrient-dense"]], "to_consider": [["Cottage cheese", "contains saturated fat"]], "step1_breakdown": [{"name": "Cottage cheese (Paneer)", "grams": 85, "protein": 15.6, "fat": 17.7, "carbs": 1.0, "fibre": 0.0, "kcal": 225}, {"name": "Boiled chickpeas (Chana)", "grams": 135, "protein": 12.0, "fat": 3.5, "carbs": 37.0, "fibre": 10.3, "kcal": 221}, {"name": "Broccoli florets", "grams": 75, "protein": 2.1, "fat": 0.3, "carbs": 4.9, "fibre": 3.4, "kcal": 26}, {"name": "Mixed lettuce & greens", "grams": 65, "protein": 0.9, "fat": 0.1, "carbs": 1.9, "fibre": 1.8, "kcal": 11}]}}, {"id": "steamed_chicken_greens", "title": "Herbed Poached Chicken & Broccoli Greens", "restaurant": "Athlete's Macro Kitchen", "genre": "High-Protein Bowls", "veg": false, "price_inr": 359, "prep_time_min": 16, "cooking_method": "steamed", "ingredients": [{"id": "chicken_breast", "grams": 140}, {"id": "broccoli", "grams": 130}, {"id": "mixed_lettuce", "grams": 90}, {"id": "quinoa", "grams": 65}], "nutrition": {"kcal": 365, "protein": 51, "fat": 7, "carbs": 25, "fibre": 10, "sat_fat": 1.7, "sugar": 3.5, "total_weight_g": 425, "cooking_method": "Steamed / Poached / Raw Toss", "sub_scores": {"protein": 100.0, "protein_weighted": 35.0, "carb": 97.8, "carb_weighted": 19.6, "fibre": 100.0, "fibre_weighted": 15.0, "ingredient": 96.2, "ingredient_weighted": 14.4, "cooking": 98.0, "cooking_weighted": 14.7, "penalty": 0.0}, "healthy_score": 98.7, "tier": "High", "tier_color": "#8CE62E", "subscription_eligible": true, "what_makes_healthy": [["Lean chicken breast", "high-density complete protein"], ["Broccoli", "rich in vitamins and fibre"], ["Mixed lettuce", "hydrating and nutrient-dense"], ["Quinoa", "low-GI complex carbohydrate & plant protein"]], "to_consider": [], "step1_breakdown": [{"name": "Lean chicken breast", "grams": 140, "protein": 43.4, "fat": 5.0, "carbs": 0.0, "fibre": 0.0, "kcal": 231}, {"name": "Broccoli florets", "grams": 130, "protein": 3.6, "fat": 0.5, "carbs": 8.6, "fibre": 6.0, "kcal": 44}, {"name": "Mixed lettuce & greens", "grams": 90, "protein": 1.3, "fat": 0.2, "carbs": 2.6, "fibre": 2.5, "kcal": 15}, {"name": "Cooked quinoa grain", "grams": 65, "protein": 2.9, "fat": 1.2, "carbs": 13.8, "fibre": 1.8, "kcal": 78}]}}, {"id": "paneer_saute_bread_roll", "title": "Pan-Saut\u00e9ed Paneer & Garlic Bread Platter", "restaurant": "Urban Bistro", "genre": "Balanced Indian Homestyle", "veg": true, "price_inr": 310, "prep_time_min": 20, "cooking_method": "sauteed", "ingredients": [{"id": "cottage_cheese", "grams": 90}, {"id": "bread_croutons", "grams": 85}, {"id": "mixed_lettuce", "grams": 50}], "nutrition": {"kcal": 530, "protein": 24, "fat": 28, "carbs": 45, "fibre": 3, "sat_fat": 14.3, "sugar": 4.4, "total_weight_g": 225, "cooking_method": "Pan-Saut\u00e9ed / Light Tadka", "sub_scores": {"protein": 86.0, "protein_weighted": 30.1, "carb": 43.5, "carb_weighted": 8.7, "fibre": 50.5, "fibre_weighted": 7.6, "ingredient": 77.8, "ingredient_weighted": 11.7, "cooking": 74.0, "cooking_weighted": 11.1, "penalty": 7.8}, "healthy_score": 61.3, "tier": "Medium", "tier_color": "#F5A623", "subscription_eligible": false, "what_makes_healthy": [["Cottage cheese", "excellent source of protein"], ["Mixed lettuce", "hydrating and nutrient-dense"]], "to_consider": [["Cottage cheese", "contains saturated fat"], ["Bread", "potential for refined carbohydrates"]], "step1_breakdown": [{"name": "Cottage cheese (Paneer)", "grams": 90, "protein": 16.5, "fat": 18.7, "carbs": 1.1, "fibre": 0.0, "kcal": 238}, {"name": "Bread / Garlic baguette slice", "grams": 85, "protein": 6.5, "fat": 2.7, "carbs": 42.1, "fibre": 2.0, "kcal": 219}, {"name": "Mixed lettuce & greens", "grams": 50, "protein": 0.7, "fat": 0.1, "carbs": 1.4, "fibre": 1.4, "kcal": 8}]}}, {"id": "butter_paneer_naan_combo", "title": "Rich Paneer Makhani with 2 Butter Naans", "restaurant": "Royal Spice Darbar", "genre": "Indulgent North Indian", "veg": true, "price_inr": 399, "prep_time_min": 25, "cooking_method": "curry_simmer", "ingredients": [{"id": "cottage_cheese", "grams": 95}, {"id": "butter_gravy", "grams": 150}, {"id": "refined_naan", "grams": 130}], "nutrition": {"kcal": 1185, "protein": 32, "fat": 80, "carbs": 84, "fibre": 4, "sat_fat": 48.0, "sugar": 13.2, "total_weight_g": 375, "cooking_method": "Rich Gravy Simmer", "sub_scores": {"protein": 92.1, "protein_weighted": 32.2, "carb": 27.3, "carb_weighted": 5.5, "fibre": 45.4, "fibre_weighted": 6.8, "ingredient": 54.7, "ingredient_weighted": 8.2, "cooking": 48.0, "cooking_weighted": 7.2, "penalty": 22.0}, "healthy_score": 37.9, "tier": "Low", "tier_color": "#E0533C", "subscription_eligible": false, "what_makes_healthy": [["Cottage cheese", "excellent source of protein"]], "to_consider": [["Cottage cheese", "contains saturated fat"], ["Butter & cream gravy", "high in saturated fats and added sugar"], ["Refined flour naan", "high glycemic index refined carbs"]], "step1_breakdown": [{"name": "Cottage cheese (Paneer)", "grams": 95, "protein": 17.4, "fat": 19.8, "carbs": 1.1, "fibre": 0.0, "kcal": 252}, {"name": "Cream & butter makhani gravy", "grams": 150, "protein": 3.6, "fat": 33.0, "carbs": 12.8, "fibre": 1.4, "kcal": 363}, {"name": "Refined flour (Maida) butter naan", "grams": 130, "protein": 10.7, "fat": 15.0, "carbs": 70.2, "fibre": 2.3, "kcal": 458}]}}]};
@@ -1760,11 +2134,11 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       const rawWeighted = 0.35 * sProt + 0.20 * sCarb + 0.15 * sFibre + 0.15 * sIng + 0.15 * sCook;
       const finalScore = Math.max(12, Math.min(99, rawWeighted - penalty));
 
-      let tier = "Low", heartIcon = `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`, borderCol = "rgba(224,83,60,0.45)";
+      let tier = "Low", heartIcon = `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Imxvd0hlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imxvd0xpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTUwIiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTI2MzM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0M4NEIyMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBRdWFydGVyLUZpbGxlZCBXYXZ5IExpcXVpZCBJbnNpZGUgSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNsb3dIZWFydENsaXApIj4KICAgIDxwYXRoIGQ9Ik0yNCAxNjYgUTgyIDE1NCAxMjggMTY2IFQyMzIgMTYyIEwyMzIgMjMwIEwyNCAyMzAgWiIgZmlsbD0idXJsKCNsb3dMaXF1aWRHcmFkKSIvPgogICAgPHBhdGggZD0iTTI4IDE2NiBRODIgMTU0IDEyOCAxNjYgVDIyOCAxNjIiIHN0cm9rZT0iI0YwODU1QiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KICA8L2c+CiAgPCEtLSBTbW9vdGggVGVycmFjb3R0YS1PcmFuZ2UgSGVhcnQgT3V0bGluZSAtLT4KICA8cGF0aCBkPSJNMTI4IDIxNCBDMTI4IDIxNCAzNiAxNTQgMzYgOTIgQzM2IDU4IDYyIDM2IDkyIDM2IEMxMTAgMzYgMTIyIDQ2IDEyOCA1OCBDMTM0IDQ2IDE0NiAzNiAxNjQgMzYgQzE5NCAzNiAyMjAgNTggMjIwIDkyIEMyMjAgMTU0IDEyOCAyMTQgMTI4IDIxNCBaIiBzdHJva2U9IiNEOTVCMkIiIHN0cm9rZS13aWR0aD0iMTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K" alt="Low Heart" class="inline-heart-svg" width="22" height="22" />`, borderCol = "rgba(224,83,60,0.45)";
       if (finalScore >= 72) {
-        tier = "High"; heartIcon = `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg>`; borderCol = "rgba(140,230,46,0.45)";
+        tier = "High"; heartIcon = `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" />`; borderCol = "rgba(140,230,46,0.45)";
       } else if (finalScore >= 48) {
-        tier = "Medium"; heartIcon = `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`; borderCol = "rgba(245,166,35,0.45)";
+        tier = "Medium"; heartIcon = `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Im1lZEhlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im1lZExpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTE0IiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUNDMzQ3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Q0QTAyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBIYWxmLUZpbGxlZCBXYXZ5IEdvbGRlbiBMaXF1aWQgSW5zaWRlIEhlYXJ0IChDbGVhci9UcmFuc3BhcmVudCBCYWNrZ3JvdW5kKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjbWVkSGVhcnRDbGlwKSI+CiAgICA8cGF0aCBkPSJNMjQgMTIyIFE4MCAxMDggMTI4IDEyNCBUMjMyIDExOCBMMjMyIDIzMCBMMjQgMjMwIFoiIGZpbGw9InVybCgjbWVkTGlxdWlkR3JhZCkiLz4KICAgIDxwYXRoIGQ9Ik0yOCAxMjIgUTgwIDEwOCAxMjggMTI0IFQyMjggMTE4IiBzdHJva2U9IiNGOERDNzgiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CiAgPC9nPgogIDwhLS0gU21vb3RoIEdvbGRlbi1BbWJlciBIZWFydCBPdXRsaW5lIC0tPgogIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiIHN0cm9rZT0iI0RGQjEzNCIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=" alt="Medium Heart" class="inline-heart-svg" width="22" height="22" />`; borderCol = "rgba(245,166,35,0.45)";
       }
 
       return {
@@ -1797,6 +2171,46 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       document.getElementById("card-fibre").innerText = res.fibreG + "g";
       document.getElementById("card-macro-pill").style.borderColor = res.borderCol;
 
+      // Update Live 5-Parameter Sub-Score Progress Bars on Customer Card
+      const subBarsEl = document.getElementById("card-live-subscores");
+      if (subBarsEl) {
+        const bars = [
+          { lbl: "Protein Density (35% wt)", score: parseFloat(res.sProt), pts: "+" + res.wProt + " pts", col: "#8CE62E" },
+          { lbl: "Carb & GI Quality (20% wt)", score: parseFloat(res.sCarb), pts: "+" + res.wCarb + " pts", col: "#A3E635" },
+          { lbl: "Fibre & Micros (15% wt)", score: parseFloat(res.sFibre), pts: "+" + res.wFibre + " pts", col: "#34D399" },
+          { lbl: "Ingredient Quality (15% wt)", score: parseFloat(res.sIng), pts: "+" + res.wIng + " pts", col: "#60A5FA" },
+          { lbl: "Cooking Method (15% wt)", score: parseFloat(res.sCook), pts: "+" + res.wCook + " pts", col: "#FBBF24" }
+        ];
+        subBarsEl.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <span style="font-family:var(--font-mono); font-size:0.68rem; font-weight:800; color:var(--lime-neon); letter-spacing:0.08em;">
+              LIVE 5-PARAMETER SUB-SCORE METER (FROM Mx INPUTS)
+            </span>
+            <span style="font-family:var(--font-mono); font-size:0.66rem; color:${parseFloat(res.penalty) > 0 ? '#F59E0B' : '#9CA3AF'};">
+              SatFat/Sugar Penalty: −${res.penalty} pts
+            </span>
+          </div>
+          ${bars.map(b => `
+            <div class="subscore-bar-row">
+              <div class="subscore-bar-top">
+                <span>${b.lbl}</span>
+                <span style="color:#FFF; font-weight:700;">${b.score.toFixed(0)}/100 (${b.pts})</span>
+              </div>
+              <div class="subscore-bar-track">
+                <div class="subscore-bar-fill" style="width:${Math.min(100, Math.max(6, b.score))}%; background:${b.col};"></div>
+              </div>
+            </div>
+          `).join("")}
+        `;
+      }
+
+      const swapBtnLbl = document.getElementById("btn-kitchen-swap-label");
+      if (swapBtnLbl) {
+        swapBtnLbl.innerText = res.tier === "High"
+          ? "Smart AI Kitchen Swap: Optimize Macros Further (+Score)"
+          : `Smart AI Kitchen Swap: Upgrade ${res.tier} Dish to High (≥72)`;
+      }
+
       document.getElementById("card-pros-list").innerHTML = res.pros.length
         ? res.pros.map(p => `<div class="commentary-item"><span style="color:var(--lime-neon); font-weight:800;">✓</span><div><strong style="color:#FFF;">${p[0]}</strong> – ${p[1]}</div></div>`).join("")
         : `<div class="commentary-item"><span>•</span><div>Add vegetables or lean protein to boost score</div></div>`;
@@ -1826,7 +2240,7 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding-bottom:10px; border-bottom:1px solid rgba(140,230,46,0.28); margin-bottom:12px;">
             <div>
               <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--lime-neon); font-weight:700; letter-spacing:0.1em;">
-                STEP 2 // LIVE AI MODEL WORKING DIRECTLY FROM SLIDERS
+                STEP 2 - LIVE AI MODEL WORKING DIRECTLY FROM SLIDERS
               </div>
               <div style="font-size:0.98rem; font-weight:800; color:#FFFFFF; margin-top:2px;">
                 Algorithm: <code style="color:var(--lime-neon); background:rgba(140,230,46,0.14); padding:2px 8px; border-radius:6px;">NutriDecomp-NER + WNDS-5</code>
@@ -1914,7 +2328,174 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
     }
 
     // =========================================================================
-    // TAB 3: CUSTOMER MENU EXPLORER
+    // HERO 3-HEART HOVER PREVIEW SWITCHER & CURSOR-FOLLOWING TEXT TOOLTIP
+    // =========================================================================
+    const HERO_TIER_PREVIEWS = {
+      High: {
+        veg: true,
+        title: "BBQ Cottage Cheese Salad",
+        score: "SCORE: 82.4 / 100",
+        scoreCol: "#8CE62E",
+        kcal: 400,
+        heartSvg: `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" />`,
+        tier: "High",
+        prot: "23g",
+        fat: "26g",
+        carbs: "26g",
+        fibre: "9g",
+        borderCol: "rgba(140, 230, 46, 0.55)"
+      },
+      Medium: {
+        veg: true,
+        title: "Charcoal Paneer Tikka Wheat Roll",
+        score: "SCORE: 63.8 / 100",
+        scoreCol: "#ECC347",
+        kcal: 520,
+        heartSvg: `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Im1lZEhlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im1lZExpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTE0IiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUNDMzQ3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Q0QTAyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBIYWxmLUZpbGxlZCBXYXZ5IEdvbGRlbiBMaXF1aWQgSW5zaWRlIEhlYXJ0IChDbGVhci9UcmFuc3BhcmVudCBCYWNrZ3JvdW5kKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjbWVkSGVhcnRDbGlwKSI+CiAgICA8cGF0aCBkPSJNMjQgMTIyIFE4MCAxMDggMTI4IDEyNCBUMjMyIDExOCBMMjMyIDIzMCBMMjQgMjMwIFoiIGZpbGw9InVybCgjbWVkTGlxdWlkR3JhZCkiLz4KICAgIDxwYXRoIGQ9Ik0yOCAxMjIgUTgwIDEwOCAxMjggMTI0IFQyMjggMTE4IiBzdHJva2U9IiNGOERDNzgiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CiAgPC9nPgogIDwhLS0gU21vb3RoIEdvbGRlbi1BbWJlciBIZWFydCBPdXRsaW5lIC0tPgogIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiIHN0cm9rZT0iI0RGQjEzNCIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=" alt="Medium Heart" class="inline-heart-svg" width="22" height="22" />`,
+        tier: "Medium",
+        prot: "21g",
+        fat: "24g",
+        carbs: "52g",
+        fibre: "6g",
+        borderCol: "rgba(236, 195, 71, 0.55)"
+      },
+      Low: {
+        veg: false,
+        title: "Butter Chicken & Butter Naan Combo",
+        score: "SCORE: 34.2 / 100",
+        scoreCol: "#E26334",
+        kcal: 780,
+        heartSvg: `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Imxvd0hlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imxvd0xpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTUwIiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTI2MzM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0M4NEIyMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBRdWFydGVyLUZpbGxlZCBXYXZ5IExpcXVpZCBJbnNpZGUgSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNsb3dIZWFydENsaXApIj4KICAgIDxwYXRoIGQ9Ik0yNCAxNjYgUTgyIDE1NCAxMjggMTY2IFQyMzIgMTYyIEwyMzIgMjMwIEwyNCAyMzAgWiIgZmlsbD0idXJsKCNsb3dMaXF1aWRHcmFkKSIvPgogICAgPHBhdGggZD0iTTI4IDE2NiBRODIgMTU0IDEyOCAxNjYgVDIyOCAxNjIiIHN0cm9rZT0iI0YwODU1QiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KICA8L2c+CiAgPCEtLSBTbW9vdGggVGVycmFjb3R0YS1PcmFuZ2UgSGVhcnQgT3V0bGluZSAtLT4KICA8cGF0aCBkPSJNMTI4IDIxNCBDMTI4IDIxNCAzNiAxNTQgMzYgOTIgQzM2IDU4IDYyIDM2IDkyIDM2IEMxMTAgMzYgMTIyIDQ2IDEyOCA1OCBDMTM0IDQ2IDE0NiAzNiAxNjQgMzYgQzE5NCAzNiAyMjAgNTggMjIwIDkyIEMyMjAgMTU0IDEyOCAyMTQgMTI4IDIxNCBaIiBzdHJva2U9IiNEOTVCMkIiIHN0cm9rZS13aWR0aD0iMTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K" alt="Low Heart" class="inline-heart-svg" width="22" height="22" />`,
+        tier: "Low",
+        prot: "28g",
+        fat: "46g",
+        carbs: "64g",
+        fibre: "3g",
+        borderCol: "rgba(226, 99, 52, 0.55)"
+      }
+    };
+
+    function previewHeroHeartTier(tier) {
+      const p = HERO_TIER_PREVIEWS[tier] || HERO_TIER_PREVIEWS.High;
+      const vegEl = document.getElementById("hero-prev-veg");
+      if (vegEl) vegEl.className = p.veg ? "veg-square" : "nonveg-square";
+      const titleEl = document.getElementById("hero-prev-title");
+      if (titleEl) titleEl.innerText = p.title;
+      const scoreEl = document.getElementById("hero-prev-score");
+      if (scoreEl) {
+        scoreEl.innerText = p.score;
+        scoreEl.style.color = p.scoreCol;
+      }
+      const kcalEl = document.getElementById("hero-prev-kcal");
+      if (kcalEl) kcalEl.innerText = p.kcal;
+      const heartEl = document.getElementById("hero-prev-heart");
+      if (heartEl) heartEl.innerHTML = p.heartSvg;
+      const tierEl = document.getElementById("hero-prev-tier");
+      if (tierEl) {
+        tierEl.innerText = p.tier;
+        tierEl.style.color = p.scoreCol;
+      }
+      document.getElementById("hero-prev-prot").innerText = p.prot;
+      document.getElementById("hero-prev-fat").innerText = p.fat;
+      document.getElementById("hero-prev-carbs").innerText = p.carbs;
+      document.getElementById("hero-prev-fibre").innerText = p.fibre;
+      const boxEl = document.getElementById("hero-preview-dish-box");
+      if (boxEl) boxEl.style.borderColor = p.borderCol;
+      const pillEl = document.getElementById("hero-prev-pill");
+      if (pillEl) pillEl.style.borderColor = p.borderCol;
+    }
+
+    function showHeartCursorTip(e, text, color) {
+      const tip = document.getElementById("cursor-heart-tooltip");
+      if (!tip) return;
+      tip.innerText = text;
+      tip.style.color = color || "#8CE62E";
+      tip.style.left = e.clientX + "px";
+      tip.style.top = e.clientY + "px";
+      tip.classList.add("visible");
+    }
+
+    function moveHeartCursorTip(e) {
+      const tip = document.getElementById("cursor-heart-tooltip");
+      if (!tip) return;
+      tip.style.left = e.clientX + "px";
+      tip.style.top = e.clientY + "px";
+    }
+
+    function hideHeartCursorTip() {
+      const tip = document.getElementById("cursor-heart-tooltip");
+      if (tip) tip.classList.remove("visible");
+    }
+
+    // Smart AI Kitchen Swap in Tab 2 Calculator
+    function applySmartKitchenSwap() {
+      const cookSel = document.getElementById("calc-cooking-method");
+      if (cookSel.value === "deep_fried" || cookSel.value === "curry_simmer" || cookSel.value === "sauteed") {
+        cookSel.value = "grilled";
+      } else {
+        cookSel.value = "steamed";
+      }
+      activeCalculatorIngredients.forEach(item => {
+        const db = INGREDIENTS_DB[item.id];
+        if (!db) return;
+        if (db.protein_100g >= 14 || db.fibre_100g >= 2.5) {
+          item.grams = Math.min(220, Math.max(85, Math.round((item.grams * 1.35) / 5) * 5));
+        } else if (db.sat_fat_100g >= 10 || db.gi_score < 60) {
+          item.grams = Math.max(15, Math.round((item.grams * 0.45) / 5) * 5);
+        }
+      });
+      renderCalculatorSliders();
+      recalculateLiveDish(false);
+    }
+
+    // Word-by-Word Scroll Reveal Transition for Stage Code Snippets
+    function initScrollCodeWordReveal() {
+      const blocks = document.querySelectorAll(".scroll-code-block");
+      blocks.forEach(block => {
+        if (block.dataset.tokenized) return;
+        block.dataset.tokenized = "true";
+        let wordIdx = 0;
+        const walk = (node) => {
+          if (node.nodeType === 3) {
+            const text = node.nodeValue;
+            if (!text.trim()) return;
+            const frag = document.createDocumentFragment();
+            const parts = text.split(/(\s+)/);
+            parts.forEach(part => {
+              if (/^\s+$/.test(part) || !part) {
+                frag.appendChild(document.createTextNode(part));
+              } else {
+                const span = document.createElement("span");
+                span.className = "code-word-token";
+                span.style.transitionDelay = (wordIdx * 38) + "ms";
+                span.textContent = part;
+                wordIdx++;
+                frag.appendChild(span);
+              }
+            });
+            node.parentNode.replaceChild(frag, node);
+          } else if (node.nodeType === 1 && node.tagName !== "SVG" && node.tagName !== "BR") {
+            Array.from(node.childNodes).forEach(walk);
+          }
+        };
+        Array.from(block.childNodes).forEach(walk);
+      });
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("revealed");
+          } else {
+            entry.target.classList.remove("revealed");
+          }
+        });
+      }, { threshold: 0.25 });
+
+      blocks.forEach(b => obs.observe(b));
+    }
+
+    // =========================================================================
+    // TAB 3: CUSTOMER MENU EXPLORER & INTERACTIVE DISH DETAIL MODAL
     // =========================================================================
     function filterMenuByTier(tier) {
       currentMenuFilter = tier;
@@ -1933,82 +2514,210 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
 
       grid.innerHTML = list.map(d => {
         const n = d.nutrition;
-        const heart = n.tier === "High" ? `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg>` : (n.tier === "Medium" ? `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M40 124 Q88 112 128 126 T216 120 L216 198 L128 214 L40 198 Z" fill="#ECC347"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#DFB134" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>` : `<svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><path d="M48 162 Q88 152 128 162 T208 158 L190 186 L128 214 L66 186 Z" fill="#E26334"/><path d="M128 214 C128 214 36 154 36 92 C36 58 62 36 92 36 C110 36 122 46 128 58 C134 46 146 36 164 36 C194 36 220 58 220 92 C220 154 128 214 128 214 Z" stroke="#D95B2B" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`);
+        const heart = n.tier === "High" ? `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" />` : (n.tier === "Medium" ? `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Im1lZEhlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im1lZExpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTE0IiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUNDMzQ3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Q0QTAyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBIYWxmLUZpbGxlZCBXYXZ5IEdvbGRlbiBMaXF1aWQgSW5zaWRlIEhlYXJ0IChDbGVhci9UcmFuc3BhcmVudCBCYWNrZ3JvdW5kKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjbWVkSGVhcnRDbGlwKSI+CiAgICA8cGF0aCBkPSJNMjQgMTIyIFE4MCAxMDggMTI4IDEyNCBUMjMyIDExOCBMMjMyIDIzMCBMMjQgMjMwIFoiIGZpbGw9InVybCgjbWVkTGlxdWlkR3JhZCkiLz4KICAgIDxwYXRoIGQ9Ik0yOCAxMjIgUTgwIDEwOCAxMjggMTI0IFQyMjggMTE4IiBzdHJva2U9IiNGOERDNzgiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CiAgPC9nPgogIDwhLS0gU21vb3RoIEdvbGRlbi1BbWJlciBIZWFydCBPdXRsaW5lIC0tPgogIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiIHN0cm9rZT0iI0RGQjEzNCIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=" alt="Medium Heart" class="inline-heart-svg" width="22" height="22" />` : `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Imxvd0hlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imxvd0xpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTUwIiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTI2MzM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0M4NEIyMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBRdWFydGVyLUZpbGxlZCBXYXZ5IExpcXVpZCBJbnNpZGUgSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNsb3dIZWFydENsaXApIj4KICAgIDxwYXRoIGQ9Ik0yNCAxNjYgUTgyIDE1NCAxMjggMTY2IFQyMzIgMTYyIEwyMzIgMjMwIEwyNCAyMzAgWiIgZmlsbD0idXJsKCNsb3dMaXF1aWRHcmFkKSIvPgogICAgPHBhdGggZD0iTTI4IDE2NiBRODIgMTU0IDEyOCAxNjYgVDIyOCAxNjIiIHN0cm9rZT0iI0YwODU1QiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KICA8L2c+CiAgPCEtLSBTbW9vdGggVGVycmFjb3R0YS1PcmFuZ2UgSGVhcnQgT3V0bGluZSAtLT4KICA8cGF0aCBkPSJNMTI4IDIxNCBDMTI4IDIxNCAzNiAxNTQgMzYgOTIgQzM2IDU4IDYyIDM2IDkyIDM2IEMxMTAgMzYgMTIyIDQ2IDEyOCA1OCBDMTM0IDQ2IDE0NiAzNiAxNjQgMzYgQzE5NCAzNiAyMjAgNTggMjIwIDkyIEMyMjAgMTU0IDEyOCAyMTQgMTI4IDIxNCBaIiBzdHJva2U9IiNEOTVCMkIiIHN0cm9rZS13aWR0aD0iMTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K" alt="Low Heart" class="inline-heart-svg" width="22" height="22" />`);
         const prosHtml = n.what_makes_healthy.map(p =>
-          `<div class="commentary-item"><span style="color:var(--lime-neon);">✓</span><div><strong style="color:#FFF;">${p[0]}</strong> – ${p[1]}</div></div>`
+          `<div class="commentary-item"><span style="color:var(--lime-neon);">✓</span><div><strong style="color:#FFF;">${p[0]}</strong> · ${p[1]}</div></div>`
         ).join("");
         const consHtml = n.to_consider.map(c =>
-          `<div class="commentary-item"><span style="color:var(--amber-warn);">ⓘ</span><div><strong style="color:var(--amber-warn);">${c[0]}</strong> – ${c[1]}</div></div>`
+          `<div class="commentary-item"><span style="color:var(--amber-warn);">ⓘ</span><div><strong style="color:var(--amber-warn);">${c[0]}</strong> · ${c[1]}</div></div>`
         ).join("");
 
         return `
-          <div class="zomato-nutrition-card">
-            <div class="dish-header-row" style="justify-content: space-between;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <span class="${d.veg ? 'veg-square' : 'nonveg-square'}"></span>
-                <div>
-                  <h3 style="font-size: 1.08rem; font-weight: 800; color: #FFFFFF;">${d.title}</h3>
-                  <div style="font-size: 0.75rem; color: #9CA3AF;">${d.restaurant} · ₹${d.price_inr} · ${d.prep_time_min} mins</div>
+          <div class="zomato-nutrition-card explorer-card-flex" onclick="openDishDetailModal('${d.id}')">
+            <div>
+              <div class="dish-header-row" style="justify-content: space-between; align-items: flex-start;">
+                <div style="display: flex; align-items: flex-start; gap: 10px; padding-right: 8px;">
+                  <span class="${d.veg ? 'veg-square' : 'nonveg-square'}" style="margin-top: 4px;"></span>
+                  <div>
+                    <h3 style="font-size: 1.06rem; font-weight: 800; color: #FFFFFF; line-height: 1.25;">${d.title}</h3>
+                    <div style="font-size: 0.75rem; color: #9CA3AF; margin-top: 4px;">${d.restaurant} · ₹${d.price_inr} · ${d.prep_time_min} mins</div>
+                  </div>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0;">
+                  <span style="font-family: var(--font-mono); font-size: 0.74rem; color: var(--lime-neon); font-weight: 800; background: rgba(140,230,46,0.12); padding: 4px 10px; border-radius: 999px; border: 1px solid rgba(140,230,46,0.3);">${n.healthy_score}/100</span>
+                  <span style="font-family: var(--font-mono); font-size: 0.63rem; color: #CBD5E1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 2px 8px; border-radius: 999px; white-space: nowrap;">${d.genre}</span>
                 </div>
               </div>
-              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--lime-neon); font-weight: 700;">${n.healthy_score}/100</span>
-            </div>
 
-            <div class="macro-strip-container">
-              <div class="kcal-neutral-box">
-                <span class="num">${n.kcal}</span>
-                <span class="unit">kcal</span>
-              </div>
-              <div class="macros-green-pill">
-                <div class="macro-col">
-                  <span class="val">${heart}</span>
-                  <span class="lbl" style="color:#FFF; font-weight:700;">${n.tier}</span>
+              <div class="macro-strip-container">
+                <div class="kcal-neutral-box">
+                  <span class="num">${n.kcal}</span>
+                  <span class="unit">kcal</span>
                 </div>
-                <div class="macro-col"><span class="val">${n.protein}g</span><span class="lbl">protein</span></div>
-                <div class="macro-col"><span class="val">${n.fat}g</span><span class="lbl">fat</span></div>
-                <div class="macro-col"><span class="val">${n.carbs}g</span><span class="lbl">carbs</span></div>
-                <div class="macro-col"><span class="val">${n.fibre}g</span><span class="lbl">fibre</span></div>
+                <div class="macros-green-pill">
+                  <div class="macro-col">
+                    <span class="val" style="display:flex; justify-content:center; align-items:center;">${heart}</span>
+                    <span class="lbl" style="color:#FFF; font-weight:700;">${n.tier}</span>
+                  </div>
+                  <div class="macro-col"><span class="val">${n.protein}g</span><span class="lbl">protein</span></div>
+                  <div class="macro-col"><span class="val">${n.fat}g</span><span class="lbl">fat</span></div>
+                  <div class="macro-col"><span class="val">${n.carbs}g</span><span class="lbl">carbs</span></div>
+                  <div class="macro-col"><span class="val">${n.fibre}g</span><span class="lbl">fibre</span></div>
+                </div>
               </div>
+
+              <div style="margin-bottom: 12px;">
+                <div class="commentary-heading">WHAT MAKES THIS HEALTHY</div>
+                ${prosHtml || '<div class="commentary-item"><span>•</span><div>Indulgent preparation</div></div>'}
+              </div>
+
+              ${consHtml ? `<div style="padding-top:10px; border-top:1px dashed rgba(255,255,255,0.12); margin-bottom: 12px;"><div class="commentary-heading">TO CONSIDER</div>${consHtml}</div>` : ''}
             </div>
 
-            <div style="margin-bottom: 12px;">
-              <div class="commentary-heading">WHAT MAKES THIS HEALTHY</div>
-              ${prosHtml || '<div class="commentary-item"><span>•</span><div>Indulgent preparation</div></div>'}
-            </div>
-
-            ${consHtml ? `<div style="padding-top:10px; border-top:1px dashed rgba(255,255,255,0.12);"><div class="commentary-heading">TO CONSIDER</div>${consHtml}</div>` : ''}
-
-            <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between;">
-              <button type="button" onclick="switchTab('calculator'); document.getElementById('calc-preset-select').value='${d.id}'; loadPresetIntoCalculator('${d.id}');" style="background: transparent; border: 1px solid rgba(140,230,46,0.4); color: var(--lime-neon); padding: 6px 12px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.72rem; cursor: pointer;">
-                Inspect Math in Calculator ↗
+            <div style="margin-top: auto; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.1); display: grid; grid-template-columns: 1.35fr 1fr; gap: 10px; width: 100%;">
+              <button type="button" onclick="event.stopPropagation(); switchTab('calculator'); document.getElementById('calc-preset-select').value='${d.id}'; loadPresetIntoCalculator('${d.id}');" style="width: 100%; height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: rgba(140,230,46,0.14); border: 1px solid rgba(140,230,46,0.48); color: var(--lime-neon); padding: 0 14px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; white-space: nowrap; cursor: pointer; transition: all 0.2s ease;">
+                <span>Inspect Math in Calculator</span>
+                <span>↗</span>
               </button>
-              <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #9CA3AF; align-self: center;">${d.genre}</span>
+              <button type="button" onclick="event.stopPropagation(); openDishDetailModal('${d.id}');" style="width: 100%; height: 38px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.2); color: #F3F4F6; padding: 0 14px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; white-space: nowrap; cursor: pointer; transition: all 0.2s ease;">
+                <span>Full Dish Details</span>
+              </button>
             </div>
           </div>
         `;
       }).join("");
     }
 
+    function openDishDetailModal(dishId) {
+      const d = PRESET_DISHES.find(x => x.id === dishId) || PRESET_DISHES[0];
+      const res = computeJSNutrition(d.ingredients, d.cooking_method, true);
+      const heart = res.tier === "High" ? `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" />` : (res.tier === "Medium" ? `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Im1lZEhlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Im1lZExpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTE0IiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRUNDMzQ3Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Q0QTAyNCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBIYWxmLUZpbGxlZCBXYXZ5IEdvbGRlbiBMaXF1aWQgSW5zaWRlIEhlYXJ0IChDbGVhci9UcmFuc3BhcmVudCBCYWNrZ3JvdW5kKSAtLT4KICA8ZyBjbGlwLXBhdGg9InVybCgjbWVkSGVhcnRDbGlwKSI+CiAgICA8cGF0aCBkPSJNMjQgMTIyIFE4MCAxMDggMTI4IDEyNCBUMjMyIDExOCBMMjMyIDIzMCBMMjQgMjMwIFoiIGZpbGw9InVybCgjbWVkTGlxdWlkR3JhZCkiLz4KICAgIDxwYXRoIGQ9Ik0yOCAxMjIgUTgwIDEwOCAxMjggMTI0IFQyMjggMTE4IiBzdHJva2U9IiNGOERDNzgiIHN0cm9rZS13aWR0aD0iNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIi8+CiAgPC9nPgogIDwhLS0gU21vb3RoIEdvbGRlbi1BbWJlciBIZWFydCBPdXRsaW5lIC0tPgogIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiIHN0cm9rZT0iI0RGQjEzNCIgc3Ryb2tlLXdpZHRoPSIxNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+Cjwvc3ZnPgo=" alt="Medium Heart" class="inline-heart-svg" width="22" height="22" />` : `<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8Y2xpcFBhdGggaWQ9Imxvd0hlYXJ0Q2xpcCI+CiAgICAgIDxwYXRoIGQ9Ik0xMjggMjE0IEMxMjggMjE0IDM2IDE1NCAzNiA5MiBDMzYgNTggNjIgMzYgOTIgMzYgQzExMCAzNiAxMjIgNDYgMTI4IDU4IEMxMzQgNDYgMTQ2IDM2IDE2NCAzNiBDMTk0IDM2IDIyMCA1OCAyMjAgOTIgQzIyMCAxNTQgMTI4IDIxNCAxMjggMjE0IFoiLz4KICAgIDwvY2xpcFBhdGg+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9Imxvd0xpcXVpZEdyYWQiIHgxPSIwIiB5MT0iMTUwIiB4Mj0iMCIgeTI9IjIxNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTI2MzM0Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0M4NEIyMCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPCEtLSBRdWFydGVyLUZpbGxlZCBXYXZ5IExpcXVpZCBJbnNpZGUgSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNsb3dIZWFydENsaXApIj4KICAgIDxwYXRoIGQ9Ik0yNCAxNjYgUTgyIDE1NCAxMjggMTY2IFQyMzIgMTYyIEwyMzIgMjMwIEwyNCAyMzAgWiIgZmlsbD0idXJsKCNsb3dMaXF1aWRHcmFkKSIvPgogICAgPHBhdGggZD0iTTI4IDE2NiBRODIgMTU0IDEyOCAxNjYgVDIyOCAxNjIiIHN0cm9rZT0iI0YwODU1QiIgc3Ryb2tlLXdpZHRoPSI1IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz4KICA8L2c+CiAgPCEtLSBTbW9vdGggVGVycmFjb3R0YS1PcmFuZ2UgSGVhcnQgT3V0bGluZSAtLT4KICA8cGF0aCBkPSJNMTI4IDIxNCBDMTI4IDIxNCAzNiAxNTQgMzYgOTIgQzM2IDU4IDYyIDM2IDkyIDM2IEMxMTAgMzYgMTIyIDQ2IDEyOCA1OCBDMTM0IDQ2IDE0NiAzNiAxNjQgMzYgQzE5NCAzNiAyMjAgNTggMjIwIDkyIEMyMjAgMTU0IDEyOCAyMTQgMTI4IDIxNCBaIiBzdHJva2U9IiNEOTVCMkIiIHN0cm9rZS13aWR0aD0iMTQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgZmlsbD0ibm9uZSIvPgo8L3N2Zz4K" alt="Low Heart" class="inline-heart-svg" width="22" height="22" />`);
+      const modal = document.getElementById("dish-detail-modal");
+      const content = document.getElementById("dish-detail-modal-content");
+      if (!modal || !content) return;
+
+      content.innerHTML = `
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px; border-bottom:1px solid rgba(255,255,255,0.12); padding-bottom:14px; margin-bottom:16px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="${d.veg ? 'veg-square' : 'nonveg-square'}"></span>
+              <span style="font-family:var(--font-mono); font-size:0.7rem; color:var(--lime-neon); font-weight:700;">${d.genre.toUpperCase()}</span>
+            </div>
+            <h3 style="font-size:1.35rem; font-weight:800; color:#FFFFFF; margin-top:4px;">${d.title}</h3>
+            <div style="font-size:0.82rem; color:#9CA3AF; margin-top:2px;">${d.restaurant} · ₹${d.price_inr} · ${d.prep_time_min} mins prep · Cooking: ${res.methodLabel}</div>
+          </div>
+          <button type="button" onclick="closeDishDetailModal()" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); color:#FFF; width:34px; height:34px; border-radius:50%; cursor:pointer; font-weight:800;">✕</button>
+        </div>
+
+        <div class="macro-strip-container" style="margin-top:0; margin-bottom:16px;">
+          <div class="kcal-neutral-box">
+            <span class="num">${d.nutrition.kcal}</span>
+            <span class="unit">kcal</span>
+          </div>
+          <div class="macros-green-pill">
+            <div class="macro-col">
+              <span class="val" style="display:flex; justify-content:center;">${heart}</span>
+              <span class="lbl" style="color:#FFF; font-weight:700;">${d.nutrition.tier} (${d.nutrition.healthy_score})</span>
+            </div>
+            <div class="macro-col"><span class="val">${d.nutrition.protein}g</span><span class="lbl">protein</span></div>
+            <div class="macro-col"><span class="val">${d.nutrition.fat}g</span><span class="lbl">fat</span></div>
+            <div class="macro-col"><span class="val">${d.nutrition.carbs}g</span><span class="lbl">carbs</span></div>
+            <div class="macro-col"><span class="val">${d.nutrition.fibre}g</span><span class="lbl">fibre</span></div>
+          </div>
+        </div>
+
+        <div style="font-family:var(--font-mono); font-size:0.7rem; font-weight:700; color:var(--lime-neon); margin-bottom:8px;">
+          MERCHANT (Mx) INGREDIENT GRAM BREAKDOWN &amp; ICMR-NIN MACRO VECTORS
+        </div>
+        <div style="background:#0F1216; border:1px solid rgba(255,255,255,0.1); border-radius:14px; overflow:hidden; margin-bottom:16px;">
+          <table style="width:100%; border-collapse:collapse; font-size:0.78rem;">
+            <thead>
+              <tr style="background:#1C2128; color:#9CA3AF; font-family:var(--font-mono); font-size:0.66rem; text-align:left;">
+                <th style="padding:8px 12px;">Ingredient</th>
+                <th style="padding:8px 10px;">Grams</th>
+                <th style="padding:8px 10px;">Prot</th>
+                <th style="padding:8px 10px;">Fat</th>
+                <th style="padding:8px 10px;">Carbs</th>
+                <th style="padding:8px 10px;">Fibre</th>
+                <th style="padding:8px 10px;">Kcal</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${res.rows.map(r => `
+                <tr style="border-top:1px solid rgba(255,255,255,0.06);">
+                  <td style="padding:8px 12px; font-weight:700; color:#FFF;">${r.name}</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.grams}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono); color:#8CE62E;">${r.protein}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.fat}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.carbs}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.fibre}g</td>
+                  <td style="padding:8px 10px; font-family:var(--font-mono);">${r.kcal}</td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+          <span style="font-family:var(--font-mono); font-size:0.72rem; color:${d.nutrition.tier === 'High' ? '#8CE62E' : '#F59E0B'};">
+            ${d.nutrition.tier === 'High' ? '✓ Qualifies for Healthy Subscriptions' : '✕ Below High (≥72) Subscription Gate'}
+          </span>
+          <div style="display:flex; gap:10px;">
+            <button type="button" onclick="closeDishDetailModal(); switchTab('calculator'); document.getElementById('calc-preset-select').value='${d.id}'; loadPresetIntoCalculator('${d.id}');" class="btn-primary-lime" style="padding:9px 18px; font-size:0.78rem;">
+              Open &amp; Customize in Live Calculator ↗
+            </button>
+          </div>
+        </div>
+      `;
+      modal.classList.add("open");
+    }
+
+    function closeDishDetailModal() {
+      const modal = document.getElementById("dish-detail-modal");
+      if (modal) modal.classList.remove("open");
+    }
+
     // =========================================================================
-    // TAB 4: HEALTHY SUBSCRIPTIONS (3 / 5 / 15-DAY SCHEDULER)
+    // TAB 4: HEALTHY SUBSCRIPTIONS (INTERACTIVE SLOT SWAP + 5s AUTO-CLOSING MODAL)
     // =========================================================================
+    let activeSubscriptionSchedule = [];
+    let activeSubPool = [];
+    let subModalTimer = null;
+    let subModalCountdownInterval = null;
+
     function generateSubscriptionPlan() {
       const days = parseInt(document.getElementById("sub-duration").value, 10);
       const genre = document.getElementById("sub-genre").value;
 
-      // Hard eligibility gate: Only High-scored dishes qualify for Healthy Subscriptions
       let pool = PRESET_DISHES.filter(d => d.nutrition.tier === "High");
       if (genre !== "ALL") {
         const filtered = pool.filter(d => d.genre === genre);
         if (filtered.length > 0) pool = filtered;
       }
+      activeSubPool = pool;
 
-      const schedule = [];
+      activeSubscriptionSchedule = [];
+      for (let day = 1; day <= days; day++) {
+        const lunchIdx = (day * 2 - 2) % pool.length;
+        const dinnerIdx = (day * 2 - 1) % pool.length;
+        activeSubscriptionSchedule.push({
+          day,
+          lunchIdx,
+          dinnerIdx
+        });
+      }
+      renderSubscriptionView();
+    }
+
+    function swapSubscriptionMeal(dayIndex, slotType) {
+      if (!activeSubPool.length) return;
+      const item = activeSubscriptionSchedule[dayIndex];
+      if (!item) return;
+      if (slotType === "lunch") {
+        item.lunchIdx = (item.lunchIdx + 1) % activeSubPool.length;
+      } else {
+        item.dinnerIdx = (item.dinnerIdx + 1) % activeSubPool.length;
+      }
+      renderSubscriptionView();
+    }
+
+    function renderSubscriptionView() {
+      const days = activeSubscriptionSchedule.length || 5;
       let totalProt = 0, totalKcal = 0, totalFibre = 0, totalCost = 0;
 
-      for (let day = 1; day <= days; day++) {
-        const lunchDish = pool[(day * 2 - 2) % pool.length];
-        const dinnerDish = pool[(day * 2 - 1) % pool.length];
+      const enriched = activeSubscriptionSchedule.map((s, idx) => {
+        const lunchDish = activeSubPool[s.lunchIdx % activeSubPool.length];
+        const dinnerDish = activeSubPool[s.dinnerIdx % activeSubPool.length];
         const dayProt = lunchDish.nutrition.protein + dinnerDish.nutrition.protein;
         const dayKcal = lunchDish.nutrition.kcal + dinnerDish.nutrition.kcal;
         const dayFibre = lunchDish.nutrition.fibre + dinnerDish.nutrition.fibre;
@@ -2016,9 +2725,8 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
         totalKcal += dayKcal;
         totalFibre += dayFibre;
         totalCost += (lunchDish.price_inr + dinnerDish.price_inr);
-
-        schedule.push({ day, lunchDish, dinnerDish, dayProt, dayKcal, dayFibre });
-      }
+        return { idx, day: s.day, lunchDish, dinnerDish, dayProt, dayKcal, dayFibre };
+      });
 
       const discountedCost = Math.round(totalCost * 0.85);
       document.getElementById("sub-summary-strip").innerHTML = `
@@ -2026,13 +2734,23 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           <span class="eyebrow-label">ACTIVE SUBSCRIPTION BLUEPRINT (${days} DAYS · ${days * 2} NUTRITIOUS MEALS)</span>
           <h3 style="font-size: 1.25rem; font-weight: 800;">Avg Daily Intake: <span style="color:var(--forest-hero);">${Math.round(totalProt / days)}g Protein</span> · ${Math.round(totalFibre / days)}g Fibre · ${Math.round(totalKcal / days)} kcal/day</h3>
         </div>
-        <div style="text-align: right; font-family: var(--font-mono);">
-          <div style="font-size: 0.72rem; color: var(--slate-muted);">15% SUBSCRIPTION BUNDLE SAVING</div>
-          <div style="font-size: 1.35rem; font-weight: 800; color: var(--forest-hero);">₹${discountedCost.toLocaleString()} <span style="font-size:0.85rem; text-decoration:line-through; color:var(--slate-muted);">₹${totalCost.toLocaleString()}</span></div>
+        <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap;">
+          <div style="text-align: right; font-family: var(--font-mono);">
+            <div style="font-size: 0.72rem; color: var(--slate-muted);">15% SUBSCRIPTION BUNDLE SAVING</div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--forest-hero);">₹${discountedCost.toLocaleString()} <span style="font-size:0.85rem; text-decoration:line-through; color:var(--slate-muted);">₹${totalCost.toLocaleString()}</span></div>
+          </div>
+          <button type="button" class="btn-primary-lime" onclick="openSubConfirmModal(${days}, ${Math.round(totalProt / days)}, ${Math.round(totalFibre / days)}, ${Math.round(totalKcal / days)}, ${discountedCost}, ${totalCost})">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Lock &amp; Activate Subscription Plan</span>
+          </button>
         </div>
       `;
 
-      document.getElementById("sub-schedule-grid").innerHTML = schedule.map(s => `
+      const sunSvg = `<svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>`;
+      const moonSvg = `<svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+      const swapSvg = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>`;
+
+      document.getElementById("sub-schedule-grid").innerHTML = enriched.map(s => `
         <div class="sub-day-card">
           <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-hairline); padding-bottom: 10px; margin-bottom: 12px;">
             <span style="font-family: var(--font-mono); font-size: 0.78rem; font-weight: 800; color: var(--forest-hero);">DAY ${String(s.day).padStart(2, '0')} SCHEDULE</span>
@@ -2042,16 +2760,22 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
           </div>
 
           <div style="padding: 10px 12px; background: var(--bg-cream); border-radius: 12px; margin-bottom: 10px;">
-            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);"><svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg> LUNCH (1:00 PM · OFFICE) · <svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High (${s.lunchDish.nutrition.healthy_score})</div>
-            <div style="font-weight: 800; font-size: 0.92rem; margin-top: 2px;">${s.lunchDish.title}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);">${sunSvg} LUNCH (1:00 PM · OFFICE) · <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" /> High (${s.lunchDish.nutrition.healthy_score})</div>
+              <button type="button" class="sub-swap-btn" onclick="swapSubscriptionMeal(${s.idx}, 'lunch')">${swapSvg} Swap Meal</button>
+            </div>
+            <div style="font-weight: 800; font-size: 0.92rem; margin-top: 4px;">${s.lunchDish.title}</div>
             <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--forest-hero); margin-top: 3px;">
               ${s.lunchDish.nutrition.protein}g P · ${s.lunchDish.nutrition.fat}g F · ${s.lunchDish.nutrition.carbs}g C · ${s.lunchDish.nutrition.fibre}g Fib (${s.lunchDish.nutrition.kcal} kcal)
             </div>
           </div>
 
           <div style="padding: 10px 12px; background: var(--bg-cream); border-radius: 12px;">
-            <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);"><svg class="inline-heart-svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> DINNER (8:00 PM · HOME) · <svg class="inline-heart-svg" width="18" height="18" viewBox="0 0 256 256" fill="none"><polygon points="128,58 84,34 42,66 38,118 76,166 128,216 180,166 218,118 214,66 172,34" fill="#92D138" stroke="#E6FFAD" stroke-width="10" stroke-linejoin="round"/><path d="M128 176 L74 126 L68 92 L94 70 L128 90 L162 70 L188 92 L182 126 Z" fill="#C8FA5F" stroke="#E9FFB8" stroke-width="6" stroke-linejoin="round"/></svg> High (${s.dinnerDish.nutrition.healthy_score})</div>
-            <div style="font-weight: 800; font-size: 0.92rem; margin-top: 2px;">${s.dinnerDish.title}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:6px;">
+              <div style="font-family: var(--font-mono); font-size: 0.68rem; color: var(--slate-muted);">${moonSvg} DINNER (8:00 PM · HOME) · <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2IiB3aWR0aD0iMjU2IiBoZWlnaHQ9IjI1NiIgZmlsbD0ibm9uZSI+CiAgPGRlZnM+CiAgICA8ZmlsdGVyIGlkPSJoaWdoR2xvdyIgeD0iLTIwJSIgeT0iLTIwJSIgd2lkdGg9IjE0MCUiIGhlaWdodD0iMTQwJSI+CiAgICAgIDxmZURyb3BTaGFkb3cgZHg9IjAiIGR5PSI0IiBzdGREZXZpYXRpb249IjEyIiBmbG9vZC1jb2xvcj0iIzlCRTEzQiIgZmxvb2Qtb3BhY2l0eT0iMC41NSIvPgogICAgPC9maWx0ZXI+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImNlbnRlckdlbSIgeDE9IjAiIHkxPSI3OCIgeDI9IjAiIHkyPSIxNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0M4RkE1RiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM5QkUxM0IiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDwhLS0gM0QgUG9seWdvbmFsIEZhY2V0ZWQgTGltZS1HcmVlbiBHZW0gSGVhcnQgKENsZWFyL1RyYW5zcGFyZW50IEJhY2tncm91bmQpIC0tPgogIDxnIGZpbHRlcj0idXJsKCNoaWdoR2xvdykiPgogICAgPCEtLSBPdXRlciBHZW0gQmFzZSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMTI4LDU4IDg0LDM0IDQyLDY2IDM4LDExOCA3NiwxNjYgMTI4LDIxNiAxODAsMTY2IDIxOCwxMTggMjE0LDY2IDE3MiwzNCIgZmlsbD0iIzkyRDEzOCIgc3Ryb2tlPSIjNkNBMzIyIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICAgIDwhLS0gVG9wIExlZnQgRmFjZXRzIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI4NCwzNCAxMjgsNTggMTI4LDg4IDk0LDcwIiBmaWxsPSIjQjVFRTU2Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjQyLDY2IDg0LDM0IDk0LDcwIDY4LDk0IiBmaWxsPSIjODRDMjJFIi8+CiAgICA8IS0tIFRvcCBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjE3MiwzNCAxMjgsNTggMTI4LDg4IDE2Miw3MCIgZmlsbD0iI0E0RTI0NiIvPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMTQsNjYgMTcyLDM0IDE2Miw3MCAxODgsOTQiIGZpbGw9IiNDREY5NzAiLz4KICAgIDwhLS0gTWlkIExlZnQgJiBSaWdodCBGYWNldHMgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjM4LDExOCA0Miw2NiA2OCw5NCA3MiwxMzAiIGZpbGw9IiNBNkU0NDgiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjE4LDExOCAyMTQsNjYgMTg4LDk0IDE4NCwxMzAiIGZpbGw9IiNCOUYxNUEiLz4KICAgIDwhLS0gTG93ZXIgTGVmdCAmIFJpZ2h0IEJldmVsIEZhY2V0cyAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iNzYsMTY2IDM4LDExOCA3MiwxMzAgMTI4LDE4MCAxMjgsMjE2IiBmaWxsPSIjN0FCNjI4Ii8+CiAgICA8cG9seWdvbiBwb2ludHM9IjE4MCwxNjYgMjE4LDExOCAxODQsMTMwIDEyOCwxODAgMTI4LDIxNiIgZmlsbD0iI0IyRUM1MyIvPgogICAgPCEtLSBGYWNldCBSaWRnZSBIaWdobGlnaHQgTGluZXMgLS0+CiAgICA8cG9seWxpbmUgcG9pbnRzPSI4NCwzNCA5NCw3MCAxMjgsODggMTYyLDcwIDE3MiwzNCIgc3Ryb2tlPSIjRTZGRkFEIiBzdHJva2Utd2lkdGg9IjIuNSIgZmlsbD0ibm9uZSIvPgogICAgPHBvbHlsaW5lIHBvaW50cz0iNDIsNjYgNjgsOTQgNzIsMTMwIDEyOCwxODAgMTg0LDEzMCAxODgsOTQgMjE0LDY2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMi41IiBmaWxsPSJub25lIi8+CiAgICA8bGluZSB4MT0iMTI4IiB5MT0iMTgwIiB4Mj0iMTI4IiB5Mj0iMjE2IiBzdHJva2U9IiNFNkZGQUQiIHN0cm9rZS13aWR0aD0iMyIvPgogICAgPCEtLSBJbm5lciBHbG93aW5nIEhlYXJ0IFRhYmxlIEZhY2V0IC0tPgogICAgPHBhdGggZD0iTTEyOCAxNzYgTDc0IDEyNiBMNjggOTIgTDk0IDcwIEwxMjggOTAgTDE2MiA3MCBMMTg4IDkyIEwxODIgMTI2IFoiIGZpbGw9InVybCgjY2VudGVyR2VtKSIgc3Ryb2tlPSIjRTlGRkI4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8L2c+Cjwvc3ZnPgo=" alt="High Heart" class="inline-heart-svg high-neon-heart" width="22" height="22" /> High (${s.dinnerDish.nutrition.healthy_score})</div>
+              <button type="button" class="sub-swap-btn" onclick="swapSubscriptionMeal(${s.idx}, 'dinner')">${swapSvg} Swap Meal</button>
+            </div>
+            <div style="font-weight: 800; font-size: 0.92rem; margin-top: 4px;">${s.dinnerDish.title}</div>
             <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--forest-hero); margin-top: 3px;">
               ${s.dinnerDish.nutrition.protein}g P · ${s.dinnerDish.nutrition.fat}g F · ${s.dinnerDish.nutrition.carbs}g C · ${s.dinnerDish.nutrition.fibre}g Fib (${s.dinnerDish.nutrition.kcal} kcal)
             </div>
@@ -2060,10 +2784,99 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       `).join("");
     }
 
+    function openSubConfirmModal(days, avgProt, avgFibre, avgKcal, discountedCost, totalCost) {
+      const genreSelect = document.getElementById("sub-genre");
+      const genreText = genreSelect ? genreSelect.options[genreSelect.selectedIndex].text : "All High-Score Genres";
+      const modal = document.getElementById("sub-confirm-modal");
+      const content = document.getElementById("sub-confirm-modal-content");
+      if (!modal || !content) return;
+
+      let secondsLeft = 5;
+      content.innerHTML = `
+        <div style="width:68px; height:68px; margin:0 auto 14px; border-radius:50%; background:rgba(140,230,46,0.16); border:2px solid var(--lime-neon); display:flex; align-items:center; justify-content:center; box-shadow:0 0 28px rgba(140,230,46,0.45);">
+          <svg width="42" height="42" viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" fill="#8CE62E"/><path d="M50 75 C44 70 23 55 23 37 C23 25.5 31.5 18.5 41 18.5 C46 18.5 48.8 21 50 24.8 C51.2 21 54 18.5 59 18.5 C68.5 18.5 77 25.5 77 37 C77 43.2 73.8 49 69 54.2" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M50 75 C45 71 35 62 28 51" fill="none" stroke="#182813" stroke-width="8.2" stroke-linecap="round"/><path d="M65 46 L68.4 55.6 L78 59 L68.4 62.4 L65 72 L61.6 62.4 L52 59 L61.6 55.6 Z" fill="#182813"/></svg>
+        </div>
+        <div style="font-family:var(--font-mono); font-size:0.72rem; font-weight:800; color:var(--lime-neon); letter-spacing:0.12em;">
+          ✓ HEALTHY SUBSCRIPTION LOCKED &amp; SCHEDULED
+        </div>
+        <h3 style="font-size:1.5rem; font-weight:800; color:#FFFFFF; margin-top:6px;">
+          ${days}-Day Automated Healthy Meal Plan Confirmed
+        </h3>
+        <p style="font-size:0.86rem; color:#9CA3AF; margin-top:4px; margin-bottom:18px;">
+          Every scheduled Lunch and Dinner is verified above the strict <strong style="color:var(--lime-neon);">High (≥72)</strong> Healthy Score gate.
+        </p>
+
+        <div style="background:#0F1216; border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:16px 18px; text-align:left; font-size:0.84rem; margin-bottom:18px;">
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.1);">
+            <span style="color:#9CA3AF;">Selected Plan Duration:</span>
+            <strong style="color:#FFF;">${days} Days (${days * 2} High-Score Meals)</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.1);">
+            <span style="color:#9CA3AF;">Preferred Food Genre:</span>
+            <strong style="color:var(--lime-neon);">${genreText}</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.1);">
+            <span style="color:#9CA3AF;">Daily Delivery Windows:</span>
+            <strong style="color:#FFF;">1:00 PM (Office) &amp; 8:00 PM (Home)</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed rgba(255,255,255,0.1);">
+            <span style="color:#9CA3AF;">Avg Daily Macro Target:</span>
+            <strong style="color:#8CE62E;">${avgProt}g Protein · ${avgFibre}g Fibre · ${avgKcal} kcal</strong>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:8px 0 2px;">
+            <span style="color:#9CA3AF;">Bundle Total (15% Saving):</span>
+            <strong style="color:#FFF; font-size:1.05rem;">₹${discountedCost.toLocaleString()} <span style="font-size:0.78rem; color:#64748B; text-decoration:line-through;">₹${totalCost.toLocaleString()}</span></strong>
+          </div>
+        </div>
+
+        <div style="width:100%; height:5px; background:rgba(255,255,255,0.1); border-radius:999px; overflow:hidden; margin-bottom:12px;">
+          <div id="sub-modal-progress-bar" style="width:100%; height:100%; background:var(--lime-neon); transition:width 5s linear;"></div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span id="sub-modal-timer-txt" style="font-family:var(--font-mono); font-size:0.72rem; color:#9CA3AF;">
+            Auto-closing notification in 5s...
+          </span>
+          <button type="button" onclick="closeSubConfirmModal()" class="btn-primary-lime" style="padding:8px 18px; font-size:0.78rem;">
+            Done · Close Now
+          </button>
+        </div>
+      `;
+
+      modal.classList.add("open");
+      setTimeout(() => {
+        const bar = document.getElementById("sub-modal-progress-bar");
+        if (bar) bar.style.width = "0%";
+      }, 40);
+
+      if (subModalTimer) clearTimeout(subModalTimer);
+      if (subModalCountdownInterval) clearInterval(subModalCountdownInterval);
+
+      subModalCountdownInterval = setInterval(() => {
+        secondsLeft--;
+        const txt = document.getElementById("sub-modal-timer-txt");
+        if (txt && secondsLeft > 0) {
+          txt.innerText = `Auto-closing notification in ${secondsLeft}s...`;
+        }
+      }, 1000);
+
+      subModalTimer = setTimeout(() => {
+        closeSubConfirmModal();
+      }, 5000);
+    }
+
+    function closeSubConfirmModal() {
+      const modal = document.getElementById("sub-confirm-modal");
+      if (modal) modal.classList.remove("open");
+      if (subModalTimer) clearTimeout(subModalTimer);
+      if (subModalCountdownInterval) clearInterval(subModalCountdownInterval);
+    }
+
     window.addEventListener("DOMContentLoaded", () => {
       initCalculatorDropdown();
       renderMenuExplorer();
       generateSubscriptionPlan();
+      initScrollCodeWordReveal();
     });
   </script>
 </body>

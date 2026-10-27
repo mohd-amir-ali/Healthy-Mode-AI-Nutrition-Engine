@@ -923,3 +923,331 @@ input[type="range"].hm-range::-webkit-slider-thumb:hover {
       border-color: var(--forest-hero);
       transform: translateY(-2px);
     }
+  
+/* ==========================================================================
+   ENHANCED HOVER, FLOATING, CURSOR TOOLTIP, MODALS & WORD-BY-WORD TRANSITIONS
+   ========================================================================== */
+.hm-hero-brand-lockup {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  position: relative;
+  padding: 10px 18px 12px 0;
+  border-radius: 20px;
+  transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hm-hero-brand-lockup::before {
+  content: "";
+  position: absolute;
+  inset: -12px -24px -12px -16px;
+  background: radial-gradient(ellipse at center, rgba(140, 230, 46, 0.22) 0%, rgba(140, 230, 46, 0.06) 52%, transparent 75%);
+  opacity: 0;
+  transition: opacity 0.34s ease, transform 0.34s ease;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 28px;
+}
+
+.hm-hero-brand-lockup:hover::before {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.hm-hero-brand-lockup > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hm-hero-brand-lockup:hover .hm-display-logo {
+  color: #A8F542;
+  text-shadow: 0 0 16px rgba(140, 230, 46, 0.52), 0 0 34px rgba(140, 230, 46, 0.24);
+  transform: translateY(-2px);
+}
+
+.hm-hero-brand-lockup:hover .hm-o-svg {
+  transform: skewX(-7deg) scale(1.07);
+  filter: drop-shadow(0 0 18px rgba(140, 230, 46, 0.72));
+}
+
+.hm-hero-brand-lockup:hover .hm-introducing-kicker {
+  color: #E6FFAD;
+  text-shadow: 0 0 12px rgba(140, 230, 46, 0.45);
+}
+
+/* Faster, Noticeably Smooth Floating Levitation for Guide Card */
+@keyframes guideCardFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-13px);
+  }
+}
+
+.heart-scale-card {
+  animation: guideCardFloat 2.2s ease-in-out infinite !important;
+}
+
+.heart-scale-card:hover {
+  animation-play-state: paused !important;
+  transform: translateY(-12px) scale(1.018) !important;
+}
+
+/* Per-Heart Color Neon Highlights (Red/Orange for Low, Amber for Medium, Intense Sparkle Lime for High) */
+.heart-node svg {
+  overflow: visible !important;
+}
+
+.heart-node-low:hover {
+  transform: translateY(-5px) scale(1.13);
+  filter: drop-shadow(0 0 12px rgba(226, 99, 52, 0.85)) drop-shadow(0 0 22px rgba(217, 91, 43, 0.55));
+}
+
+.heart-node-medium:hover {
+  transform: translateY(-5px) scale(1.13);
+  filter: drop-shadow(0 0 12px rgba(236, 195, 71, 0.88)) drop-shadow(0 0 22px rgba(223, 177, 52, 0.55));
+}
+
+.heart-node-high:hover {
+  transform: translateY(-6px) scale(1.22) !important;
+  filter: drop-shadow(0 0 18px rgba(140, 230, 46, 1)) drop-shadow(0 0 36px rgba(190, 242, 100, 0.92)) drop-shadow(0 0 54px rgba(140, 230, 46, 0.65)) !important;
+}
+
+.high-neon-heart {
+  filter: drop-shadow(0 0 8px rgba(140, 230, 46, 0.85)) drop-shadow(0 0 16px rgba(190, 242, 100, 0.55));
+}
+
+/* Modern Cursor-Following Floating Text Label (Pure Typography, No Clunky Box) */
+#cursor-heart-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transform: translate(-50%, -140%) scale(0.94);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.85);
+}
+
+#cursor-heart-tooltip.visible {
+  opacity: 1;
+  transform: translate(-50%, -155%) scale(1);
+}
+
+/* Word-by-Word Scroll Reveal Transition for Stage Code Snippets */
+.scroll-code-block .code-word-token {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(3px);
+  transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1), transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), filter 0.38s ease;
+}
+
+.scroll-code-block.revealed .code-word-token {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* Interactive 5-Parameter Weight Bar inside "What is Healthy Score?" */
+.param-weight-bar-wrap {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.param-weight-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.param-weight-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #65A30D 0%, #8CE62E 100%);
+  box-shadow: 0 0 10px rgba(140, 230, 46, 0.55);
+  transition: width 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.param-row-card:hover .param-weight-fill {
+  filter: brightness(1.22);
+  box-shadow: 0 0 16px rgba(140, 230, 46, 0.9);
+}
+
+/* Live 5-Parameter Sub-Score Progress Bars on Customer Card (Tab 2) */
+.live-subscore-bars-box {
+  background: var(--obsidian-inner);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+}
+
+.subscore-bar-row {
+  margin-bottom: 9px;
+}
+
+.subscore-bar-row:last-child {
+  margin-bottom: 0;
+}
+
+.subscore-bar-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.69rem;
+  color: #D1D5DB;
+  margin-bottom: 4px;
+}
+
+.subscore-bar-track {
+  width: 100%;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.subscore-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s ease;
+}
+
+/* Smart AI Kitchen Swap Button & Hover Explanation Tooltip */
+.kitchen-swap-wrap {
+  position: relative;
+  margin-top: 12px;
+}
+
+.btn-kitchen-swap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(140, 230, 46, 0.16) 0%, rgba(40, 56, 29, 0.85) 100%);
+  border: 1.5px solid rgba(140, 230, 46, 0.55);
+  color: var(--lime-neon);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.btn-kitchen-swap:hover {
+  background: var(--lime-neon);
+  color: #14171A;
+  box-shadow: 0 0 22px rgba(140, 230, 46, 0.45);
+  transform: translateY(-1px);
+}
+
+.kitchen-swap-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #0F1419;
+  border: 1px solid var(--lime-neon);
+  color: #E5E7EB;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 30;
+}
+
+.kitchen-swap-wrap:hover .kitchen-swap-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Menu Explorer Card Flex Alignment & Hover */
+.explorer-card-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.24s ease, box-shadow 0.24s ease;
+}
+
+.explorer-card-flex:hover {
+  transform: translateY(-4px);
+  border-color: rgba(140, 230, 46, 0.55);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.45), 0 0 20px rgba(140, 230, 46, 0.14);
+}
+
+/* Popup Modals (Dish Detail Modal & 5s Auto-Closing Subscription Modal) */
+.hm-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 15, 19, 0.78);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hm-modal-backdrop.open {
+  display: flex;
+}
+
+.hm-modal-box {
+  background: #15181E;
+  color: #FFFFFF;
+  border: 1.5px solid rgba(140, 230, 46, 0.5);
+  border-radius: 24px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px 30px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.75), 0 0 36px rgba(140, 230, 46, 0.2);
+  position: relative;
+}
+
+.sub-swap-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  color: var(--forest-hero);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.sub-swap-btn:hover {
+  background: var(--forest-hero);
+  color: var(--lime-neon);
+  border-color: var(--forest-hero);
+}
+
