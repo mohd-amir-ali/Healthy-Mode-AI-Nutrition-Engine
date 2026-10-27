@@ -3,10 +3,17 @@
 > **Product & Algorithmic Case Study: Two-Stage `Mx-to-Macro` Nutritional Intelligence & Scheduled Meal Automation**
 > *Pioneered & Implemented in **Zomato** (an Indian Food Delivery Platform under **Eternal Ltd.**) · An Open Industry Blueprint for Global Food-Delivery Platforms*
 
+[![Launch Live Demo](https://img.shields.io/badge/Launch%20Demo-Live%20Interactive%20Platform-8CE62E?style=for-the-badge&labelColor=15171B)](https://mohd-amir-ali.github.io/Healthy-Mode-AI-Nutrition-Engine/)
+[![Launch App](https://img.shields.io/badge/Launch%20App-Zero--Install%20HTML5%20%2B%20Flask%20API-8CE62E?style=for-the-badge&labelColor=15171B)](https://mohd-amir-ali.github.io/Healthy-Mode-AI-Nutrition-Engine/Launch_HealthyMode_App.html)
+[![Case Study Report](https://img.shields.io/badge/Case%20Study%20Report-Printable%20Whitepaper-28381D?style=for-the-badge&labelColor=15171B)](https://mohd-amir-ali.github.io/Healthy-Mode-AI-Nutrition-Engine/Product_Case_Study_Report.html)
 [![Author](https://img.shields.io/badge/Author-Mohd%20Amir%20Ali-8CE62E?style=for-the-badge&labelColor=15171B)](https://techwithamir.com)
 [![Architecture](https://img.shields.io/badge/Algorithm-NutriDecomp--NER%20%2B%20WNDS--5-28381D?style=for-the-badge&labelColor=15171B)](#2-two-stage-ai-nutritional-scoring-pipeline)
-[![Live Demo](https://img.shields.io/badge/Launch%20App-Zero--Install%20HTML5%20%2B%20Flask%20API-8CE62E?style=for-the-badge&labelColor=15171B)](#5-quick-start--cross-platform-deployment)
 [![Portfolio](https://img.shields.io/badge/Portfolio-techwithamir.com-F6F3EC?style=for-the-badge&labelColor=15171B)](https://techwithamir.com)
+
+> **Live Interactive Links:**
+> - **[Launch Live Interactive Demo (GitHub Pages) ↗](https://mohd-amir-ali.github.io/Healthy-Mode-AI-Nutrition-Engine/)** — Explore all 4 interactive tabs (`01. Overview & Algorithm`, `02. Live Mx-to-AI Calculator`, `03. Know Your Food Menu`, and `04. Healthy Subscriptions`).
+> - **[Launch Standalone HTML5 App (`Launch_HealthyMode_App.html`) ↗](https://mohd-amir-ali.github.io/Healthy-Mode-AI-Nutrition-Engine/Launch_HealthyMode_App.html)** — Zero-install HTML5 build.
+> - **[Read Printable Executive Whitepaper (`Product_Case_Study_Report.html`) ↗](https://mohd-amir-ali.github.io/Healthy-Mode-AI-Nutrition-Engine/Product_Case_Study_Report.html)** — Complete mathematical & product report.
 
 ---
 
