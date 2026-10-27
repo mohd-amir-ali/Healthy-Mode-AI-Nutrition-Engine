@@ -6,3 +6,7 @@ __pycache__/
 venv/
 .venv/
 *.log
+figma_kit/
+figma_plugin/
+HCI_Design_Study.html
+HCI_DESIGN_STUDY.md
